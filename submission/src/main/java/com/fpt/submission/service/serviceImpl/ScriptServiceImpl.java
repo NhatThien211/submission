@@ -17,12 +17,16 @@ public class ScriptServiceImpl implements ScriptService {
     private static final String PREFIX_END = "//end";
     private static final String TEMPLATE_SCRIPT_JAVA = "static/ScripTestJava.java";
 
+    private static final String PROJECT_DIR = System.getProperty("user.dir");
+
     @Override
     public void downloadFile(HttpServletResponse response) {
-        String folPath = null;
+        String pracPath = null;
         try {
-            folPath = ResourceUtils.getFile("classpath:static").getAbsolutePath();
-            String filePath = folPath + File.separator + "SE63155.zip";
+            pracPath = PROJECT_DIR + File.separator + "Practical";
+            ZipFile.zipping(pracPath + File.separator + "JavaWebSubmit", pracPath + File.separator + "JavaWebSubmit");
+            String filePath = pracPath + File.separator + "JavaWebSubmit.zip";
+
             File file = new File(filePath);
             String mimeType = "application/octet-stream";
             response.setContentType(mimeType);
