@@ -1,5 +1,6 @@
 package com.fpt.submission.service.serviceImpl;
 
+import com.fpt.submission.constants.PathConstants;
 import com.fpt.submission.exception.CustomException;
 import com.fpt.submission.service.ScriptService;
 import com.fpt.submission.utils.ZipFile;
@@ -13,20 +14,11 @@ import java.io.*;
 @Service
 public class ScriptServiceImpl implements ScriptService {
 
-    private static final String PREFIX_START = "//start";
-    private static final String PREFIX_END = "//end";
-    private static final String TEMPLATE_SCRIPT_JAVA = "static/ScripTestJava.java";
-
-    private static final String PROJECT_DIR = System.getProperty("user.dir");
-
     @Override
     public void downloadFile(HttpServletResponse response) {
-        String pracPath = null;
         try {
-            pracPath = PROJECT_DIR + File.separator + "Practical";
-            ZipFile.zipping(pracPath + File.separator + "JavaWebSubmit", pracPath + File.separator + "JavaWebSubmit");
-            String filePath = pracPath + File.separator + "JavaWebSubmit.zip";
-
+            ZipFile.zipping(PathConstants.PATH_JAVA_WEB_SUBMIT, PathConstants.PATH_JAVA_WEB_SUBMIT_FILE);
+            String filePath = PathConstants.PATH_JAVA_WEB_SUBMIT_FILE;
             File file = new File(filePath);
             String mimeType = "application/octet-stream";
             response.setContentType(mimeType);
@@ -34,7 +26,6 @@ public class ScriptServiceImpl implements ScriptService {
             response.setContentLength((int) file.length());
             OutputStream os = null;
             os = response.getOutputStream();
-
             ZipFile.downloadZip(file, os);
         } catch (FileNotFoundException e) {
             throw new CustomException(HttpStatus.CONFLICT, e.getMessage());

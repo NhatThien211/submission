@@ -8,7 +8,7 @@ public class ZipFile {
     //    Zip folder
     public static void zipping(String folder, String outPath) throws IOException {
         String sourceFile = folder;
-        FileOutputStream fos = new FileOutputStream(outPath + ".zip");
+        FileOutputStream fos = new FileOutputStream(outPath);
         ZipOutputStream zipOut = new ZipOutputStream(fos);
         File fileToZip = new File(sourceFile);
         zipFile(fileToZip, fileToZip.getName(), zipOut);

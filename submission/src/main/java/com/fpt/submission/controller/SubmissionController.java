@@ -13,16 +13,19 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/api")
 public class SubmissionController {
-    @Autowired
-    private final ScriptService scriptService;
 
-    public SubmissionController(ScriptService scriptService) {
+    private final ScriptService scriptService;
+    private final UploadFile uploadFile;
+
+    @Autowired
+    public SubmissionController(ScriptService scriptService, UploadFile uploadFile) {
         this.scriptService = scriptService;
+        this.uploadFile = uploadFile;
     }
 
     @PostMapping("/submission")
     public String uploadFile(@ModelAttribute UploadFileDto file) throws IOException {
-        UploadFile.uploadFile(file);
+        uploadFile.uploadFile(file);
         return "ok";
     }
 

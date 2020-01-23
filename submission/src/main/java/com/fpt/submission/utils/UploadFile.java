@@ -1,5 +1,6 @@
 package com.fpt.submission.utils;
 
+import com.fpt.submission.constants.PathConstants;
 import com.fpt.submission.dto.request.UploadFileDto;
 import com.fpt.submission.exception.CustomException;
 import org.springframework.context.annotation.Bean;
@@ -8,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,8 +21,8 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 @EnableAsync
+@Service
 public class UploadFile {
-    private static final String JAVA_CONSOLE_FOLDER_PATH = "\\practical\\JavaConsole";
 
     @Bean("ThreadPoolTaskExecutor")
     public TaskExecutor getAsyncExecutor() {
@@ -33,11 +35,11 @@ public class UploadFile {
     }
 
     @Async("ThreadPoolTaskExecutor")
-    public static void uploadFile(UploadFileDto dto) {
+    public void uploadFile(UploadFileDto dto) {
         try {
             MultipartFile file = dto.getFile();
             if (file != null) {
-                String folPath = ResourceUtils.getFile("classpath:static" + JAVA_CONSOLE_FOLDER_PATH).getAbsolutePath();
+                String folPath = ResourceUtils.getFile(PathConstants.PATH_JAVA_WEB_SUBMIT).getAbsolutePath();
                 Path copyLocation = Paths.get(folPath + File.separator + StringUtils.cleanPath(file.getOriginalFilename()));
                 Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
             }
