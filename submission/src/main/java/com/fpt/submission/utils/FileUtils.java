@@ -22,7 +22,7 @@ import java.nio.file.StandardCopyOption;
 
 @EnableAsync
 @Service
-public class UploadFile {
+public class FileUtils {
 
     @Bean("ThreadPoolTaskExecutor")
     public TaskExecutor getAsyncExecutor() {
@@ -35,17 +35,36 @@ public class UploadFile {
     }
 
     @Async("ThreadPoolTaskExecutor")
-    public void uploadFile(UploadFileDto dto) {
+    public String uploadFile(UploadFileDto dto) {
         try {
             MultipartFile file = dto.getFile();
             if (file != null) {
-                String folPath = ResourceUtils.getFile(PathConstants.PATH_JAVA_WEB_SUBMIT).getAbsolutePath();
+                String folPath = PathConstants.PATH_JAVA_WEB_SUBMIT;
                 Path copyLocation = Paths.get(folPath + File.separator + StringUtils.cleanPath(file.getOriginalFilename()));
                 Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
+                return copyLocation.toString();
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             throw new CustomException(HttpStatus.CONFLICT, ex.getMessage());
         }
+        return null;
     }
+
+    public static boolean deleteFolder(File directory) {
+        //make sure directory exists
+        if (!directory.exists()) {
+            System.out.println("Directory does not exist.");
+//            System.exit(0);
+        } else {
+            File[] allContents = directory.listFiles();
+            if (allContents != null) {
+                for (File file : allContents) {
+                    deleteFolder(file);
+                }
+            }
+        }
+        return directory.delete();
+    }
+
 }

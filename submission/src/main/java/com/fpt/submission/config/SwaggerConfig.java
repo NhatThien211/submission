@@ -27,11 +27,11 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfo(
-                "E-Rent REST API",
+                "PE2A REST API",
                 "Description of API.",
                 "API 1.0",
                 "Terms of service",
-                new Contact("E-Rent", "www.e-rent.com", "erent@gmail.com"),
+                new Contact("PE2A", "www.pe2a.com", "pe2a@gmail.com"),
                 "License of API", "API license URL", Collections.emptyList());
     }
 }

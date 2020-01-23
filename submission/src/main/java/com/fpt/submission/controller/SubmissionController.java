@@ -2,7 +2,8 @@ package com.fpt.submission.controller;
 
 import com.fpt.submission.dto.request.UploadFileDto;
 import com.fpt.submission.service.ScriptService;
-import com.fpt.submission.utils.UploadFile;
+import com.fpt.submission.service.SubmissionService;
+import com.fpt.submission.utils.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,18 +16,21 @@ import java.io.IOException;
 public class SubmissionController {
 
     private final ScriptService scriptService;
-    private final UploadFile uploadFile;
+    private final FileUtils fileUtils;
+    private final SubmissionService submissionService;
 
     @Autowired
-    public SubmissionController(ScriptService scriptService, UploadFile uploadFile) {
+    public SubmissionController(ScriptService scriptService, FileUtils fileUtils, SubmissionService submissionService) {
         this.scriptService = scriptService;
-        this.uploadFile = uploadFile;
+        this.fileUtils = fileUtils;
+        this.submissionService = submissionService;
     }
 
     @PostMapping("/submission")
     public String uploadFile(@ModelAttribute UploadFileDto file) throws IOException {
-        uploadFile.uploadFile(file);
-        return "ok";
+        return submissionService.submit(file);
+//        System.out.println(PathConstants.PROJECT_DIR);
+//        return null;
     }
 
     @GetMapping("/download")
