@@ -1,7 +1,5 @@
 package com.fpt.submission.constants;
 
-import com.fpt.submission.utils.FileUtils;
-
 import java.io.File;
 
 public class PathConstants {
