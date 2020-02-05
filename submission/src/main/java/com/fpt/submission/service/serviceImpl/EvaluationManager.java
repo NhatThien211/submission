@@ -1,6 +1,8 @@
 package com.fpt.submission.service.serviceImpl;
 
-import com.fpt.submission.constants.PathConstants;
+import com.fpt.submission.dto.request.PathDetails;
+import com.fpt.submission.exception.CustomException;
+import com.fpt.submission.utils.PathUtils;
 import com.fpt.submission.dto.request.StudentSubmitDetail;
 import com.fpt.submission.utils.CmdExcution;
 import com.fpt.submission.utils.SubmissionUtils;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.task.TaskExecutor;
+import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -40,25 +43,35 @@ public class EvaluationManager {
     private Path sourceScriptPath = null;
     private Path serverTestScript = null;
     private String PREFIX_EXAM_SCRIPT = "EXAM_";
+    private PathDetails pathDetails;
 
     @Autowired
     public EvaluationManager() {
         isEvaluating = false;
         submissionQueue = new PriorityQueue<>();
+        pathDetails = PathUtils.pathDetails;
         examCodesList = getExamCodesList();
     }
 
+    // Get all exams code in TestScript folder
     private List<String> getExamCodesList() {
-        List<String> result = new ArrayList<>();
-        try {
-            File folder = new File(PathConstants.PATH_JAVA_TEST);
-            for (final File file : folder.listFiles()) {
-                if (file.isFile()) {
-                    result.add(file.getName());
+        PathDetails pathDetails = PathUtils.pathDetails;
+        List<String> result = null;
+        if (pathDetails != null) {
+            try {
+                result = new ArrayList<>();
+                String s  = pathDetails.getPathTestScripts();
+                File folder = new File(pathDetails.getPathTestScripts());
+                if (folder != null) {
+                    for (final File file : folder.listFiles()) {
+                        if (file.isFile()) {
+                            result.add(file.getName());
+                        }
+                    }
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
         return result;
     }
@@ -66,9 +79,9 @@ public class EvaluationManager {
     @Async
     @EventListener
     public void evaluate(StudentSubmitDetail submissionEvent) {
+
         System.out.println(Thread.currentThread().getName() + "-" + submissionEvent.getStudentCode());
         submissionQueue.add(submissionEvent);
-
         if (!isEvaluating && submissionQueue.size() > 0) {
             isEvaluating = true;
             evaluateSubmissionJava(submissionQueue.remove());
@@ -81,10 +94,12 @@ public class EvaluationManager {
         try {
             sourceScriptPath = null;
             serverTestScript = null;
+            if(examCodesList.size() ==0)
+                throw new CustomException(HttpStatus.NOT_FOUND,"No exam codes");
             for (String examCode : examCodesList) {
                 if (examCode.equalsIgnoreCase(dto.getExamCode() + ".java")) {
-                    sourceScriptPath = Paths.get(PathConstants.PATH_JAVA_TEST + File.separator + examCode);
-                    serverTestScript = Paths.get(PathConstants.PATH_JAVA_FOLDER_TEST + PREFIX_EXAM_SCRIPT + dto.getStudentCode() + "_" + examCode);
+                    sourceScriptPath = Paths.get(pathDetails.getPathTestScripts() + File.separator + examCode);
+                    serverTestScript = Paths.get(pathDetails.getPathTestFol() + PREFIX_EXAM_SCRIPT + dto.getStudentCode() + "_" + examCode);
                     break;
                 }
             }
@@ -94,10 +109,10 @@ public class EvaluationManager {
                 return;
             }
             Files.copy(sourceScriptPath, serverTestScript);
-            ZipFile.unzip(PathConstants.PATH_JAVA_WEB_SUBMIT + File.separator + dto.getStudentCode() + ".zip", PathConstants.PATH_JAVA_FOLDER);
+            ZipFile.unzip(pathDetails.getPathSubmission() + File.separator + dto.getStudentCode() + ".zip", pathDetails.getPathJavaFol());
 
             // Chạy CMD file test
-            CmdExcution.execute(PathConstants.EXECUTE_MAVEN_CMD);
+            CmdExcution.execute(pathDetails.getJavaExecuteCmd());
 
             if (submissionQueue.size() > 0) {
                 deleteAllFile(dto.getStudentCode());
@@ -108,17 +123,17 @@ public class EvaluationManager {
 
             // Trả status đã chấm xong về app lec winform (mssv)
 
-            System.out.println("1");
+            System.out.println("Trả response cho giảng viên");
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            deleteAllFile(dto.getStudentCode());
+             deleteAllFile(dto.getStudentCode());
         }
     }
 
     private void deleteAllFile(String studentCode) {
-        File file = new File(PathConstants.PATH_JAVA_FOLDER_COM);
+        File file = new File(pathDetails.getPathJavaComFol());
         if (file != null && SubmissionUtils.deleteFolder(file)) {
             System.out.println("[DELETE SUBMISSION - SERVER] - " + studentCode);
         }
@@ -133,7 +148,7 @@ public class EvaluationManager {
     TaskExecutor taskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         // TODO: Xem xét lại khúc này coi pool nhiêu là đủ
-        executor    .setCorePoolSize(10);
+        executor.setCorePoolSize(10);
         executor.setMaxPoolSize(10);
         executor.setQueueCapacity(500);
         executor.setThreadNamePrefix("[THREAD-EVALUATE]-");

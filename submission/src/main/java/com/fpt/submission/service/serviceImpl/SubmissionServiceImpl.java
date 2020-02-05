@@ -1,6 +1,7 @@
 package com.fpt.submission.service.serviceImpl;
 
-import com.fpt.submission.constants.PathConstants;
+import com.fpt.submission.dto.request.PathDetails;
+import com.fpt.submission.utils.PathUtils;
 import com.fpt.submission.dto.request.StudentSubmitDetail;
 import com.fpt.submission.dto.request.UploadFileDto;
 import com.fpt.submission.service.SubmissionService;
@@ -18,14 +19,12 @@ import java.io.IOException;
 public class SubmissionServiceImpl implements SubmissionService {
 
     private SubmissionUtils submissionUtils;
-
     @Autowired
     ApplicationEventPublisher applicationEventPublisher;
 
     @Autowired
     public SubmissionServiceImpl() {
         submissionUtils = new SubmissionUtils();
-        //TODO: Lấy thêm danh sách đề
     }
 
     @Override
@@ -41,16 +40,4 @@ public class SubmissionServiceImpl implements SubmissionService {
         return "Submit successfully ";
     }
 
-
-    public void extractFolder(String path, String destDirectory) throws IOException, InterruptedException {
-        File folder = new File(path);
-        File[] listOfFiles = folder.listFiles();
-
-        for (File file : listOfFiles) {
-            if (file.isFile()) {
-                ZipFile.unzip(file.getAbsolutePath(), destDirectory);
-                CmdExcution.execute(PathConstants.EXECUTE_MAVEN_CMD);
-            }
-        }
-    }
 }

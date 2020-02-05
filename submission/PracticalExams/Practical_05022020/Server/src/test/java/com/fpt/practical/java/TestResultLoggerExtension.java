@@ -16,8 +16,8 @@ import java.util.Optional;
 
 public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback {
 
-    public static final String PROJECT_DIR = System.getProperty("user.dir");
-    public static final String PATH_JAVA_FOLDER_TEST = PROJECT_DIR + File.separator
+    private String PROJECT_DIR = System.getProperty("user.dir");
+    private String PATH_JAVA_FOLDER_TEST = PROJECT_DIR + File.separator
             + "src" + File.separator
             + "test" + File.separator
             + "java" + File.separator
@@ -27,8 +27,10 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
             + "java";
 
     private final String PREFIX_METHOD = "()";
+    private final String PREFIX_TEST = "EXAM_";
+    private final String TXT_RESULT_NAME = "Result.txt";
+
     private Map<String, Double> testResultsStatus = new HashMap<>();
-    private String PREFIX_TEST = "EXAM_";
 
     public void checkQuestionPoint(String nameQuestionCheck, boolean isCorrect) {
         String questionPointStr = JavaApplicationTests.questionPointStr;
@@ -87,10 +89,11 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
 
     public void appendStringToResultFile() {
         // TODO: For re-submit
+        String resultPath = PROJECT_DIR.replace("\\Server", "") + File.separator + TXT_RESULT_NAME;
         File file = null;
         PrintWriter writer = null;
         try {
-            file = new File("Result.txt");
+            file = new File(resultPath);
             writer = new PrintWriter(new FileWriter(file, true));
             double totalPoint = 0;
             Integer correctQuestionCount = 0;
@@ -106,7 +109,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
                 }
             }
             resultText += "Time : " + getCurTime() + "\n";
-            resultText += "Result : " + correctQuestionCount + "\n";
+            resultText += "Result : " + correctQuestionCount +" / "+ testResultsStatus.size() + "\n";
             resultText += "Total : " + totalPoint + "\n";
             resultText += "end" + getStudentCode() + "\n";
 
@@ -125,7 +128,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
     }
 
     public String getStudentCode() {
-        String path  = PATH_JAVA_FOLDER_TEST;
+        String path = PATH_JAVA_FOLDER_TEST;
         System.out.println(path);
         File folder = new File(path);
         File[] listOfFiles = folder.listFiles();

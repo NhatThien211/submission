@@ -1,6 +1,6 @@
 package com.fpt.submission.utils;
 
-import com.fpt.submission.constants.PathConstants;
+import com.fpt.submission.dto.request.PathDetails;
 import com.fpt.submission.dto.request.UploadFileDto;
 import com.fpt.submission.exception.CustomException;
 import com.fpt.submission.service.serviceImpl.EvaluationManager;
@@ -46,7 +46,9 @@ public class SubmissionUtils {
             System.out.println(Thread.currentThread().getName() + "-" + dto.getStudentCode());
             MultipartFile file = dto.getFile();
             if (file != null) {
-                String folPath = PathConstants.PATH_JAVA_WEB_SUBMIT;
+                PathDetails pathDetails = PathUtils.pathDetails;
+
+                String folPath = pathDetails.getPathSubmission();
                 Path copyLocation = Paths.get(folPath + File.separator + StringUtils.cleanPath(file.getOriginalFilename()));
                 Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
                 return true;

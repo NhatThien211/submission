@@ -1,7 +1,5 @@
 package com.fpt.submission.utils;
 
-import com.fpt.submission.constants.PathConstants;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
