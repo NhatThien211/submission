@@ -1,11 +1,9 @@
 package com.fpt.submission.utils;
 
 import com.fpt.submission.constants.PathConstants;
-import com.fpt.submission.dto.request.StudentSubmitDetail;
 import com.fpt.submission.dto.request.UploadFileDto;
 import com.fpt.submission.exception.CustomException;
-import com.fpt.submission.service.serviceImpl.SubmissionManager;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.fpt.submission.service.serviceImpl.EvaluationManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.http.HttpStatus;
@@ -26,10 +24,10 @@ import java.nio.file.StandardCopyOption;
 @Service
 public class SubmissionUtils {
 
-    private SubmissionManager submissionManager;
+    private EvaluationManager evaluationManager;
 
     public SubmissionUtils() {
-        submissionManager = new SubmissionManager();
+        evaluationManager = new EvaluationManager();
     }
 
     @Bean("ThreadPoolTaskExecutor")
@@ -38,27 +36,23 @@ public class SubmissionUtils {
         executor.setCorePoolSize(20);
         executor.setMaxPoolSize(1000);
         executor.setWaitForTasksToCompleteOnShutdown(true);
-        executor.setThreadNamePrefix("Async-");
+        executor.setThreadNamePrefix("[THREAD-SUBMIT]-");
         return executor;
     }
 
     @Async("ThreadPoolTaskExecutor")
-    public Boolean evaluateSubmission(UploadFileDto dto) {
+    public Boolean submitSubmission(UploadFileDto dto) {
         try {
+            System.out.println(Thread.currentThread().getName() + "-" + dto.getStudentCode());
             MultipartFile file = dto.getFile();
             if (file != null) {
                 String folPath = PathConstants.PATH_JAVA_WEB_SUBMIT;
                 Path copyLocation = Paths.get(folPath + File.separator + StringUtils.cleanPath(file.getOriginalFilename()));
                 Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
-
-                StudentSubmitDetail submitDetail = new StudentSubmitDetail(dto.getStudentCode(), dto.getExamCode());
-                // Evaluate submission
-                submissionManager.evaluate(submitDetail);
-
                 return true;
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
             throw new CustomException(HttpStatus.CONFLICT, ex.getMessage());
         }
         return false;
@@ -79,5 +73,6 @@ public class SubmissionUtils {
         }
         return directory.delete();
     }
+
 
 }

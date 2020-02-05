@@ -1,15 +1,26 @@
 package com.fpt.submission.dto.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import org.springframework.context.ApplicationEvent;
 
 import java.io.Serializable;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class StudentSubmitDetail implements Serializable {
+
+public class StudentSubmitDetail extends ApplicationEvent implements Serializable {
     private String studentCode;
     private String examCode;
+
+    public StudentSubmitDetail(Object source, String studentCode, String examCode) {
+        super(source);
+        this.studentCode = studentCode;
+        this.examCode = examCode;
+    }
+
+    public String getExamCode() {
+        return examCode;
+    }
+
+    public String getStudentCode() {
+        return studentCode;
+    }
 }

@@ -13,18 +13,21 @@ public class PathConstants {
 
     public static final String PATH_JAVA_SERVER = PROJECT_DIR + File.separator + "ServerJavaWeb";
 
-    public static final String PATH_JAVA_FOLDER = PATH_JAVA_SERVER + File.separator
-                                                                        + "src" + File.separator
-                                                                        + "main" + File.separator
-                                                                        + "java" + File.separator;
+    public static final String PATH_JAVA_FOLDER = PATH_JAVA_SERVER
+            + File.separator
+            + "src" + File.separator
+            + "main" + File.separator
+            + "java" + File.separator;
 
-    public static final String PATH_JAVA_FOLDER_TEST = PATH_JAVA_SERVER + File.separator
+    public static final String PATH_JAVA_FOLDER_TEST = PATH_JAVA_SERVER
+            + File.separator
             + "src" + File.separator
             + "test" + File.separator
             + "java" + File.separator
             + "com" + File.separator
-            + "thucnh" + File.separator
-            + "azuredevops" + File.separator;
+            + "fpt" + File.separator
+            + "practical" + File.separator
+            + "java"+ File.separator;
 
     public static final String PATH_JAVA_FOLDER_COM = PATH_JAVA_FOLDER + File.separator + "com";
 
