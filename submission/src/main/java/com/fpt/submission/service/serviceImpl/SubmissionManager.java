@@ -1,8 +1,13 @@
 package com.fpt.submission.service.serviceImpl;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fpt.submission.constants.CommonConstant;
 import com.fpt.submission.constants.PathConstants;
+import com.fpt.submission.dto.request.StudentPointDto;
 import com.fpt.submission.dto.request.StudentSubmitDetail;
 import com.fpt.submission.utils.CmdExcution;
+import com.fpt.submission.utils.SocketUtils;
 import com.fpt.submission.utils.SubmissionUtils;
 import com.fpt.submission.utils.ZipFile;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +22,8 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Copyright 2019 {@author Loda} (https://loda.me).
@@ -33,6 +38,7 @@ public class SubmissionManager {
 
     private Boolean isEvaluating = false;
     private Queue<StudentSubmitDetail> submissionQueue;
+    private ObjectMapper objectMapper;
 
     @Bean
     TaskExecutor taskExecutor() {
@@ -50,6 +56,7 @@ public class SubmissionManager {
     public SubmissionManager() {
         isEvaluating = false;
         submissionQueue = new PriorityQueue<>();
+        objectMapper = new ObjectMapper();
     }
 
 
@@ -114,9 +121,38 @@ public class SubmissionManager {
 
             // Trả status đã chấm xong về app lec winform (mssv)
 
+            // TODO: This data is dummy
+
+            Date currentDate = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            String currentDateString = sdf.format(currentDate);
+
+            StudentPointDto studentPointDto = new StudentPointDto();
+
+            Map<String, String> listQuestions = new HashMap<>();
+            listQuestions.put("checkQuestion1()", "Passed");
+            listQuestions.put("checkQuestion2()", "Passed");
+            listQuestions.put("checkQuestion3()", "Passed");
+            listQuestions.put("checkQuestion4()", "Passed");
+
+            studentPointDto.setStudentCode("SE62847");
+            studentPointDto.setListQuestions(listQuestions);
+            studentPointDto.setTotalPoint("10");
+            studentPointDto.setCreateDate(currentDateString);
+
+            try {
+                // convert student point object to JSON
+                String studentPointJson = objectMapper.writeValueAsString(studentPointDto);
+
+                // send TCP message with port 6969 to localhost
+                SocketUtils.sendTCPMessage(studentPointJson, CommonConstant.SOCKET_SERVER_LOCAL_HOST, CommonConstant.SOCKET_SERVER_LISTENING_PORT);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
 
         }
     }
