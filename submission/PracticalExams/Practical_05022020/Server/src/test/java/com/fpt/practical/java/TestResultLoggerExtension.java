@@ -38,7 +38,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
     private final String PREFIX_TEST = "EXAM_";
     private final String TXT_RESULT_NAME = "Result.txt";
     public final String SOCKET_SERVER_LOCAL_HOST = "localhost";
-    public final int SOCKET_SERVER_LISTENING_PORT = 6969;
+    public final int SOCKET_SERVER_LISTENING_PORT = 9997;
 
     private Map<String, Double> testResultsStatus = new HashMap<>();
 
