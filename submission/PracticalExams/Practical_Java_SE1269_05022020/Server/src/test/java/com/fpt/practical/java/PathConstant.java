@@ -14,7 +14,4 @@ public class PathConstant {
             + "fpt" + File.separator
             + "practical" + File.separator
             + "java";
-
-    public static final String SOCKET_SERVER_LOCAL_HOST = "localhost";
-    public static final int SOCKET_SERVER_LISTENING_PORT = 6969;
 }
