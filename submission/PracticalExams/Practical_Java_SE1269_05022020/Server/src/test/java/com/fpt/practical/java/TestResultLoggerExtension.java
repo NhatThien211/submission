@@ -3,6 +3,8 @@ package com.fpt.practical.java;
 import org.junit.jupiter.api.extension.AfterAllCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestWatcher;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -12,7 +14,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.Socket;
+import java.io.Serializable;
+import java.util.Map;
 
 public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback {
 
@@ -29,9 +37,13 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
     private final String PREFIX_METHOD = "()";
     private final String PREFIX_TEST = "EXAM_";
     private final String TXT_RESULT_NAME = "Result.txt";
+    public final String SOCKET_SERVER_LOCAL_HOST = "localhost";
+    public final int SOCKET_SERVER_LISTENING_PORT = 9997;
 
     private Map<String, Double> testResultsStatus = new HashMap<>();
 
+    private ObjectMapper objectMapper = new ObjectMapper();
+    private SocketUtils socketUtils = new SocketUtils();
     public void checkQuestionPoint(String nameQuestionCheck, boolean isCorrect) {
         String questionPointStr = JavaApplicationTests.questionPointStr;
         Double point = 0.0;
@@ -93,6 +105,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
         File file = null;
         PrintWriter writer = null;
         try {
+            Map<String, String> listQuestions = new HashMap<>();
             file = new File(resultPath);
             writer = new PrintWriter(new FileWriter(file, true));
             double totalPoint = 0;
@@ -109,10 +122,27 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
                 }
             }
             resultText += "Time : " + getCurTime() + "\n";
-            resultText += "Result : " + correctQuestionCount +" / "+ testResultsStatus.size() + "\n";
+            resultText += "Result : " + correctQuestionCount + " / " + testResultsStatus.size() + "\n";
             resultText += "Total : " + totalPoint + "\n";
             resultText += "end" + getStudentCode() + "\n";
 
+
+            // Send TCP messages to Lec-app after finish evaluate
+            StudentPointDto studentPointDto = new StudentPointDto();
+            studentPointDto.setStudentCode(getStudentCode());
+            studentPointDto.setListQuestions(listQuestions);
+            studentPointDto.setTotalPoint(String.valueOf(totalPoint));
+            studentPointDto.setTime(getCurTime());
+            studentPointDto.setResult(correctQuestionCount + "/" + testResultsStatus.size());
+            try {
+                // convert student point object to JSON
+                String studentPointJson = objectMapper.writeValueAsString(studentPointDto);
+
+                // send TCP message with port 9997 to localhost
+                socketUtils.sendTCPMessage(studentPointJson, SOCKET_SERVER_LOCAL_HOST, SOCKET_SERVER_LISTENING_PORT);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
             writer.println(resultText);
         } catch (Exception e) {
             e.printStackTrace();
@@ -121,7 +151,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
         }
     }
 
-    public static String getCurTime() {
+    public String getCurTime() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         return dtf.format(now);
@@ -142,5 +172,104 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
             }
         }
         return "";
+    }
+
+    class StudentPointDto implements Serializable {
+
+        private String studentCode;
+        private Map<String, String> listQuestions;
+        private String totalPoint;
+        private String time;
+        private String result;
+
+        public StudentPointDto() {
+        }
+
+        public StudentPointDto(String studentCode, Map<String, String> listQuestions, String totalPoint, String time, String result) {
+            this.studentCode = studentCode;
+            this.listQuestions = listQuestions;
+            this.totalPoint = totalPoint;
+            this.time = time;
+            this.result = result;
+        }
+
+        public String getStudentCode() {
+            return studentCode;
+        }
+
+        public void setStudentCode(String studentCode) {
+            this.studentCode = studentCode;
+        }
+
+        public Map<String, String> getListQuestions() {
+            return listQuestions;
+        }
+
+        public void setListQuestions(Map<String, String> listQuestions) {
+            this.listQuestions = listQuestions;
+        }
+
+        public String getTotalPoint() {
+            return totalPoint;
+        }
+
+        public void setTotalPoint(String totalPoint) {
+            this.totalPoint = totalPoint;
+        }
+
+        public String getTime() {
+            return time;
+        }
+
+        public void setTime(String time) {
+            this.time = time;
+        }
+
+        public String getResult() {
+            return result;
+        }
+
+        public void setResult(String result) {
+            this.result = result;
+        }
+    }
+
+    class SocketUtils {
+
+        public void sendTCPMessage(String message, String serverHost, int serverPort) throws InterruptedException, IOException {
+            Socket clientSocket = null;
+            BufferedWriter bw = null;
+            OutputStream os = null;
+            OutputStreamWriter osw = null;
+
+            try {
+                // make a connection with server
+                clientSocket = new Socket(serverHost, serverPort);
+
+                os = clientSocket.getOutputStream();
+                osw = new OutputStreamWriter(os);
+                bw = new BufferedWriter(osw);
+
+                bw.write(message);
+                bw.flush();
+            } finally {
+                try {
+                    if (bw != null) {
+                        bw.close();
+                    }
+                    if (osw != null) {
+                        osw.close();
+                    }
+                    if (os != null) {
+                        os.close();
+                    }
+                    if (clientSocket != null) {
+                        clientSocket.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }

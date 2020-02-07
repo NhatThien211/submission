@@ -1,0 +1,10 @@
+SE63146
+checkQuestion4(): Passed 
+checkQuestion3(): Passed 
+checkQuestion1(): Passed 
+checkQuestion2(): Passed 
+Time : 2020-02-07 12:39:22
+Result : 4 / 4
+Total : 10.0
+endSE63146
+
