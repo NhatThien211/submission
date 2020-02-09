@@ -4,6 +4,8 @@ import com.fpt.submission.dto.request.PathDetails;
 import com.fpt.submission.dto.request.UploadFileDto;
 import com.fpt.submission.exception.CustomException;
 import com.fpt.submission.service.serviceImpl.EvaluationManager;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.http.HttpStatus;
@@ -43,7 +45,8 @@ public class SubmissionUtils {
     @Async("ThreadPoolTaskExecutor")
     public Boolean submitSubmission(UploadFileDto dto) {
         try {
-            System.out.println(Thread.currentThread().getName() + "-" + dto.getStudentCode());
+            Logger.getLogger(SubmissionUtils.class.getName())
+                    .log(Level.INFO, "[SUBMISSION] - File from student: " + dto.getStudentCode());
             MultipartFile file = dto.getFile();
             if (file != null) {
                 PathDetails pathDetails = PathUtils.pathDetails;
@@ -54,7 +57,8 @@ public class SubmissionUtils {
                 return true;
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
+            Logger.getLogger(SubmissionUtils.class.getName())
+                    .log(Level.ERROR, "[SUBMISSION-ERROR] - File from student : "+ ex.getMessage());
             throw new CustomException(HttpStatus.CONFLICT, ex.getMessage());
         }
         return false;
@@ -63,8 +67,8 @@ public class SubmissionUtils {
     public static boolean deleteFolder(File directory) {
         //make sure directory exists
         if (!directory.exists()) {
-            System.out.println("Directory does not exist.");
-//            System.exit(0);
+            Logger.getLogger(SubmissionUtils.class.getName())
+                    .log(Level.WARN, "[DELETE FOLDER] - : Directory does not exist");
         } else {
             File[] allContents = directory.listFiles();
             if (allContents != null) {

@@ -7,6 +7,8 @@ import com.fpt.submission.dto.request.StudentSubmitDetail;
 import com.fpt.submission.utils.CmdExcution;
 import com.fpt.submission.utils.SubmissionUtils;
 import com.fpt.submission.utils.ZipFile;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.event.EventListener;
@@ -79,19 +81,23 @@ public class EvaluationManager {
     @Async
     @EventListener
     public void evaluate(StudentSubmitDetail submissionEvent) {
-
         System.out.println(Thread.currentThread().getName() + "-" + submissionEvent.getStudentCode());
         submissionQueue.add(submissionEvent);
         if (!isEvaluating && submissionQueue.size() > 0) {
             isEvaluating = true;
             evaluateSubmissionJava(submissionQueue.remove());
         } else {
-            System.out.println("[WAITING]" + submissionEvent.getStudentCode());
+            Logger.getLogger(SubmissionUtils.class.getName())
+                    .log(Level.ERROR, "[EVALUATE] Waiting - : "+ submissionEvent.getStudentCode());
         }
     }
 
     private void evaluateSubmissionJava(StudentSubmitDetail dto) {
         try {
+
+            Logger.getLogger(SubmissionUtils.class.getName())
+                    .log(Level.INFO, "[EVALUATE] Student code : "+ dto.getStudentCode());
+
             sourceScriptPath = null;
             serverTestScript = null;
             if(examCodesList.size() ==0)
@@ -126,6 +132,8 @@ public class EvaluationManager {
             System.out.println("Trả response cho giảng viên");
 
         } catch (Exception e) {
+            Logger.getLogger(EvaluationManager.class.getName())
+                    .log(Level.ERROR, "[EVALUATE-ERROR] Student code : "+ dto.getStudentCode());
             e.printStackTrace();
         } finally {
              deleteAllFile(dto.getStudentCode());
