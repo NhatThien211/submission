@@ -1,2 +1,8 @@
 2020-02-08 10:08:24 INFO  SubmissionUtils:49 - [SUBMISSION] - File from student: SE63155
 2020-02-08 10:08:24 INFO  SubmissionUtils:99 - [EVALUATE] Student code : SE63155
+2020-02-11 13:39:36 INFO  SubmissionUtils:49 - [SUBMISSION] - File from student: SE62847
+2020-02-11 13:39:36 INFO  SubmissionUtils:99 - [EVALUATE] Student code : SE62847
+2020-02-11 13:39:56 INFO  SubmissionUtils:49 - [SUBMISSION] - File from student: SE63155
+2020-02-11 13:39:57 ERROR SubmissionUtils:91 - [EVALUATE] Waiting - : SE63155
+2020-02-11 13:40:33 INFO  SubmissionUtils:99 - [EVALUATE] Student code : SE63155
+2020-02-11 13:41:02 WARN  SubmissionUtils:71 - [DELETE FOLDER] - : Directory does not exist
