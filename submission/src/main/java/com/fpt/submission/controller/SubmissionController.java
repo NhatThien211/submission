@@ -28,7 +28,6 @@ public class SubmissionController {
 
     @GetMapping("/test")
     public void test() throws IOException {
-        String s ="E:\\CN9\\FU_Submission_Webservice\\submission\\PracticalExams\\Practical_05022020\\Server";
 
     }
 

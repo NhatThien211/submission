@@ -15,7 +15,7 @@ public class PathDetails implements Serializable {
         this.practicalInfo = practicalInfo;
         curPractical = PROJECT_DIR + File.separator
                 + "PracticalExams" + File.separator
-                + practicalInfo.getName() ;
+                + practicalInfo.getName();
     }
 
     public String getPathSubmission() {
@@ -59,5 +59,10 @@ public class PathDetails implements Serializable {
         return "cd " + getPathServer() + "&mvn clean package";
     }
 
-    // For C#
+    // For C
+
+    public String getExecuteCmd(String scriptCode) {
+        return "cd " + getPathServer() + "&" +
+                "gcc " + scriptCode + ".c -lcunit -o " + scriptCode;
+    }
 }

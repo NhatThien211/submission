@@ -1,5 +1,7 @@
 package com.fpt.submission.service.serviceImpl;
 
+import static com.fpt.submission.constants.CommonConstant.*;
+
 import com.fpt.submission.dto.request.PathDetails;
 import com.fpt.submission.exception.CustomException;
 import com.fpt.submission.utils.PathUtils;
@@ -28,20 +30,14 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-/**
- * Copyright 2019 {@author Loda} (https://loda.me).
- * This project is licensed under the MIT license.
- *
- * @since 2019-05-31
- * Github: https://github.com/loda-kun
- */
+
 @EnableAsync
 @Service
 public class EvaluationManager {
 
     private Boolean isEvaluating;
     private Queue<StudentSubmitDetail> submissionQueue;
-    private List<String> examCodesList;
+    private List<String> examScriptsList;
     private Path sourceScriptPath = null;
     private Path serverTestScript = null;
     private String PREFIX_EXAM_SCRIPT = "EXAM_";
@@ -52,17 +48,17 @@ public class EvaluationManager {
         isEvaluating = false;
         submissionQueue = new PriorityQueue<>();
         pathDetails = PathUtils.pathDetails;
-        examCodesList = getExamCodesList();
+        examScriptsList = getExamScriptsList();
     }
 
     // Get all exams code in TestScript folder
-    private List<String> getExamCodesList() {
+    private List<String> getExamScriptsList() {
         PathDetails pathDetails = PathUtils.pathDetails;
         List<String> result = null;
         if (pathDetails != null) {
             try {
                 result = new ArrayList<>();
-                String s  = pathDetails.getPathTestScripts();
+                String s = pathDetails.getPathTestScripts();
                 File folder = new File(pathDetails.getPathTestScripts());
                 if (folder != null) {
                     for (final File file : folder.listFiles()) {
@@ -85,33 +81,46 @@ public class EvaluationManager {
         submissionQueue.add(submissionEvent);
         if (!isEvaluating && submissionQueue.size() > 0) {
             isEvaluating = true;
-            evaluateSubmissionJava(submissionQueue.remove());
+            if (submissionEvent.getExamCode().contains(PREFIX_PRACTICAL_C)) {
+                evaluateSubmissionC(submissionQueue.remove());
+            } else if (submissionEvent.getExamCode().contains(PREFIX_PRACTICAL_JAVA_WEB)) {
+                evaluateSubmissionJavaWeb(submissionQueue.remove());
+            } else if (submissionEvent.getExamCode().contains(PREFIX_PRACTICAL_CSharp)) {
+                evaluateSubmissionCSharp(submissionQueue.remove());
+            } else if (submissionEvent.getExamCode().contains(PREFIX_PRACTICAL_JAVA)) {
+                evaluateSubmissionJava(submissionQueue.remove());
+            }
         } else {
             Logger.getLogger(SubmissionUtils.class.getName())
-                    .log(Level.ERROR, "[EVALUATE] Waiting - : "+ submissionEvent.getStudentCode());
+                    .log(Level.ERROR, "[EVALUATE] Waiting - : " + submissionEvent.getStudentCode());
         }
+    }
+
+
+    private void evaluateSubmissionC(StudentSubmitDetail dto) {
+
     }
 
     private void evaluateSubmissionJava(StudentSubmitDetail dto) {
         try {
 
             Logger.getLogger(SubmissionUtils.class.getName())
-                    .log(Level.INFO, "[EVALUATE] Student code : "+ dto.getStudentCode());
+                    .log(Level.INFO, "[EVALUATE] Student code : " + dto.getStudentCode());
 
             sourceScriptPath = null;
             serverTestScript = null;
-            if(examCodesList.size() ==0)
-                throw new CustomException(HttpStatus.NOT_FOUND,"No exam codes");
-            for (String examCode : examCodesList) {
-                if (examCode.equalsIgnoreCase(dto.getExamCode() + ".java")) {
-                    sourceScriptPath = Paths.get(pathDetails.getPathTestScripts() + File.separator + examCode);
-                    serverTestScript = Paths.get(pathDetails.getPathTestFol() + PREFIX_EXAM_SCRIPT + dto.getStudentCode() + "_" + examCode);
+            if (examScriptsList.size() == 0)
+                throw new CustomException(HttpStatus.NOT_FOUND, "No exam codes");
+            for (String scriptCode : examScriptsList) {
+                if (scriptCode.equalsIgnoreCase(dto.getScriptCode() + ".java")) {
+                    sourceScriptPath = Paths.get(pathDetails.getPathTestScripts() + File.separator + scriptCode);
+                    serverTestScript = Paths.get(pathDetails.getPathTestFol() + PREFIX_EXAM_SCRIPT + dto.getStudentCode() + "_" + scriptCode);
                     break;
                 }
             }
             //copy source to target using Files Class
             if (sourceScriptPath == null && serverTestScript == null) {
-                System.out.println("[PATH-SCRIPT-ERROR]" + dto.getStudentCode() + "-" + dto.getExamCode());
+                System.out.println("[PATH-SCRIPT-ERROR]" + dto.getStudentCode() + "-" + dto.getScriptCode());
                 return;
             }
             Files.copy(sourceScriptPath, serverTestScript);
@@ -133,12 +142,22 @@ public class EvaluationManager {
 
         } catch (Exception e) {
             Logger.getLogger(EvaluationManager.class.getName())
-                    .log(Level.ERROR, "[EVALUATE-ERROR] Student code : "+ dto.getStudentCode());
+                    .log(Level.ERROR, "[EVALUATE-ERROR] Student code : " + dto.getStudentCode());
             e.printStackTrace();
         } finally {
-             deleteAllFile(dto.getStudentCode());
+            deleteAllFile(dto.getStudentCode());
         }
     }
+
+    private void evaluateSubmissionJavaWeb(StudentSubmitDetail dto) {
+
+    }
+
+
+    private void evaluateSubmissionCSharp(StudentSubmitDetail dto) {
+
+    }
+
 
     private void deleteAllFile(String studentCode) {
         File file = new File(pathDetails.getPathJavaComFol());

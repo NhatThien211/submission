@@ -25,7 +25,7 @@ public class SubmissionServiceImpl implements SubmissionService {
         try {
             submissionUtils.submitSubmission(dto);
             applicationEventPublisher.publishEvent(new StudentSubmitDetail(
-                    this,dto.getStudentCode(),dto.getExamCode()));
+                    this, dto.getStudentCode(), dto.getScriptCode(), dto.getExamCode()));
         } catch (Exception e) {
             e.printStackTrace();
             return "Submit failed";
