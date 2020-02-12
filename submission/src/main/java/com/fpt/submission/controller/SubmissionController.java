@@ -28,7 +28,15 @@ public class SubmissionController {
 
     @GetMapping("/test")
     public void test() throws IOException {
-
+        String s = "E:\\CN9\\FU_Submission_Webservice\\submission\\PracticalExams\\Practical_CSharp_SE1269_12022020\\TestScripts";
+        File folder = new File(s);
+        if (folder != null) {
+            for (final File file : folder.listFiles()) {
+                if (file.isFile()) {
+                    System.out.println(file.getName());
+                }
+            }
+        }
     }
 
     @PostMapping("/submission")

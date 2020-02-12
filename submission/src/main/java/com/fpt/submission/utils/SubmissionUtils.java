@@ -66,7 +66,7 @@ public class SubmissionUtils {
 
     public static boolean deleteFolder(File directory) {
         //make sure directory exists
-        if (!directory.exists()) {
+        if (directory.exists()) {
             Logger.getLogger(SubmissionUtils.class.getName())
                     .log(Level.WARN, "[DELETE FOLDER] - : Directory does not exist");
         } else {

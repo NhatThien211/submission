@@ -11,6 +11,5 @@ import org.springframework.web.multipart.MultipartFile;
 public class UploadFileDto {
     private String studentCode;
     private String scriptCode;
-    private String examCode;
     private MultipartFile file;
 }

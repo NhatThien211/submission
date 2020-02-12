@@ -1,4 +1,4 @@
-package com.fpt.practical.java;
+package com.practicalexam;
 
 import org.junit.jupiter.api.extension.AfterAllCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -30,9 +30,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
             + "test" + File.separator
             + "java" + File.separator
             + "com" + File.separator
-            + "fpt" + File.separator
-            + "practical" + File.separator
-            + "java";
+            + "practicalexam";
 
     private final String PREFIX_METHOD = "()";
     private final String PREFIX_TEST = "EXAM_";
@@ -139,7 +137,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
                 String studentPointJson = objectMapper.writeValueAsString(studentPointDto);
 
                 // send TCP message with port 9997 to localhost
-                socketUtils.sendTCPMessage(studentPointJson, SOCKET_SERVER_LOCAL_HOST, SOCKET_SERVER_LISTENING_PORT);
+               // socketUtils.sendTCPMessage(studentPointJson, SOCKET_SERVER_LOCAL_HOST, SOCKET_SERVER_LISTENING_PORT);
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
             }

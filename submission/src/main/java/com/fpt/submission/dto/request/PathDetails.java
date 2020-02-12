@@ -18,6 +18,10 @@ public class PathDetails implements Serializable {
                 + practicalInfo.getName();
     }
 
+    public String getExamCode() {
+        return practicalInfo.getExamCode();
+    }
+
     public String getPathSubmission() {
         return curPractical + File.separator + "Submissions";
     }
@@ -32,27 +36,37 @@ public class PathDetails implements Serializable {
 
 
     // For Java
-    public String getPathJavaFol() {
+    public String getPathJavaSubmit() {
         return getPathServer() + File.separator
                 + "src" + File.separator
                 + "main" + File.separator
-                + "java" + File.separator;
+                + "java" + File.separator
+                + "com" + File.separator
+                + "practicalexam" + File.separator;
     }
 
-    public String getPathTestFol() {
+    public String getPathJavaSubmitDelete() {
+        return getPathServer() + File.separator
+                + "src" + File.separator
+                + "main" + File.separator
+                + "java" + File.separator
+                + "com" + File.separator
+                + "practicalexam" + File.separator
+                + "student";
+    }
+
+    public String getPathTestJavaFol() {
         return getPathServer()
                 + File.separator
                 + "src" + File.separator
                 + "test" + File.separator
                 + "java" + File.separator
                 + "com" + File.separator
-                + "fpt" + File.separator
-                + "practical" + File.separator
-                + "java" + File.separator;
+                + "practicalexam" + File.separator;
     }
 
     public String getPathJavaComFol() {
-        return getPathJavaFol() + File.separator + "com";
+        return getPathJavaSubmit() + File.separator + "com";
     }
 
     public String getJavaExecuteCmd() {
@@ -61,8 +75,36 @@ public class PathDetails implements Serializable {
 
     // For C
 
-    public String getExecuteCmd(String scriptCode) {
+    public String getCExecuteCmd(String scriptCode) {
         return "cd " + getPathServer() + "&" +
                 "gcc " + scriptCode + ".c -lcunit -o " + scriptCode;
+    }
+
+//     For CSharp
+
+    // Lưu đề thi
+    public String getPathTestCSharpFol() {
+        return getPathServer()
+                + File.separator
+                + "Tests" + File.separator
+                + "Controllers" + File.separator;
+    }
+
+    public String getPathCSharpSubmit() {
+        return getPathServer()
+                + File.separator
+                + "TemplateAutomatedTest" + File.separator;
+    }
+
+    public String getPathCSharpSubmitDelete() {
+        return getPathServer()
+                + File.separator
+                + "TemplateAutomatedTest"
+                + File.separator
+                + "Student";
+    }
+
+    public String getCSharpExecuteCmd() {
+        return "cd " + getPathServer() + "&dotnet clean&dotnet test";
     }
 }

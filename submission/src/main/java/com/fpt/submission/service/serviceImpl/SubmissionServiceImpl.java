@@ -12,8 +12,10 @@ import org.springframework.stereotype.Service;
 public class SubmissionServiceImpl implements SubmissionService {
 
     private SubmissionUtils submissionUtils;
+
     @Autowired
     ApplicationEventPublisher applicationEventPublisher;
+
 
     @Autowired
     public SubmissionServiceImpl() {
@@ -25,7 +27,7 @@ public class SubmissionServiceImpl implements SubmissionService {
         try {
             submissionUtils.submitSubmission(dto);
             applicationEventPublisher.publishEvent(new StudentSubmitDetail(
-                    this, dto.getStudentCode(), dto.getScriptCode(), dto.getExamCode()));
+                    this, dto.getStudentCode(), dto.getScriptCode()));
         } catch (Exception e) {
             e.printStackTrace();
             return "Submit failed";
