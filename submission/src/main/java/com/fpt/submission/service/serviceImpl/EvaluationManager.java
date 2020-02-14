@@ -205,6 +205,7 @@ public class EvaluationManager {
 
 
     private void deleteAllFile(String studentCode, String pathSubmit) {
+
         File file = new File(pathSubmit);
         if (file != null && SubmissionUtils.deleteFolder(file)) {
             System.out.println("[DELETE SUBMISSION - SERVER] - " + studentCode);
