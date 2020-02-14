@@ -1,9 +1,8 @@
-package com.fpt.practical.java;
+package com.practicalexam;
 
-import com.fpt.practical.java.template.TemplateQuestion;
+import com.practicalexam.student.TemplateQuestion;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,8 +13,7 @@ class JavaApplicationTests {
 
     public static String questionPointStr = "checkQuestion1:2-checkQuestion2:4-checkQuestion3:2-checkQuestion4:2";
 
-    @Autowired
-    private TemplateQuestion templateQuestion;
+    private TemplateQuestion templateQuestion = new TemplateQuestion();
 
     @Test
     public void checkQuestion1() {

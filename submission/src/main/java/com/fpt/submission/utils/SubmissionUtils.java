@@ -54,11 +54,12 @@ public class SubmissionUtils {
                 String folPath = pathDetails.getPathSubmission();
                 Path copyLocation = Paths.get(folPath + File.separator + StringUtils.cleanPath(file.getOriginalFilename()));
                 Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
+
                 return true;
             }
         } catch (Exception ex) {
             Logger.getLogger(SubmissionUtils.class.getName())
-                    .log(Level.ERROR, "[SUBMISSION-ERROR] - File from student : "+ ex.getMessage());
+                    .log(Level.ERROR, "[SUBMISSION-ERROR] - File from student : " + ex.getMessage());
             throw new CustomException(HttpStatus.CONFLICT, ex.getMessage());
         }
         return false;
@@ -66,16 +67,16 @@ public class SubmissionUtils {
 
     public static boolean deleteFolder(File directory) {
         //make sure directory exists
-        if (!directory.exists()) {
-            Logger.getLogger(SubmissionUtils.class.getName())
-                    .log(Level.WARN, "[DELETE FOLDER] - : Directory does not exist");
-        } else {
+        if (directory.exists()) {
             File[] allContents = directory.listFiles();
             if (allContents != null) {
                 for (File file : allContents) {
                     deleteFolder(file);
                 }
             }
+        } else {
+            Logger.getLogger(SubmissionUtils.class.getName())
+                    .log(Level.WARN, "[DELETE FOLDER] - : Directory does not exist");
         }
         return directory.delete();
     }

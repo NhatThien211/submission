@@ -1,4 +1,4 @@
-package com.fpt.practical.java;
+package com.practicalexam;
 
 import org.junit.jupiter.api.extension.AfterAllCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -30,9 +30,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
             + "test" + File.separator
             + "java" + File.separator
             + "com" + File.separator
-            + "fpt" + File.separator
-            + "practical" + File.separator
-            + "java";
+            + "practicalexam";
 
     private final String PREFIX_METHOD = "()";
     private final String PREFIX_TEST = "EXAM_";
@@ -132,7 +130,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
             studentPointDto.setStudentCode(getStudentCode());
             studentPointDto.setListQuestions(listQuestions);
             studentPointDto.setTotalPoint(String.valueOf(totalPoint));
-            studentPointDto.setTime(getCurTime());
+            studentPointDto.setEvaluateTime(getCurTime());
             studentPointDto.setResult(correctQuestionCount + "/" + testResultsStatus.size());
             try {
                 // convert student point object to JSON
@@ -179,17 +177,21 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
         private String studentCode;
         private Map<String, String> listQuestions;
         private String totalPoint;
-        private String time;
+        private String submitTime;
+        private String evaluateTime;
+        private Double codingConvention;
         private String result;
 
         public StudentPointDto() {
         }
 
-        public StudentPointDto(String studentCode, Map<String, String> listQuestions, String totalPoint, String time, String result) {
+        public StudentPointDto(String studentCode, Map<String, String> listQuestions, String totalPoint, String submitTime, String evaluateTime, Double codingConvention, String result) {
             this.studentCode = studentCode;
             this.listQuestions = listQuestions;
             this.totalPoint = totalPoint;
-            this.time = time;
+            this.submitTime = submitTime;
+            this.evaluateTime = evaluateTime;
+            this.codingConvention = codingConvention;
             this.result = result;
         }
 
@@ -217,12 +219,28 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
             this.totalPoint = totalPoint;
         }
 
-        public String getTime() {
-            return time;
+        public String getSubmitTime() {
+            return submitTime;
         }
 
-        public void setTime(String time) {
-            this.time = time;
+        public void setSubmitTime(String submitTime) {
+            this.submitTime = submitTime;
+        }
+
+        public String getEvaluateTime() {
+            return evaluateTime;
+        }
+
+        public void setEvaluateTime(String evaluateTime) {
+            this.evaluateTime = evaluateTime;
+        }
+
+        public Double getCodingConvention() {
+            return codingConvention;
+        }
+
+        public void setCodingConvention(Double codingConvention) {
+            this.codingConvention = codingConvention;
         }
 
         public String getResult() {
