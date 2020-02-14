@@ -16,11 +16,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
+import java.io.*;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @EnableAsync
 @Service
@@ -80,5 +84,48 @@ public class SubmissionUtils {
         return directory.delete();
     }
 
+    public void sendTCPMessage(String message, String serverHost, int serverPort) throws InterruptedException, IOException {
+        Socket clientSocket = null;
+        BufferedWriter bw = null;
+        OutputStream os = null;
+        OutputStreamWriter osw = null;
 
+        try {
+            // make a connection with server
+            clientSocket = new Socket(serverHost, serverPort);
+
+            os = clientSocket.getOutputStream();
+            osw = new OutputStreamWriter(os);
+            bw = new BufferedWriter(osw);
+
+            bw.write(message);
+            bw.flush();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (bw != null) {
+                    bw.close();
+                }
+                if (osw != null) {
+                    osw.close();
+                }
+                if (os != null) {
+                    os.close();
+                }
+                if (clientSocket != null) {
+                    clientSocket.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    public String getCurTime() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        return dtf.format(now);
+    }
 }
