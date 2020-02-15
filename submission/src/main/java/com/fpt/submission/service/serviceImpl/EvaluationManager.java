@@ -151,6 +151,7 @@ public class EvaluationManager {
             e.printStackTrace();
         } finally {
             deleteAllFile(dto.getStudentCode(), pathDetails.getPathJavaSubmitDelete());
+            isEvaluating = false;
         }
     }
 
@@ -212,6 +213,7 @@ public class EvaluationManager {
         }
 
         File scriptFile = new File(serverTestScript.toString());
+        
         if (scriptFile != null && scriptFile.delete()) {
             System.out.println("[DELETE SCRIPT - SERVER] - " + studentCode);
         }
