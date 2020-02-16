@@ -129,4 +129,22 @@ public class SubmissionUtils {
         LocalDateTime now = LocalDateTime.now();
         return dtf.format(now);
     }
+
+    public static boolean saveResultCSubmission(String result, String filePath){
+        // TODO: For re-submit
+        File file = null;
+        PrintWriter writer = null;
+        try {
+            file = new File(filePath);
+            writer = new PrintWriter(new FileWriter(file, true));
+            writer.println(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            writer.close();
+        }
+        return true;
+    }
+
 }

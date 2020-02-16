@@ -18,6 +18,10 @@ public class PathDetails implements Serializable {
                 + practicalInfo.getName();
     }
 
+    public String getCurPracticalPath() {
+        return curPractical;
+    }
+
     public String getExamCode() {
         return practicalInfo.getExamCode();
     }
@@ -28,6 +32,10 @@ public class PathDetails implements Serializable {
 
     public String getPathServer() {
         return curPractical + File.separator + "Server";
+    }
+
+    public String getResultTextFilePath() {
+        return curPractical + File.separator + "Result.txt";
     }
 
     public String getPathTestScripts() {
@@ -75,10 +83,33 @@ public class PathDetails implements Serializable {
 
     // For C
 
-    public String getCExecuteCmd(String scriptCode) {
-        return "cd " + getPathServer() + "&" +
-                "gcc " + scriptCode + ".c -lcunit -o " + scriptCode;
+    public String getPathTestCFol() {
+        return getPathServer()
+                + File.separator
+                + "src";
     }
+
+    public String getPathCXMLResultFile() {
+        return getPathServer()
+                + File.separator
+                + "src" + File.separator +
+                "CUnitAutomated-Results.xml";
+    }
+
+    public String getPathCSubmit() {
+        return getPathTestCFol() + File.separator;
+    }
+
+    public String getPathCSubmitDelete() {
+        return getPathServer() + File.separator
+                + "src" + File.separator;
+    }
+
+    public String getCExecuteCmd(String scriptCode) {
+        return "cd " + getPathTestCFol() + "&" +
+                "gcc " + scriptCode + ".c -lcunit -o app&app.exe";
+    }
+
 
 //     For CSharp
 
