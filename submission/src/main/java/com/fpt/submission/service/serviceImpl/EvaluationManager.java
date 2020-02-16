@@ -167,6 +167,7 @@ public class EvaluationManager {
     }
 
     private void generateCTestResult(String questionPointArrStr, String studentCode) {
+        StudentPointDto studentPointDto = new StudentPointDto();
         try {
             // Get evaluated submission result
             File xml = new File(pathDetails.getPathCXMLResultFile());
@@ -250,17 +251,20 @@ public class EvaluationManager {
                         System.out.println("Successfully");
                     }
 
-                    StudentPointDto studentPointDto = new StudentPointDto();
                     studentPointDto.setStudentCode(studentCode);
                     studentPointDto.setListQuestions(listQuestions);
                     studentPointDto.setTotalPoint(String.valueOf(totalPoint));
                     studentPointDto.setEvaluateTime(time);
                     studentPointDto.setResult(correctQuestionCount + "/" + questionPointMap.size());
-
-                    System.out.println(studentCode);
+                    String jsonStr = mapper.writeValueAsString(studentPointDto);
+                    // Send json to Lecturer App
+                    System.out.println(jsonStr);
                 }
             }
         } catch (IOException e) {
+            studentPointDto.setErrorMsg("[EVALUATE-ERROR] - " + studentCode + ": System error");
+            Logger.getLogger(EvaluationManager.class.getName())
+                    .log(Level.INFO, "[EVALUATE] Student code : " +studentCode);
             e.printStackTrace();
         }
     }
@@ -268,7 +272,7 @@ public class EvaluationManager {
     private void evaluateSubmissionJava(StudentSubmitDetail dto) {
         try {
 
-            Logger.getLogger(SubmissionUtils.class.getName())
+            Logger.getLogger(EvaluationManager.class.getName())
                     .log(Level.INFO, "[EVALUATE] Student code : " + dto.getStudentCode());
 
             sourceScriptPath = null;

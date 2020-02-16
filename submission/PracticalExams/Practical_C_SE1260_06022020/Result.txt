@@ -1,7 +1,0 @@
-SE63155:
-checkQuestion1: Passed 
-checkQuestion2: Passed 
-Time : 2020-02-16 03:31:52
-Result : 2 / 2
-Total : 10.0
-

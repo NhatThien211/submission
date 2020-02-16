@@ -19,5 +19,6 @@ public class StudentPointDto implements Serializable {
     private String evaluateTime;
     private Double codingConvention;
     private String result;
+    private String errorMsg;
 
 }
