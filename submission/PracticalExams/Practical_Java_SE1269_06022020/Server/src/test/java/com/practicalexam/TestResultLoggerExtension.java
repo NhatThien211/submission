@@ -42,6 +42,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
 
     private ObjectMapper objectMapper = new ObjectMapper();
     private SocketUtils socketUtils = new SocketUtils();
+
     public void checkQuestionPoint(String nameQuestionCheck, boolean isCorrect) {
         String questionPointStr = JavaApplicationTests.questionPointStr;
         Double point = 0.0;
@@ -94,14 +95,34 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
 
     @Override
     public void afterAll(ExtensionContext context) throws Exception {
-        appendStringToResultFile();
+        StudentPointDto studentPointDto = null;
+        try {
+            studentPointDto = appendStringToResultFile();
+        } catch (Exception e) {
+            if (studentPointDto == null) {
+                studentPointDto = new StudentPointDto();
+            }
+            studentPointDto.setStudentCode(getStudentCode());
+            studentPointDto.setErrorMsg("System error!");
+        } finally {
+            try {
+                // convert student point object to JSON
+                String studentPointJson = objectMapper.writeValueAsString(studentPointDto);
+
+                // send TCP message with port 9997 to localhost
+                socketUtils.sendTCPMessage(studentPointJson, SOCKET_SERVER_LOCAL_HOST, SOCKET_SERVER_LISTENING_PORT);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
-    public void appendStringToResultFile() {
+    public StudentPointDto appendStringToResultFile() throws Exception {
         // TODO: For re-submit
         String resultPath = PROJECT_DIR.replace("\\Server", "") + File.separator + TXT_RESULT_NAME;
         File file = null;
         PrintWriter writer = null;
+        StudentPointDto studentPointDto = null;
         try {
             Map<String, String> listQuestions = new HashMap<>();
             file = new File(resultPath);
@@ -124,26 +145,25 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
             resultText += "Total : " + totalPoint + "\n";
             resultText += "end" + getStudentCode() + "\n";
 
-
             // Send TCP messages to Lec-app after finish evaluate
-            StudentPointDto studentPointDto = new StudentPointDto();
+            studentPointDto = new StudentPointDto();
             studentPointDto.setStudentCode(getStudentCode());
             studentPointDto.setListQuestions(listQuestions);
             studentPointDto.setTotalPoint(String.valueOf(totalPoint));
             studentPointDto.setEvaluateTime(getCurTime());
             studentPointDto.setResult(correctQuestionCount + "/" + testResultsStatus.size());
-            try {
-                // convert student point object to JSON
-                String studentPointJson = objectMapper.writeValueAsString(studentPointDto);
+//            try {
+//                // convert student point object to JSON
+//                String studentPointJson = objectMapper.writeValueAsString(studentPointDto);
+//
+//                // send TCP message with port 9997 to localhost
+//                socketUtils.sendTCPMessage(studentPointJson, SOCKET_SERVER_LOCAL_HOST, SOCKET_SERVER_LISTENING_PORT);
+//            } catch (JsonProcessingException e) {
+//                e.printStackTrace();
+//            }
 
-                // send TCP message with port 9997 to localhost
-                socketUtils.sendTCPMessage(studentPointJson, SOCKET_SERVER_LOCAL_HOST, SOCKET_SERVER_LISTENING_PORT);
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
             writer.println(resultText);
-        } catch (Exception e) {
-            e.printStackTrace();
+            return studentPointDto;
         } finally {
             writer.close();
         }
@@ -181,11 +201,12 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
         private String evaluateTime;
         private Double codingConvention;
         private String result;
+        private String errorMsg;
 
         public StudentPointDto() {
         }
 
-        public StudentPointDto(String studentCode, Map<String, String> listQuestions, String totalPoint, String submitTime, String evaluateTime, Double codingConvention, String result) {
+        public StudentPointDto(String studentCode, Map<String, String> listQuestions, String totalPoint, String submitTime, String evaluateTime, Double codingConvention, String result, String errorMsg) {
             this.studentCode = studentCode;
             this.listQuestions = listQuestions;
             this.totalPoint = totalPoint;
@@ -193,6 +214,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
             this.evaluateTime = evaluateTime;
             this.codingConvention = codingConvention;
             this.result = result;
+            this.errorMsg = errorMsg;
         }
 
         public String getStudentCode() {
@@ -249,6 +271,14 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
 
         public void setResult(String result) {
             this.result = result;
+        }
+
+        public String getErrorMsg() {
+            return errorMsg;
+        }
+
+        public void setErrorMsg(String errorMsg) {
+            this.errorMsg = errorMsg;
         }
     }
 
