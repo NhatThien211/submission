@@ -161,3 +161,14 @@
 2020-02-16 12:18:26 INFO  SubmissionUtils:114 - [EVALUATE] Student code : SE63155
 2020-02-16 12:21:28 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
 2020-02-16 12:21:28 INFO  SubmissionUtils:114 - [EVALUATE] Student code : SE63155
+2020-02-20 02:22:34 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-02-20 02:22:34 INFO  EvaluationManager:275 - [EVALUATE] Student code : SE63155
+2020-02-20 02:22:34 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-02-20 02:24:52 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-02-20 02:24:52 INFO  EvaluationManager:275 - [EVALUATE] Student code : SE63155
+2020-02-20 02:24:52 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-02-20 02:25:12 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-02-20 02:25:12 INFO  EvaluationManager:275 - [EVALUATE] Student code : SE63155
+2020-02-20 02:25:37 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-02-20 02:29:44 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-02-20 02:29:44 INFO  EvaluationManager:274 - [EVALUATE] Student code : SE63155

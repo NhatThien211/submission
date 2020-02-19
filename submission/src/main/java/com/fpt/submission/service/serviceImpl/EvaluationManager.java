@@ -43,7 +43,6 @@ public class EvaluationManager {
     private Path serverTestScriptPath = null;
     private String PREFIX_EXAM_SCRIPT = "EXAM_";
     private PathDetails pathDetails;
-
     private static final String START_POINT_ARR = "START_POINT_ARR";
     private static final String END_POINT_ARR = "END_POINT_ARR";
 
@@ -118,7 +117,7 @@ public class EvaluationManager {
             if (examScriptsList.size() == 0)
                 throw new CustomException(HttpStatus.NOT_FOUND, "No exam codes");
             for (String scriptCode : examScriptsList) {
-                if (scriptCode.equalsIgnoreCase(dto.getScriptCode() + ".c")) {
+                if (dto.getScriptCode().contains(scriptCode.replace(EXTENSION_C, ""))) {
                     sourceScriptPath = Paths.get(pathDetails.getPathTestScripts() + File.separator + scriptCode);
                     serverTestScriptPath = Paths.get(pathDetails.getPathTestCFol() + File.separator + PREFIX_EXAM_SCRIPT + dto.getStudentCode() + "_" + scriptCode);
                     break;
@@ -129,7 +128,7 @@ public class EvaluationManager {
                 System.out.println("[PATH-SCRIPT-ERROR]" + dto.getStudentCode() + "-" + dto.getScriptCode());
                 return;
             }
-            ZipFile.unzip(pathDetails.getPathSubmission() + File.separator + dto.getStudentCode() + ".zip", pathDetails.getPathCSubmit());
+            ZipFile.unzip(pathDetails.getPathSubmission() + File.separator + dto.getStudentCode() + EXTENSION_ZIP, pathDetails.getPathCSubmit());
             Files.copy(sourceScriptPath, serverTestScriptPath);
 
             // Chạy CMD file test
@@ -264,14 +263,13 @@ public class EvaluationManager {
         } catch (IOException e) {
             studentPointDto.setErrorMsg("[EVALUATE-ERROR] - " + studentCode + ": System error");
             Logger.getLogger(EvaluationManager.class.getName())
-                    .log(Level.INFO, "[EVALUATE] Student code : " +studentCode);
+                    .log(Level.INFO, "[EVALUATE] Student code : " + studentCode);
             e.printStackTrace();
         }
     }
 
     private void evaluateSubmissionJava(StudentSubmitDetail dto) {
         try {
-
             Logger.getLogger(EvaluationManager.class.getName())
                     .log(Level.INFO, "[EVALUATE] Student code : " + dto.getStudentCode());
 
@@ -280,7 +278,7 @@ public class EvaluationManager {
             if (examScriptsList.size() == 0)
                 throw new CustomException(HttpStatus.NOT_FOUND, "No exam codes");
             for (String scriptCode : examScriptsList) {
-                if (scriptCode.equalsIgnoreCase(dto.getScriptCode() + ".java")) {
+                if (dto.getScriptCode().contains(scriptCode.replace(EXTENSION_JAVA, ""))) {
                     sourceScriptPath = Paths.get(pathDetails.getPathTestScripts() + File.separator + scriptCode);
                     serverTestScriptPath = Paths.get(pathDetails.getPathTestJavaFol() + PREFIX_EXAM_SCRIPT + dto.getStudentCode() + "_" + scriptCode);
                     break;
@@ -331,7 +329,7 @@ public class EvaluationManager {
             if (examScriptsList.size() == 0)
                 throw new CustomException(HttpStatus.NOT_FOUND, "No exam codes");
             for (String scriptCode : examScriptsList) {
-                if (scriptCode.equalsIgnoreCase(dto.getScriptCode() + ".cs")) {
+                if (dto.getScriptCode().contains(scriptCode.replace(EXTENSION_CSHARP, ""))) {
                     sourceScriptPath = Paths.get(pathDetails.getPathTestScripts() + File.separator + scriptCode);
                     serverTestScriptPath = Paths.get(pathDetails.getPathTestCSharpFol() + PREFIX_EXAM_SCRIPT + dto.getStudentCode() + "_" + scriptCode);
                     break;
@@ -373,10 +371,11 @@ public class EvaluationManager {
             System.out.println("[DELETE SUBMISSION - SERVER] - " + studentCode);
         }
 
-        File scriptFile = new File(serverTestScriptPath.toString());
-
-        if (scriptFile != null && scriptFile.delete()) {
-            System.out.println("[DELETE SCRIPT - SERVER] - " + studentCode);
+        if (serverTestScriptPath != null) {
+            File scriptFile = new File(serverTestScriptPath.toString());
+            if (scriptFile != null && scriptFile.delete()) {
+                System.out.println("[DELETE SCRIPT - SERVER] - " + studentCode);
+            }
         }
     }
 
