@@ -1,0 +1,40 @@
+SE63155
+checkQuestion4(): Passed 
+checkQuestion3(): Passed 
+checkQuestion1(): Passed 
+checkQuestion2(): Passed 
+Time : 2020-02-20 16:41:39
+Result : 4 / 4
+Total : 10.0
+endSE63155
+
+SE63155
+checkQuestion4(): Passed 
+checkQuestion3(): Passed 
+checkQuestion1(): Passed 
+checkQuestion2(): Passed 
+Time : 2020-02-20 16:44:08
+Result : 4 / 4
+Total : 10.0
+endSE63155
+
+SE63155
+checkQuestion4(): Passed 
+checkQuestion3(): Passed 
+checkQuestion1(): Passed 
+checkQuestion2(): Passed 
+Time : 2020-02-20 16:47:47
+Result : 4 / 4
+Total : 10.0
+endSE63155
+
+SE63155
+checkQuestion4(): Passed 
+checkQuestion3(): Passed 
+checkQuestion1(): Passed 
+checkQuestion2(): Passed 
+Time : 2020-02-20 16:49:55
+Result : 4 / 4
+Total : 10.0
+endSE63155
+
