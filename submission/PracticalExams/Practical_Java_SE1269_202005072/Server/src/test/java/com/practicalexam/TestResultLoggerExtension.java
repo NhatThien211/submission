@@ -94,7 +94,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
     }
 
     @Override
-    public void afterAll(ExtensionContext context) {
+    public void afterAll(ExtensionContext context){
         StudentPointDto studentPointDto = null;
         try {
             studentPointDto = appendStringToResultFile();
@@ -112,7 +112,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
                 studentPointDto.setErrorMsg("System error!");
                 System.out.println("Final");
                 // send TCP message with port 9997 to localhost
-                socketUtils.sendTCPMessage(studentPointJson, SOCKET_SERVER_LOCAL_HOST, SOCKET_SERVER_LISTENING_PORT);
+//                socketUtils.sendTCPMessage(studentPointJson, SOCKET_SERVER_LOCAL_HOST, SOCKET_SERVER_LISTENING_PORT);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -146,7 +146,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
             resultText += "Result : " + correctQuestionCount + " / " + testResultsStatus.size() + "\n";
             resultText += "Total : " + totalPoint + "\n";
             resultText += "end" + getStudentCode() + "\n";
-            System.out.println(resultText);
+
             // Send TCP messages to Lec-app after finish evaluate
             studentPointDto = new StudentPointDto();
             studentPointDto.setStudentCode(getStudentCode());

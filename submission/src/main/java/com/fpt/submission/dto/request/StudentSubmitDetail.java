@@ -6,7 +6,7 @@ import org.springframework.context.ApplicationEvent;
 import java.io.Serializable;
 
 
-public class StudentSubmitDetail extends ApplicationEvent implements Serializable {
+public class StudentSubmitDetail extends ApplicationEvent implements Serializable, Comparable<StudentSubmitDetail> {
     private String studentCode;
     private String scriptCode;
 
@@ -16,11 +16,17 @@ public class StudentSubmitDetail extends ApplicationEvent implements Serializabl
         this.scriptCode = scriptCode;
     }
 
+
     public String getScriptCode() {
         return scriptCode;
     }
 
     public String getStudentCode() {
         return studentCode;
+    }
+
+    @Override
+    public int compareTo(StudentSubmitDetail o) {
+        return 0;
     }
 }

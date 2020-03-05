@@ -49,9 +49,6 @@ public class SubmissionController {
         JsonNode nodeSuiteName = node.findPath("SUITE_NAME");
         List<JsonNode> nodeSuiteSuccess = node.findValues("CUNIT_RUN_TEST_SUCCESS");
         List<JsonNode> nodeSuiteFailed = node.findValues("CUNIT_RUN_TEST_FAILURE");
-        
-
-        System.out.println("a");
     }
 
     @PostMapping("/submission")

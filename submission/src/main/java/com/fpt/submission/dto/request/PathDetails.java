@@ -34,6 +34,10 @@ public class PathDetails implements Serializable {
         return curPractical + File.separator + "Server";
     }
 
+    public String getPathServerLogFile() {
+        return curPractical + File.separator + "Server" + File.separator + "output.log";
+    }
+
     public String getResultTextFilePath() {
         return curPractical + File.separator + "Result.txt";
     }

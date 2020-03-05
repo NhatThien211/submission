@@ -192,3 +192,279 @@
 2020-02-20 16:47:17 INFO  EvaluationManager:274 - [EVALUATE] Student code : SE63155
 2020-02-20 16:49:31 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
 2020-02-20 16:49:31 INFO  EvaluationManager:274 - [EVALUATE] Student code : SE63155
+2020-02-20 23:00:47 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-02-20 23:00:47 INFO  EvaluationManager:274 - [EVALUATE] Student code : SE63155
+2020-02-20 23:09:10 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-02-20 23:09:10 INFO  EvaluationManager:274 - [EVALUATE] Student code : SE63155
+2020-02-20 23:21:57 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-02-20 23:21:57 INFO  EvaluationManager:274 - [EVALUATE] Student code : SE63155
+2020-02-21 09:50:09 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-02-21 09:50:10 INFO  EvaluationManager:274 - [EVALUATE] Student code : SE63155
+2020-02-21 10:19:53 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-02-21 10:19:53 INFO  EvaluationManager:274 - [EVALUATE] Student code : SE63155
+2020-03-03 17:31:35 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-03-03 17:31:35 INFO  EvaluationManager:274 - [EVALUATE] Student code : SE63155
+2020-03-03 17:37:00 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-03-03 17:37:00 INFO  EvaluationManager:274 - [EVALUATE] Student code : SE63155
+2020-03-03 17:48:00 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-03-03 17:48:00 INFO  EvaluationManager:274 - [EVALUATE] Student code : SE63155
+2020-03-03 17:48:38 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-03-03 17:48:38 INFO  EvaluationManager:274 - [EVALUATE] Student code : SE63155
+2020-03-03 20:28:41 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-03-03 20:28:41 INFO  EvaluationManager:277 - [EVALUATE] Student code : SE63155
+2020-03-03 20:30:36 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-03-03 20:30:36 INFO  EvaluationManager:277 - [EVALUATE] Student code : SE63155
+2020-03-03 20:34:11 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-03-03 20:34:23 INFO  EvaluationManager:277 - [EVALUATE] Student code : SE63155
+2020-03-03 20:36:16 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-03-03 20:37:49 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-03-03 20:37:53 INFO  EvaluationManager:277 - [EVALUATE] Student code : SE63155
+2020-03-03 20:37:53 ERROR SubmissionUtils:108 - [EVALUATE] Waiting - : SE61902
+2020-03-03 20:38:28 ERROR EvaluationManager:314 - [EVALUATE-ERROR] Student code : SE63155
+2020-03-03 20:38:28 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 20:41:53 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-03-03 20:41:53 INFO  EvaluationManager:277 - [EVALUATE] Student code : SE63155
+2020-03-03 20:41:53 ERROR SubmissionUtils:108 - [EVALUATE] Waiting - : SE61902
+2020-03-03 20:42:16 INFO  EvaluationManager:277 - [EVALUATE] Student code : SE61902
+2020-03-03 20:42:33 ERROR EvaluationManager:314 - [EVALUATE-ERROR] Student code : SE61902
+2020-03-03 20:42:33 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 20:42:33 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 20:43:12 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-03-03 20:43:17 INFO  EvaluationManager:277 - [EVALUATE] Student code : SE62289
+2020-03-03 20:43:17 ERROR SubmissionUtils:108 - [EVALUATE] Waiting - : SE63155
+2020-03-03 20:43:33 INFO  EvaluationManager:277 - [EVALUATE] Student code : SE63155
+2020-03-03 20:43:55 ERROR EvaluationManager:314 - [EVALUATE-ERROR] Student code : SE63155
+2020-03-03 20:43:55 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 20:43:55 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 20:46:43 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-03-03 20:46:55 INFO  EvaluationManager:277 - [EVALUATE] Student code : SE63155
+2020-03-03 20:46:55 ERROR SubmissionUtils:108 - [EVALUATE] Waiting - : SE62289
+2020-03-03 20:47:20 INFO  EvaluationManager:277 - [EVALUATE] Student code : SE62289
+2020-03-03 20:47:27 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-03-03 20:48:44 ERROR EvaluationManager:314 - [EVALUATE-ERROR] Student code : SE62289
+2020-03-03 20:48:44 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 20:48:44 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 20:49:25 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-03-03 20:49:31 INFO  EvaluationManager:277 - [EVALUATE] Student code : SE63155
+2020-03-03 20:51:08 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-03-03 20:51:11 INFO  EvaluationManager:277 - [EVALUATE] Student code : SE63155
+2020-03-03 20:55:49 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-03-03 20:55:49 INFO  EvaluationManager:277 - [EVALUATE] Student code : SE63155
+2020-03-03 20:57:46 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-03-03 20:57:46 INFO  EvaluationManager:277 - [EVALUATE] Student code : SE61902
+2020-03-03 20:57:46 ERROR SubmissionUtils:108 - [EVALUATE] Waiting - : SE63155
+2020-03-03 20:58:01 INFO  EvaluationManager:277 - [EVALUATE] Student code : SE63155
+2020-03-03 20:58:18 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 21:03:33 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-03-03 21:13:18 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-03-03 21:13:19 INFO  EvaluationManager:300 - [EVALUATE] Student code : SE63155
+2020-03-03 21:14:04 INFO  EvaluationManager:300 - [EVALUATE] Student code : SE62867
+2020-03-03 21:14:32 INFO  EvaluationManager:300 - [EVALUATE] Student code : SE62841
+2020-03-03 21:14:58 INFO  EvaluationManager:300 - [EVALUATE] Student code : SE62823
+2020-03-03 21:15:23 INFO  EvaluationManager:300 - [EVALUATE] Student code : SE62804
+2020-03-03 21:15:44 INFO  EvaluationManager:300 - [EVALUATE] Student code : SE62792
+2020-03-03 21:16:06 INFO  EvaluationManager:300 - [EVALUATE] Student code : SE62289
+2020-03-03 22:20:38 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-03 22:20:38 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-03 22:23:47 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
+2020-03-03 22:23:47 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62882
+2020-03-03 22:24:12 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 22:28:38 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-03 22:28:38 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-03 22:28:42 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62847
+2020-03-03 22:28:42 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE62847
+2020-03-03 22:28:44 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62847
+2020-03-03 22:28:51 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 22:36:29 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-03 22:36:29 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-03 22:36:59 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 22:41:17 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
+2020-03-03 22:41:17 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62882
+2020-03-03 22:41:46 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 22:41:46 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-03 22:41:46 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-03 22:42:12 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 22:42:20 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62847
+2020-03-03 22:42:20 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62847
+2020-03-03 22:54:47 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-03 22:54:47 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-03 22:54:54 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62847
+2020-03-03 22:54:54 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE62847
+2020-03-03 22:54:56 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
+2020-03-03 22:54:57 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE62882
+2020-03-03 22:55:16 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 22:55:16 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62847
+2020-03-03 22:55:24 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62882
+2020-03-03 22:55:53 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 22:55:53 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 22:55:53 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 22:59:47 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-03 22:59:47 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-03 22:59:58 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
+2020-03-03 22:59:58 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE62882
+2020-03-03 23:00:14 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62847
+2020-03-03 23:00:14 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE62847
+2020-03-03 23:00:17 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 23:00:17 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62882
+2020-03-03 23:00:48 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 23:00:48 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62847
+2020-03-03 23:00:58 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 23:00:58 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 23:09:49 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
+2020-03-03 23:09:49 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62882
+2020-03-03 23:10:21 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 23:12:47 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
+2020-03-03 23:12:47 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62882
+2020-03-03 23:13:15 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 23:15:34 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
+2020-03-03 23:15:34 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62882
+2020-03-03 23:15:34 ERROR EvaluationManager:309 - [EVALUATE-ERROR] Student code : SE62882
+2020-03-03 23:15:34 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 23:16:42 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
+2020-03-03 23:16:42 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62882
+2020-03-03 23:16:42 ERROR EvaluationManager:309 - [EVALUATE-ERROR] Student code : SE62882
+2020-03-03 23:16:42 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 23:16:42 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62847
+2020-03-03 23:16:42 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62847
+2020-03-03 23:17:34 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
+2020-03-03 23:17:34 ERROR SubmissionUtils:66 - [SUBMISSION-ERROR] - File from student : E:\CN9\FU_Submission_Webservice\submission\PracticalExams\Practical_Java_SE1269_20200507\Submissions\SE62882.zip: The process cannot access the file because it is being used by another process.
+
+2020-03-03 23:17:35 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62847
+2020-03-03 23:17:35 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62847
+2020-03-03 23:19:15 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
+2020-03-03 23:19:15 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62882
+2020-03-03 23:23:34 ERROR EvaluationManager:309 - [EVALUATE-ERROR] Student code : SE62882
+2020-03-03 23:26:50 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-03-03 23:26:50 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63155
+2020-03-03 23:28:07 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-03-03 23:28:07 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63155
+2020-03-03 23:30:06 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-03-03 23:30:06 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63155
+2020-03-03 23:32:20 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
+2020-03-03 23:32:20 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62882
+2020-03-03 23:32:20 ERROR EvaluationManager:309 - [EVALUATE-ERROR] Student code : SE62882
+2020-03-03 23:32:20 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 23:34:13 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62847
+2020-03-03 23:34:13 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62847
+2020-03-03 23:34:31 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
+2020-03-03 23:34:32 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE62882
+2020-03-03 23:34:40 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62882
+2020-03-03 23:35:08 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 23:36:54 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
+2020-03-03 23:36:54 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62882
+2020-03-03 23:37:04 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62847
+2020-03-03 23:37:04 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE62847
+2020-03-03 23:37:04 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-03 23:37:04 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE63146
+2020-03-03 23:37:28 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62847
+2020-03-03 23:38:06 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-03 23:40:29 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
+2020-03-03 23:40:29 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62882
+2020-03-03 23:40:38 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62847
+2020-03-03 23:40:38 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE62847
+2020-03-03 23:40:39 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62847
+2020-03-03 23:40:45 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-03 23:40:45 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE63146
+2020-03-03 23:40:56 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-03 23:40:56 ERROR EvaluationManager:309 - [EVALUATE-ERROR] Student code : SE63146
+2020-03-03 23:40:56 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 23:40:56 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 23:40:56 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 23:42:52 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
+2020-03-03 23:42:52 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62882
+2020-03-03 23:42:55 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-03 23:42:55 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE63146
+2020-03-03 23:42:59 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62847
+2020-03-03 23:42:59 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE62847
+2020-03-03 23:43:31 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-03 23:43:46 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 23:43:46 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62847
+2020-03-03 23:44:20 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 23:44:20 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 23:48:19 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
+2020-03-03 23:48:19 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62882
+2020-03-03 23:48:20 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-03 23:48:20 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE63146
+2020-03-03 23:48:30 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62847
+2020-03-03 23:48:30 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE62847
+2020-03-03 23:48:50 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-03 23:49:09 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62847
+2020-03-03 23:49:35 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 23:49:35 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 23:52:36 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
+2020-03-03 23:52:36 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62882
+2020-03-03 23:52:43 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-03 23:52:43 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE63146
+2020-03-03 23:52:48 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62847
+2020-03-03 23:52:48 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE62847
+2020-03-03 23:53:03 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-03 23:53:21 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62847
+2020-03-03 23:53:38 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-03 23:53:38 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-04 00:46:42 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-04 00:46:42 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-04 00:53:20 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-04 00:53:20 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-04 00:58:31 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-04 00:58:31 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-04 01:15:35 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-04 01:15:35 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-04 01:19:50 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-04 01:19:50 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-04 01:23:17 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-04 01:23:17 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-04 09:14:22 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-04 09:14:22 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-04 09:21:25 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-04 09:21:25 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-04 09:21:34 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
+2020-03-04 09:21:34 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE62882
+2020-03-04 09:21:53 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62882
+2020-03-04 09:21:53 ERROR EvaluationManager:309 - [EVALUATE-ERROR] Student code : SE62882
+2020-03-04 09:21:53 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-04 09:21:53 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-04 09:41:08 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
+2020-03-04 09:41:08 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62882
+2020-03-04 09:41:08 ERROR EvaluationManager:309 - [EVALUATE-ERROR] Student code : SE62882
+2020-03-04 09:41:08 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-04 09:41:11 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-04 09:41:11 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-04 09:41:58 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62847
+2020-03-04 09:41:58 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE62847
+2020-03-04 09:41:59 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62847
+2020-03-04 09:42:45 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-04 09:42:55 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
+2020-03-04 09:42:55 ERROR SubmissionUtils:66 - [SUBMISSION-ERROR] - File from student : E:\CN9\FU_Submission_Webservice\submission\PracticalExams\Practical_Java_SE1269_20200507\Submissions\SE62882.zip: The process cannot access the file because it is being used by another process.
+
+2020-03-04 09:45:01 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62847
+2020-03-04 09:45:01 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62847
+2020-03-04 09:45:03 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
+2020-03-04 09:45:03 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE62882
+2020-03-04 09:45:07 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-04 09:45:07 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE63146
+2020-03-04 09:45:33 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62882
+2020-03-04 09:46:03 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-04 09:46:21 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-04 09:46:21 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-04 10:03:06 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62847
+2020-03-04 10:03:06 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62847
+2020-03-04 10:03:08 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
+2020-03-04 10:03:08 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE62882
+2020-03-04 10:03:12 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-04 10:03:12 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE63146
+2020-03-04 10:03:38 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62882
+2020-03-04 10:04:05 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-04 10:04:05 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE63146
+2020-03-04 10:04:19 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-04 10:04:54 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-04 10:05:16 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-04 10:05:16 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-04 10:05:16 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-04 11:32:53 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-04 11:32:53 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-04 11:33:02 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62847
+2020-03-04 11:33:02 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE62847
+2020-03-04 11:33:27 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62847
+2020-03-04 11:33:51 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-04 11:33:55 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
+2020-03-04 11:33:55 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62882

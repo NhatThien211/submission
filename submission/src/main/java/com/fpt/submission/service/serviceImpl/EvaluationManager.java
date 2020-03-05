@@ -25,6 +25,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -45,7 +46,8 @@ public class EvaluationManager {
     private PathDetails pathDetails;
     private static final String START_POINT_ARR = "START_POINT_ARR";
     private static final String END_POINT_ARR = "END_POINT_ARR";
-
+    private static final String COMPILE_ERROR = "COMPILATION ERROR";
+    private boolean isNew = true;
     @Autowired
     public EvaluationManager() {
         isEvaluating = false;
@@ -80,7 +82,7 @@ public class EvaluationManager {
     @Async
     @EventListener
     public void evaluate(StudentSubmitDetail submissionEvent) {
-        System.out.println(Thread.currentThread().getName() + "-" + submissionEvent.getStudentCode());
+        System.out.println(Thread.currentThread().getName() + "-" + submissionEvent.getStudentCode() +":"+isEvaluating);
         submissionQueue.add(submissionEvent);
         if (!isEvaluating && submissionQueue.size() > 0) {
             isEvaluating = true;
@@ -272,7 +274,6 @@ public class EvaluationManager {
         try {
             Logger.getLogger(EvaluationManager.class.getName())
                     .log(Level.INFO, "[EVALUATE] Student code : " + dto.getStudentCode());
-
             sourceScriptPath = null;
             serverTestScriptPath = null;
             if (examScriptsList.size() == 0)
@@ -294,7 +295,6 @@ public class EvaluationManager {
 
             // Chạy CMD file test
             CmdExcution.execute(pathDetails.getJavaExecuteCmd());
-
             if (submissionQueue.size() > 0) {
                 deleteAllFile(dto.getStudentCode(), pathDetails.getPathJavaSubmitDelete());
                 evaluateSubmissionJava(submissionQueue.remove());
@@ -382,12 +382,26 @@ public class EvaluationManager {
     @Bean
     TaskExecutor taskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        // TODO: Xem xét lại khúc này coi pool nhiêu là đủ
-        executor.setCorePoolSize(10);
-        executor.setMaxPoolSize(10);
+        executor.setCorePoolSize(30);
+        executor.setMaxPoolSize(30);
         executor.setQueueCapacity(500);
         executor.setThreadNamePrefix("[THREAD-EVALUATE]-");
         executor.initialize();
         return executor;
+    }
+
+    private Boolean checkCompileIsError(String outputLogPath) {
+        List<String> content = null;
+        try {
+            content = Files.readAllLines(Paths.get(outputLogPath));
+            for (String line : content) {
+                if (line.contains(COMPILE_ERROR)) {
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }
