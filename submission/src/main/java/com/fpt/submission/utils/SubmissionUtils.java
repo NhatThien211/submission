@@ -85,7 +85,7 @@ public class SubmissionUtils {
         return directory.delete();
     }
 
-    public void sendTCPMessage(String message, String serverHost, int serverPort) throws InterruptedException, IOException {
+    public static void sendTCPMessage(String message, String serverHost, int serverPort) throws InterruptedException, IOException {
         Socket clientSocket = null;
         BufferedWriter bw = null;
         OutputStream os = null;
@@ -101,10 +101,6 @@ public class SubmissionUtils {
 
             bw.write(message);
             bw.flush();
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         } finally {
             try {
                 if (bw != null) {
@@ -124,7 +120,7 @@ public class SubmissionUtils {
             }
         }
     }
-    public String getCurTime() {
+    public static String getCurTime() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         return dtf.format(now);
