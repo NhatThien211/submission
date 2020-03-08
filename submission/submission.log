@@ -468,3 +468,5 @@
 2020-03-04 11:33:51 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
 2020-03-04 11:33:55 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62882
 2020-03-04 11:33:55 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62882
+2020-03-08 08:40:24 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63155
+2020-03-08 08:40:24 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63155
