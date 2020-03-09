@@ -34,7 +34,7 @@ public class ZipFile {
                 output.close();
             }
         } catch (Exception e) {
-        e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
@@ -72,6 +72,10 @@ public class ZipFile {
         if (!destDir.exists()) {
             destDir.mkdir();
         }
+        File file = new File(destDirectory + File.separator + "student");
+        if (!file.exists()) {
+            file.mkdir();
+        }
         ZipInputStream zipIn = new ZipInputStream(new FileInputStream(zipFilePath));
         ZipEntry entry = zipIn.getNextEntry();
         // iterates over entries in the zip file
@@ -83,12 +87,46 @@ public class ZipFile {
             } else {
                 // if the entry is a directory, make the directory
                 File dir = new File(filePath);
-                dir.mkdir();
+                if (!dir.exists()) {
+                    dir.mkdir();
+                }
             }
             zipIn.closeEntry();
             entry = zipIn.getNextEntry();
         }
         zipIn.close();
+    }
+
+    public static void unzip2(String zipFilePath, String destDirectory) throws IOException {
+        byte[] buffer = new byte[1024];
+        ZipInputStream zis = new ZipInputStream(new FileInputStream(zipFilePath));
+        ZipEntry zipEntry = zis.getNextEntry();
+        File destDir = new File(destDirectory);
+        while (zipEntry != null) {
+            File newFile = newFile(destDir, zipEntry);
+            FileOutputStream fos = new FileOutputStream(newFile);
+            int len;
+            while ((len = zis.read(buffer)) > 0) {
+                fos.write(buffer, 0, len);
+            }
+            fos.close();
+            zipEntry = zis.getNextEntry();
+        }
+        zis.closeEntry();
+        zis.close();
+    }
+
+    public static File newFile(File destinationDir, ZipEntry zipEntry) throws IOException {
+        File destFile = new File(destinationDir, zipEntry.getName());
+
+        String destDirPath = destinationDir.getCanonicalPath();
+        String destFilePath = destFile.getCanonicalPath();
+
+        if (!destFilePath.startsWith(destDirPath + File.separator)) {
+            throw new IOException("Entry is outside of the target dir: " + zipEntry.getName());
+        }
+
+        return destFile;
     }
 
     private static void extractFile(ZipInputStream zipIn, String filePath) throws IOException {

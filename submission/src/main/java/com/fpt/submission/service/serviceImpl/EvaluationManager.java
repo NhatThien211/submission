@@ -291,6 +291,8 @@ public class EvaluationManager {
                 return;
             }
             Files.copy(sourceScriptPath, serverTestScriptPath);
+            String a = pathDetails.getPathSubmission() + File.separator + dto.getStudentCode() + ".zip";
+            String b = pathDetails.getPathJavaSubmit();
             ZipFile.unzip(pathDetails.getPathSubmission() + File.separator + dto.getStudentCode() + ".zip", pathDetails.getPathJavaSubmit());
 
             // Chạy CMD file test

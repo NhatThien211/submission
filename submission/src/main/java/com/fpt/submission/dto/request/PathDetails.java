@@ -10,6 +10,14 @@ public class PathDetails implements Serializable {
 
     private PracticalInfo practicalInfo;
     private String curPractical;
+    private String practicalExamCode;
+    private String pathSubmission;
+    private String pathServer;
+    private String pathLogFile;
+    private String pathJavaSubmit;
+    private String pathJavaSubmitDelete;
+    private String pathJavaTestFol;
+    private String javaExecuteCmd;
 
     public PathDetails(PracticalInfo practicalInfo) {
         this.practicalInfo = practicalInfo;
