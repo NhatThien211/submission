@@ -65,6 +65,7 @@ public class PathDetails implements Serializable {
                 + "practicalexam" + File.separator;
     }
 
+
     public String getPathJavaSubmitDelete() {
         return getPathServer() + File.separator
                 + "src" + File.separator
@@ -91,6 +92,61 @@ public class PathDetails implements Serializable {
 
     public String getJavaExecuteCmd() {
         return "cd " + getPathServer() + "&mvn clean package";
+    }
+
+
+    // For Java Web
+
+    public String getPathJavaWebSubmit() {
+        return getPathServer() + File.separator
+                + "src" + File.separator
+                + "main" + File.separator
+                + "java" + File.separator
+                + "com" + File.separator
+                + "practicalexam" + File.separator;
+    }
+
+    public String getPathJavaWebWebApp() {
+        return getPathServer() + File.separator
+                + "src" + File.separator
+                + "main" + File.separator;
+    }
+
+    public String getPathDeleteJavaWebWebApp() {
+        return getPathServer() + File.separator
+                + "src" + File.separator
+                + "main" + File.separator
+                + "webapp";
+    }
+
+    public String getPathJavaWebSubmitDelete() {
+        return getPathServer() + File.separator
+                + "src" + File.separator
+                + "main" + File.separator
+                + "java" + File.separator
+                + "com" + File.separator
+                + "practicalexam" + File.separator
+                + "student";
+    }
+
+    public String getPathTestJavaWebFol() {
+        return getPathServer()
+                + File.separator
+                + "src" + File.separator
+                + "test" + File.separator
+                + "java" + File.separator
+                + "server" + File.separator;
+    }
+
+    public String getPathJavaWebComFol() {
+        return getPathJavaSubmit() + File.separator + "com";
+    }
+
+    public String getJavaWebStartServerCmd() {
+        return "cd " + getPathServer() + "&mvn clean package";
+    }
+    public String getJavaWebExecuteTestCmd() {
+        return "cd " + getPathServer() + "&mvn test";
     }
 
     // For C

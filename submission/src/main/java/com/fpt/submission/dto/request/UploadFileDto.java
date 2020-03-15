@@ -12,4 +12,5 @@ public class UploadFileDto {
     private String studentCode;
     private String scriptCode;
     private MultipartFile file;
+    private MultipartFile webFile;
 }

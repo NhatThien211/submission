@@ -590,3 +590,47 @@
 2020-03-09 22:40:30 ERROR SubmissionUtils:107 - [EVALUATE] Waiting - : SE62847
 2020-03-09 22:40:55 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62847
 2020-03-09 22:41:22 WARN  SubmissionUtils:83 - [DELETE FOLDER] - : Directory does not exist
+2020-03-13 10:41:29 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE63146
+2020-03-13 10:41:30 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE63146
+2020-03-13 10:41:30 ERROR EvaluationManager:311 - [EVALUATE-ERROR] Student code : SE63146
+2020-03-13 10:42:02 INFO  SubmissionUtils:53 - [SUBMISSION] - File from student: SE62847
+2020-03-13 10:42:02 INFO  EvaluationManager:276 - [EVALUATE] Student code : SE62847
+2020-03-15 17:41:56 INFO  SubmissionUtils:56 - [SUBMISSION] - File from student: SE63155111
+2020-03-15 17:41:56 INFO  EvaluationManager:324 - [EVALUATE] Student code : SE63155111
+2020-03-15 17:41:56 ERROR EvaluationManager:370 - [EVALUATE-ERROR] Student code : SE63155111
+2020-03-15 17:42:38 INFO  SubmissionUtils:56 - [SUBMISSION] - File from student: SE63155
+2020-03-15 17:42:38 INFO  EvaluationManager:324 - [EVALUATE] Student code : SE63155
+2020-03-15 17:42:39 ERROR EvaluationManager:370 - [EVALUATE-ERROR] Student code : SE63155
+2020-03-15 17:42:39 WARN  SubmissionUtils:94 - [DELETE FOLDER] - : Directory does not exist
+2020-03-15 17:44:03 INFO  SubmissionUtils:56 - [SUBMISSION] - File from student: SE63155
+2020-03-15 17:44:08 INFO  EvaluationManager:324 - [EVALUATE] Student code : SE63155
+2020-03-15 17:44:21 ERROR EvaluationManager:370 - [EVALUATE-ERROR] Student code : SE63155
+2020-03-15 17:44:21 WARN  SubmissionUtils:94 - [DELETE FOLDER] - : Directory does not exist
+2020-03-15 17:45:18 INFO  SubmissionUtils:56 - [SUBMISSION] - File from student: SE63155
+2020-03-15 17:45:18 INFO  EvaluationManager:324 - [EVALUATE] Student code : SE63155
+2020-03-15 17:45:18 ERROR EvaluationManager:370 - [EVALUATE-ERROR] Student code : SE63155
+2020-03-15 17:45:18 WARN  SubmissionUtils:94 - [DELETE FOLDER] - : Directory does not exist
+2020-03-15 17:45:39 INFO  SubmissionUtils:56 - [SUBMISSION] - File from student: SE63155
+2020-03-15 17:45:45 INFO  EvaluationManager:324 - [EVALUATE] Student code : SE63155
+2020-03-15 17:48:33 ERROR EvaluationManager:370 - [EVALUATE-ERROR] Student code : SE63155
+2020-03-15 17:48:33 WARN  SubmissionUtils:94 - [DELETE FOLDER] - : Directory does not exist
+2020-03-15 17:49:11 INFO  SubmissionUtils:57 - [SUBMISSION] - File from student: SE63155
+2020-03-15 17:49:15 INFO  EvaluationManager:324 - [EVALUATE] Student code : SE63155
+2020-03-15 17:49:20 ERROR EvaluationManager:370 - [EVALUATE-ERROR] Student code : SE63155
+2020-03-15 17:49:20 WARN  SubmissionUtils:95 - [DELETE FOLDER] - : Directory does not exist
+2020-03-15 17:50:22 INFO  SubmissionUtils:57 - [SUBMISSION] - File from student: SE63155
+2020-03-15 17:50:22 INFO  EvaluationManager:324 - [EVALUATE] Student code : SE63155
+2020-03-15 17:50:22 ERROR EvaluationManager:370 - [EVALUATE-ERROR] Student code : SE63155
+2020-03-15 17:50:22 WARN  SubmissionUtils:95 - [DELETE FOLDER] - : Directory does not exist
+2020-03-15 17:52:03 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE63155
+2020-03-15 17:52:03 INFO  EvaluationManager:324 - [EVALUATE] Student code : SE63155
+2020-03-15 17:54:19 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE63155
+2020-03-15 17:54:19 INFO  EvaluationManager:324 - [EVALUATE] Student code : SE63155
+2020-03-15 17:54:19 ERROR EvaluationManager:373 - [EVALUATE-ERROR] Student code : SE63155
+2020-03-15 17:55:42 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE63155
+2020-03-15 17:55:42 INFO  EvaluationManager:324 - [EVALUATE] Student code : SE63155
+2020-03-15 17:57:36 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE63155
+2020-03-15 17:57:36 INFO  EvaluationManager:324 - [EVALUATE] Student code : SE63155
+2020-03-15 17:57:36 ERROR EvaluationManager:373 - [EVALUATE-ERROR] Student code : SE63155
+2020-03-15 17:58:07 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE63155
+2020-03-15 17:58:07 INFO  EvaluationManager:324 - [EVALUATE] Student code : SE63155

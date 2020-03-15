@@ -1,5 +1,6 @@
 package com.fpt.submission.utils;
 
+import com.fpt.submission.constants.CommonConstant;
 import com.fpt.submission.dto.request.PathDetails;
 import com.fpt.submission.dto.request.UploadFileDto;
 import com.fpt.submission.exception.CustomException;
@@ -31,9 +32,12 @@ import java.time.format.DateTimeFormatter;
 public class SubmissionUtils {
 
     private EvaluationManager evaluationManager;
+    private PathDetails pathDetails;
+
 
     public SubmissionUtils() {
         evaluationManager = new EvaluationManager();
+        pathDetails = PathUtils.pathDetails;
     }
 
     @Bean("ThreadPoolTaskExecutor")
@@ -47,26 +51,32 @@ public class SubmissionUtils {
     }
 
     @Async("ThreadPoolTaskExecutor")
-    public Boolean submitSubmission(UploadFileDto dto) {
+    public void submitSubmission(UploadFileDto dto) {
+        boolean check = false;
         try {
             Logger.getLogger(SubmissionUtils.class.getName())
                     .log(Level.INFO, "[SUBMISSION] - File from student: " + dto.getStudentCode());
             MultipartFile file = dto.getFile();
             if (file != null) {
                 PathDetails pathDetails = PathUtils.pathDetails;
-
                 String folPath = pathDetails.getPathSubmission();
                 Path copyLocation = Paths.get(folPath + File.separator + StringUtils.cleanPath(file.getOriginalFilename()));
                 Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
+            }
 
-                return true;
+            if(pathDetails.getExamCode().equalsIgnoreCase(CommonConstant.CODE_PRACTICAL_JAVA_WEB)){
+                MultipartFile webFile = dto.getWebFile();
+                if (webFile != null) {
+                    String folPath = pathDetails.getPathSubmission();
+                    Path copyLocation = Paths.get(folPath + File.separator + StringUtils.cleanPath(webFile.getOriginalFilename()));
+                    Files.copy(webFile.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
+                }
             }
         } catch (Exception ex) {
             Logger.getLogger(SubmissionUtils.class.getName())
                     .log(Level.ERROR, "[SUBMISSION-ERROR] - File from student : " + ex.getMessage());
             throw new CustomException(HttpStatus.CONFLICT, ex.getMessage());
         }
-        return false;
     }
 
     public static boolean deleteFolder(File directory) {

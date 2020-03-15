@@ -698,3 +698,13 @@ Result : 4 / 4
 Total : 10.0
 endSE62847
 
+SE62847
+checkQuestion4(): Passed 
+checkQuestion3(): Passed 
+checkQuestion1(): Passed 
+checkQuestion2(): Passed 
+Time : 2020-03-13 10:42:56
+Result : 4 / 4
+Total : 10.0
+endSE62847
+

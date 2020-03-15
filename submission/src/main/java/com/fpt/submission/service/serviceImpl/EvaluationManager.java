@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fpt.submission.constants.CommonConstant;
 import com.fpt.submission.dto.request.PathDetails;
 import com.fpt.submission.dto.request.StudentPointDto;
 import com.fpt.submission.exception.CustomException;
@@ -48,6 +49,7 @@ public class EvaluationManager {
     private static final String END_POINT_ARR = "END_POINT_ARR";
     private static final String COMPILE_ERROR = "COMPILATION ERROR";
     private boolean isNew = true;
+
     @Autowired
     public EvaluationManager() {
         isEvaluating = false;
@@ -82,7 +84,7 @@ public class EvaluationManager {
     @Async
     @EventListener
     public void evaluate(StudentSubmitDetail submissionEvent) {
-        System.out.println(Thread.currentThread().getName() + "-" + submissionEvent.getStudentCode() +":"+isEvaluating);
+        System.out.println(Thread.currentThread().getName() + "-" + submissionEvent.getStudentCode() + ":" + isEvaluating);
         submissionQueue.add(submissionEvent);
         if (!isEvaluating && submissionQueue.size() > 0) {
             isEvaluating = true;
@@ -317,7 +319,63 @@ public class EvaluationManager {
     }
 
     private void evaluateSubmissionJavaWeb(StudentSubmitDetail dto) {
+        try {
+            Logger.getLogger(EvaluationManager.class.getName())
+                    .log(Level.INFO, "[EVALUATE] Student code : " + dto.getStudentCode());
+            sourceScriptPath = null;
+            serverTestScriptPath = null;
+            if (examScriptsList.size() == 0)
+                throw new CustomException(HttpStatus.NOT_FOUND, "No exam codes");
+            for (String scriptCode : examScriptsList) {
+                if (dto.getScriptCode().contains(scriptCode.replace(EXTENSION_JAVA, ""))) {
+                    sourceScriptPath = Paths.get(pathDetails.getPathTestScripts() + File.separator + scriptCode);
+                    serverTestScriptPath = Paths.get(pathDetails.getPathTestJavaWebFol() + PREFIX_EXAM_SCRIPT + dto.getStudentCode() + "_" + scriptCode);
+                    break;
+                }
+            }
+            //copy source to target using Files Class
+            if (sourceScriptPath == null && serverTestScriptPath == null) {
+                System.out.println("[PATH-SCRIPT-ERROR]" + dto.getStudentCode() + "-" + dto.getScriptCode());
+                return;
+            }
+            Files.copy(sourceScriptPath, serverTestScriptPath);
+            String a = pathDetails.getPathSubmission() + File.separator + dto.getStudentCode() + ".zip";
+            String b = pathDetails.getPathJavaSubmit();
+            // Unzip submission code
+            ZipFile.unzip(pathDetails.getPathSubmission()
+                            + File.separator
+                            + dto.getStudentCode() + ".zip",
+                    pathDetails.getPathJavaWebSubmit());
 
+            // Unzip webapp file
+            ZipFile.unzip(pathDetails.getPathSubmission()
+                            + File.separator
+                            + dto.getStudentCode() + "_WEB.zip",
+                    pathDetails.getPathJavaWebWebApp());
+
+            // Chạy CMD file test
+            CmdExcution.execute(pathDetails.getJavaWebStartServerCmd());
+            System.out.println("Wating finish");
+            CmdExcution.execute(pathDetails.getJavaWebExecuteTestCmd());
+
+            if (submissionQueue.size() > 0) {
+                deleteAllFile(dto.getStudentCode(), pathDetails.getPathJavaSubmitDelete());
+                evaluateSubmissionJava(submissionQueue.remove());
+            } else {
+                isEvaluating = false;
+            }
+
+            // Trả status đã chấm xong về app lec winform (mssv)
+            System.out.println("Trả response cho giảng viên");
+
+        } catch (Exception e) {
+            Logger.getLogger(EvaluationManager.class.getName())
+                    .log(Level.ERROR, "[EVALUATE-ERROR] Student code : " + dto.getStudentCode());
+            e.printStackTrace();
+        } finally {
+            deleteAllFile(dto.getStudentCode(), pathDetails.getPathJavaWebSubmitDelete());
+            isEvaluating = false;
+        }
     }
 
 
@@ -376,6 +434,12 @@ public class EvaluationManager {
         if (serverTestScriptPath != null) {
             File scriptFile = new File(serverTestScriptPath.toString());
             if (scriptFile != null && scriptFile.delete()) {
+                System.out.println("[DELETE SCRIPT - SERVER] - " + studentCode);
+            }
+        }
+        if(pathDetails.getExamCode().equals(CODE_PRACTICAL_JAVA_WEB)){
+            File webappFol = new File(pathDetails.getPathDeleteJavaWebWebApp());
+            if (webappFol != null && SubmissionUtils.deleteFolder(webappFol)) {
                 System.out.println("[DELETE SCRIPT - SERVER] - " + studentCode);
             }
         }

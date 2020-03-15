@@ -41,21 +41,6 @@ public class SubmissionController {
 
     @GetMapping("/test")
     public void test() throws IOException {
-//        File xml = new File("test2.xml");
-//        ObjectWriter w = new ObjectMapper().writerWithDefaultPrettyPrinter();
-//        Object o = new XmlMapper()
-//                .registerModule(new SimpleModule().addDeserializer(Object.class, new JsonUtils()))
-//                .readValue(xml, Object.class);
-//
-//        System.out.println(w.writeValueAsString(o));
-//        ObjectMapper mapper = new ObjectMapper();
-//        JsonNode node = mapper.readTree(w.writeValueAsString(o));
-//        JsonNode nodeSuiteName = node.findPath("SUITE_NAME");
-//        List<JsonNode> nodeSuiteSuccess = node.findValues("CUNIT_RUN_TEST_SUCCESS");
-//        List<JsonNode> nodeSuiteFailed = node.findValues("CUNIT_RUN_TEST_FAILURE");
-
-
-
         String sourceFile = "C:\\Users\\HP\\Desktop\\SQL_Update\\SE63155\\student";
         FileOutputStream fos = new FileOutputStream("SE63155.zip");
         ZipOutputStream zipOut = new ZipOutputStream(fos);
