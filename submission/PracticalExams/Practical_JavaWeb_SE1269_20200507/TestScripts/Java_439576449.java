@@ -19,6 +19,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ExtendWith(TestResultLoggerExtension.class)
 class TestwebApplicationTests {
 
+    public static String questionPointStr = "checkQuestion1:2-checkQuestion2:4-checkQuestion3:2-checkQuestion4:2";
+
     public static WebDriver driver;
     private StringBuffer verificationErrors = new StringBuffer();
     public static ChromeOptions options;
@@ -37,23 +39,33 @@ class TestwebApplicationTests {
 
 
     @Test
-    public void testLogin() {
-        driver.get("http://localhost:8080/MainController");
-//        driver.findElement(By.id("txtUsername")).clear();
-//        driver.findElement(By.id("txtPassword")).clear();
-//        driver.findElement(By.id("txtUsername")).sendKeys("thucnh");
-//        driver.findElement(By.id("txtPassword")).sendKeys("thucnh");
-//        driver.findElement(By.id("btnSubmit")).click();
-//        WebElement elementName = driver.findElement(By.id("txtResult"));
-//        String s = elementName.getText();
-        assertEquals("thucnhthucnh", "thucnhthucnh");
+    public void checkQuestion1() {
+        driver.get("http://localhost:8080/index.jsp");
+        driver.findElement(By.name("txtUsername")).clear();
+        driver.findElement(By.name("txtPassword")).clear();
+        driver.findElement(By.name("txtUsername")).sendKeys("admin");
+        driver.findElement(By.name("txtPassword")).sendKeys("admin");
+        driver.findElement(By.name("btnLogin")).click();
+        try {
+            WebElement elementUsername = driver.findElement(By.name("txtUsername"));
+            assertEquals(1, 2);
+        }catch (Exception e){
+            assertEquals(1, 1);
+        }
     }
 
     @Test
-    public void add() {
+    public void checkQuestion2() {
         assertEquals(1, 1);
     }
-
+    @Test
+    public void checkQuestion3() {
+        assertEquals(1, 1);
+    }
+    @Test
+    public void checkQuestion4() {
+        assertEquals(1, 1);
+    }
     private boolean checkElement(WebDriver driver) {
         if (driver.findElement(By.id("viewport")) != null) {
             return true;

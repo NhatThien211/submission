@@ -88,6 +88,7 @@ public class EvaluationManager {
         submissionQueue.add(submissionEvent);
         if (!isEvaluating && submissionQueue.size() > 0) {
             isEvaluating = true;
+            System.out.println(submissionEvent.getStudentCode() + "-" + pathDetails.getExamCode());
             switch (pathDetails.getExamCode()) {
                 case CODE_PRACTICAL_C:
                     evaluateSubmissionC(submissionQueue.remove());
@@ -355,12 +356,10 @@ public class EvaluationManager {
 
             // Chạy CMD file test
             CmdExcution.execute(pathDetails.getJavaWebStartServerCmd());
-            System.out.println("Wating finish");
-            CmdExcution.execute(pathDetails.getJavaWebExecuteTestCmd());
 
             if (submissionQueue.size() > 0) {
                 deleteAllFile(dto.getStudentCode(), pathDetails.getPathJavaSubmitDelete());
-                evaluateSubmissionJava(submissionQueue.remove());
+                evaluateSubmissionJavaWeb(submissionQueue.remove());
             } else {
                 isEvaluating = false;
             }
@@ -437,7 +436,7 @@ public class EvaluationManager {
                 System.out.println("[DELETE SCRIPT - SERVER] - " + studentCode);
             }
         }
-        if(pathDetails.getExamCode().equals(CODE_PRACTICAL_JAVA_WEB)){
+        if (pathDetails.getExamCode().equals(CODE_PRACTICAL_JAVA_WEB)) {
             File webappFol = new File(pathDetails.getPathDeleteJavaWebWebApp());
             if (webappFol != null && SubmissionUtils.deleteFolder(webappFol)) {
                 System.out.println("[DELETE SCRIPT - SERVER] - " + studentCode);

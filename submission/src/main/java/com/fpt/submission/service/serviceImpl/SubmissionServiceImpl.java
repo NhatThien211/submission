@@ -29,8 +29,8 @@ public class SubmissionServiceImpl implements SubmissionService {
             submissionUtils.submitSubmission(dto);
             applicationEventPublisher.publishEvent(new StudentSubmitDetail(
                     this, dto.getStudentCode(), dto.getScriptCode()));
-         //   String submissionMsg = dto.getStudentCode() + "T" + SubmissionUtils.getCurTime();
-//            SubmissionUtils.sendTCPMessage(submissionMsg, CommonConstant.SOCKET_SERVER_LOCAL_HOST, CommonConstant.SOCKET_SERVER_LISTENING_PORT_SUBMISSION);
+            String submissionMsg = dto.getStudentCode() + "T" + SubmissionUtils.getCurTime();
+            SubmissionUtils.sendTCPMessage(submissionMsg, CommonConstant.SOCKET_SERVER_LOCAL_HOST, CommonConstant.SOCKET_SERVER_LISTENING_PORT_SUBMISSION);
         } catch (Exception e) {
             e.printStackTrace();
             return "Submit failed";

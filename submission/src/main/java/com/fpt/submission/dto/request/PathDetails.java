@@ -145,9 +145,7 @@ public class PathDetails implements Serializable {
     public String getJavaWebStartServerCmd() {
         return "cd " + getPathServer() + "&mvn clean package";
     }
-    public String getJavaWebExecuteTestCmd() {
-        return "cd " + getPathServer() + "&mvn test";
-    }
+
 
     // For C
 

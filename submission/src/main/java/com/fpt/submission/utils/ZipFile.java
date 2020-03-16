@@ -1,6 +1,7 @@
 package com.fpt.submission.utils;
 
 import java.io.*;
+import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
@@ -78,15 +79,25 @@ public class ZipFile {
         }
         ZipInputStream zipIn = new ZipInputStream(new FileInputStream(zipFilePath));
         ZipEntry entry = zipIn.getNextEntry();
-        // iterates over entries in the zip file
         while (entry != null) {
-            String filePath = destDirectory + File.separator + entry.getName();
+            String pattern = Pattern.quote(System.getProperty("file.separator"));
+            String[] splittedFileName = entry.getName().split(pattern);
+            String filePath = destDirectory;
+            for (int i = 0; i < splittedFileName.length - 1; i++) {
+                // if the entry is a directory, make the directory
+                filePath += File.separator + splittedFileName[i];
+                File dir = new File(filePath);
+                if (!dir.exists()) {
+                    dir.mkdir();
+                }
+            }
+            String filePathStr = destDirectory + File.separator + entry.getName();
             if (!entry.isDirectory()) {
                 // if the entry is a file, extracts it
-                extractFile(zipIn, filePath);
+                extractFile(zipIn, filePathStr);
             } else {
                 // if the entry is a directory, make the directory
-                File dir = new File(filePath);
+                File dir = new File(filePathStr);
                 if (!dir.exists()) {
                     dir.mkdir();
                 }
