@@ -43,7 +43,7 @@ public class PathDetails implements Serializable {
     }
 
     public String getPathServerLogFile() {
-        return curPractical + File.separator + "Server" + File.separator + "output.log";
+        return curPractical + File.separator + "Server" + File.separator + "servertest.log";
     }
 
     public String getResultTextFilePath() {
@@ -91,7 +91,7 @@ public class PathDetails implements Serializable {
     }
 
     public String getJavaExecuteCmd() {
-        return "cd " + getPathServer() + "&mvn clean package";
+        return "cd " + getPathServer() + "&mvn clean package -l servertest.log";
     }
 
 

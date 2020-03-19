@@ -48,7 +48,9 @@ public class EvaluationManager {
     private static final String START_POINT_ARR = "START_POINT_ARR";
     private static final String END_POINT_ARR = "END_POINT_ARR";
     private static final String COMPILE_ERROR = "COMPILATION ERROR";
+    private static final String NOT_FOUND_STUDENT = "NOT_FOUND_STUDENT";
     private boolean isNew = true;
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     @Autowired
     public EvaluationManager() {
@@ -294,12 +296,29 @@ public class EvaluationManager {
                 return;
             }
             Files.copy(sourceScriptPath, serverTestScriptPath);
-            String a = pathDetails.getPathSubmission() + File.separator + dto.getStudentCode() + ".zip";
-            String b = pathDetails.getPathJavaSubmit();
             ZipFile.unzip(pathDetails.getPathSubmission() + File.separator + dto.getStudentCode() + ".zip", pathDetails.getPathJavaSubmit());
 
             // Chạy CMD file test
             CmdExcution.execute(pathDetails.getJavaExecuteCmd());
+            // Check compile error
+            String resultText = "";
+            StudentPointDto result = new StudentPointDto();
+            result.setStudentCode(dto.getStudentCode());
+            if (checkCompileIsError(pathDetails.getPathServerLogFile())) {
+                result.setErrorMsg("Compile Error");
+                result.setTotalPoint("0");
+                result.setEvaluateTime(TimeUtils.getCurTime());
+                resultText = objectMapper.writeValueAsString(result);
+            } else {
+                resultText = getTextResult(result);
+                if (resultText.equals(NOT_FOUND_STUDENT)) {
+                    result.setErrorMsg("Submit required");
+                    result.setTotalPoint("0");
+                    resultText = objectMapper.writeValueAsString(result);
+                }
+            }
+            sendTCPResult(resultText);
+
             if (submissionQueue.size() > 0) {
                 deleteAllFile(dto.getStudentCode(), pathDetails.getPathJavaSubmitDelete());
                 evaluateSubmissionJava(submissionQueue.remove());
@@ -401,7 +420,6 @@ public class EvaluationManager {
             }
             Files.copy(sourceScriptPath, serverTestScriptPath);
             ZipFile.unzip(pathDetails.getPathSubmission() + File.separator + dto.getStudentCode() + ".zip", pathDetails.getPathCSharpSubmit());
-
             // Chạy CMD file test
             CmdExcution.execute(pathDetails.getCSharpExecuteCmd());
 
@@ -422,6 +440,31 @@ public class EvaluationManager {
         }
     }
 
+    private String getTextResult(StudentPointDto dto) {
+        String path = pathDetails.getResultTextFilePath();
+        String startString = "Start" + dto.getStudentCode();
+        String endString = "End" + dto.getStudentCode();
+        String str = readFileAsString(path, dto.getStudentCode());
+        int startIndex = str.indexOf(startString);
+        int endIndex = str.indexOf(endString);
+        if (startIndex > 0 && endIndex > 0) {
+            return str.substring(startIndex + startString.length(), endIndex);
+
+        }
+        return "Error";
+    }
+
+    private String readFileAsString(String fileName, String studentCode) {
+        String text = "";
+        try {
+            text = new String(Files.readAllBytes(Paths.get(fileName)));
+        } catch (IOException e) {
+            Logger.getLogger(EvaluationManager.class.getName())
+                    .log(Level.ERROR, "[EVALUATE - FILE ERROR] File : " + studentCode + "\n" + e.getMessage());
+            e.printStackTrace();
+        }
+        return text;
+    }
 
     private void deleteAllFile(String studentCode, String pathSubmit) {
 
@@ -468,5 +511,16 @@ public class EvaluationManager {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public void sendTCPResult(String result) {
+        try {
+            SubmissionUtils.sendTCPMessage(result, CommonConstant.SOCKET_SERVER_LOCAL_HOST, CommonConstant.SOCKET_SERVER_LISTENING_PORT);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

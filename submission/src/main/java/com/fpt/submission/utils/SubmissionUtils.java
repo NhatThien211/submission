@@ -108,7 +108,6 @@ public class SubmissionUtils {
             os = clientSocket.getOutputStream();
             osw = new OutputStreamWriter(os);
             bw = new BufferedWriter(osw);
-
             bw.write(message);
             bw.flush();
         } finally {

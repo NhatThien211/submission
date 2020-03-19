@@ -790,3 +790,29 @@
 2020-03-16 10:14:51 WARN  SubmissionUtils:93 - [DELETE FOLDER] - : Directory does not exist
 2020-03-16 10:14:51 WARN  SubmissionUtils:93 - [DELETE FOLDER] - : Directory does not exist
 2020-03-16 10:14:51 WARN  SubmissionUtils:93 - [DELETE FOLDER] - : Directory does not exist
+2020-03-17 13:59:34 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE63155
+2020-03-17 13:59:34 INFO  EvaluationManager:279 - [EVALUATE] Student code : SE63155
+2020-03-17 14:21:56 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE63155
+2020-03-17 14:21:56 INFO  EvaluationManager:279 - [EVALUATE] Student code : SE63155
+2020-03-17 14:23:40 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE63155
+2020-03-17 14:23:40 INFO  EvaluationManager:279 - [EVALUATE] Student code : SE63155
+2020-03-17 14:24:46 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE63155
+2020-03-17 14:24:46 INFO  EvaluationManager:279 - [EVALUATE] Student code : SE63155
+2020-03-18 17:28:33 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE63155
+2020-03-18 17:28:33 INFO  EvaluationManager:279 - [EVALUATE] Student code : SE63155
+2020-03-18 17:31:12 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE63155
+2020-03-18 17:31:12 INFO  EvaluationManager:279 - [EVALUATE] Student code : SE63155
+2020-03-18 17:32:37 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE63155
+2020-03-18 17:32:37 INFO  EvaluationManager:279 - [EVALUATE] Student code : SE63155
+2020-03-18 17:35:37 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE63155
+2020-03-18 17:35:37 INFO  EvaluationManager:279 - [EVALUATE] Student code : SE63155
+2020-03-18 17:37:01 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE63155
+2020-03-18 17:37:01 INFO  EvaluationManager:279 - [EVALUATE] Student code : SE63155
+2020-03-18 17:37:50 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE63155
+2020-03-18 17:37:50 INFO  EvaluationManager:279 - [EVALUATE] Student code : SE63155
+2020-03-18 17:43:14 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE63155
+2020-03-18 17:43:14 INFO  EvaluationManager:279 - [EVALUATE] Student code : SE63155
+2020-03-19 15:14:45 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE63146
+2020-03-19 15:14:45 INFO  EvaluationManager:281 - [EVALUATE] Student code : SE63146
+2020-03-19 15:19:26 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE63146
+2020-03-19 15:19:26 INFO  EvaluationManager:281 - [EVALUATE] Student code : SE63146

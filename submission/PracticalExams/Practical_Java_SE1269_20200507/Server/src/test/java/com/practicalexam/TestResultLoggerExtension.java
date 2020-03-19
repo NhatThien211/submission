@@ -9,13 +9,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.io.BufferedWriter;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
@@ -35,13 +37,10 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
     private final String PREFIX_METHOD = "()";
     private final String PREFIX_TEST = "EXAM_";
     private final String TXT_RESULT_NAME = "Result.txt";
-    public final String SOCKET_SERVER_LOCAL_HOST = "localhost";
-    public final int SOCKET_SERVER_LISTENING_PORT = 9997;
 
     private Map<String, Double> testResultsStatus = new HashMap<>();
 
     private ObjectMapper objectMapper = new ObjectMapper();
-    private SocketUtils socketUtils = new SocketUtils();
 
     public void checkQuestionPoint(String nameQuestionCheck, boolean isCorrect) {
         String questionPointStr = JavaApplicationTests.questionPointStr;
@@ -96,6 +95,8 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
     @Override
     public void afterAll(ExtensionContext context) {
         StudentPointDto studentPointDto = null;
+        File file = null;
+        FileWriter writer = null;
         try {
             studentPointDto = appendStringToResultFile();
         } catch (Exception e) {
@@ -107,68 +108,68 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
             studentPointDto.setErrorMsg("System error!");
         } finally {
             try {
+                String resultPath = PROJECT_DIR.replace("\\Server", "") + File.separator + TXT_RESULT_NAME;
+
+                String startString = "Start" + studentPointDto.getStudentCode();
+                String endString = "End" + studentPointDto.getStudentCode();
+                String str = readFileAsString(resultPath);
+                int startIndex = str.indexOf(startString);
+                int endIndex = str.indexOf(endString);
+                if (startIndex > 0 && endIndex > 0) {
+                    String toBeReplaced = str.substring(startIndex, endIndex + endString.length());
+                    str = str.replace(toBeReplaced, "");
+                }
+                writer = new FileWriter(resultPath);
                 // convert student point object to JSON
                 String studentPointJson = objectMapper.writeValueAsString(studentPointDto);
-                studentPointDto.setErrorMsg("System error!");
-                System.out.println("Final");
-                // send TCP message with port 9997 to localhost
-                socketUtils.sendTCPMessage(studentPointJson, SOCKET_SERVER_LOCAL_HOST, SOCKET_SERVER_LISTENING_PORT);
+                if (writer != null) {
+                    str += "Start" + studentPointDto.getStudentCode() + studentPointJson + "End" + studentPointDto.getStudentCode();
+                    writer.write(str);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
+            } finally {
+                try {
+                    writer.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
 
+    public static String readFileAsString(String fileName) {
+        String text = "";
+        try {
+            text = new String(Files.readAllBytes(Paths.get(fileName)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return text;
+    }
+
     public StudentPointDto appendStringToResultFile() throws Exception {
         // TODO: For re-submit
-        String resultPath = PROJECT_DIR.replace("\\Server", "") + File.separator + TXT_RESULT_NAME;
-        File file = null;
-        PrintWriter writer = null;
         StudentPointDto studentPointDto = null;
-        try {
-            Map<String, String> listQuestions = new HashMap<>();
-            file = new File(resultPath);
-            writer = new PrintWriter(new FileWriter(file, true));
-            double totalPoint = 0;
-            Integer correctQuestionCount = 0;
-            String resultText = "";
-            resultText += getStudentCode() + "\n";
-            for (Map.Entry<String, Double> entry : testResultsStatus.entrySet()) {
-                if (entry.getValue() > 0.0) {
-                    resultText += entry.getKey() + ": Passed \n";
-                    totalPoint += entry.getValue();
-                    correctQuestionCount++;
-                } else {
-                    resultText += entry.getKey() + ": Failed \n";
-                }
+        Map<String, String> listQuestions = new HashMap<>();
+        double totalPoint = 0;
+        Integer correctQuestionCount = 0;
+        String studentCode = getStudentCode();
+        for (Map.Entry<String, Double> entry : testResultsStatus.entrySet()) {
+            if (entry.getValue() > 0.0) {
+                totalPoint += entry.getValue();
+                correctQuestionCount++;
             }
-            resultText += "Time : " + getCurTime() + "\n";
-            resultText += "Result : " + correctQuestionCount + " / " + testResultsStatus.size() + "\n";
-            resultText += "Total : " + totalPoint + "\n";
-            resultText += "end" + getStudentCode() + "\n";
-            System.out.println(resultText);
-            // Send TCP messages to Lec-app after finish evaluate
-            studentPointDto = new StudentPointDto();
-            studentPointDto.setStudentCode(getStudentCode());
-            studentPointDto.setListQuestions(listQuestions);
-            studentPointDto.setTotalPoint(String.valueOf(totalPoint));
-            studentPointDto.setEvaluateTime(getCurTime());
-            studentPointDto.setResult(correctQuestionCount + "/" + testResultsStatus.size());
-//            try {
-//                // convert student point object to JSON
-//                String studentPointJson = objectMapper.writeValueAsString(studentPointDto);
-//
-//                // send TCP message with port 9997 to localhost
-//                socketUtils.sendTCPMessage(studentPointJson, SOCKET_SERVER_LOCAL_HOST, SOCKET_SERVER_LISTENING_PORT);
-//            } catch (JsonProcessingException e) {
-//                e.printStackTrace();
-//            }
-
-            writer.println(resultText);
-            return studentPointDto;
-        } finally {
-            writer.close();
         }
+        // Send TCP messages to Lec-app after finish evaluate
+        studentPointDto = new StudentPointDto();
+        studentPointDto.setStudentCode(getStudentCode());
+        studentPointDto.setListQuestions(listQuestions);
+        studentPointDto.setTotalPoint(String.valueOf(totalPoint));
+        studentPointDto.setEvaluateTime(getCurTime());
+        studentPointDto.setResult(correctQuestionCount + "/" + testResultsStatus.size());
+        return studentPointDto;
+
     }
 
     public String getCurTime() {
@@ -281,45 +282,6 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
 
         public void setErrorMsg(String errorMsg) {
             this.errorMsg = errorMsg;
-        }
-    }
-
-    class SocketUtils {
-
-        public void sendTCPMessage(String message, String serverHost, int serverPort) throws InterruptedException, IOException {
-            Socket clientSocket = null;
-            BufferedWriter bw = null;
-            OutputStream os = null;
-            OutputStreamWriter osw = null;
-
-            try {
-                // make a connection with server
-                clientSocket = new Socket(serverHost, serverPort);
-
-                os = clientSocket.getOutputStream();
-                osw = new OutputStreamWriter(os);
-                bw = new BufferedWriter(osw);
-
-                bw.write(message);
-                bw.flush();
-            } finally {
-                try {
-                    if (bw != null) {
-                        bw.close();
-                    }
-                    if (osw != null) {
-                        osw.close();
-                    }
-                    if (os != null) {
-                        os.close();
-                    }
-                    if (clientSocket != null) {
-                        clientSocket.close();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
     }
 }
