@@ -42,7 +42,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
     private ObjectMapper objectMapper = new ObjectMapper();
 
     public void checkQuestionPoint(String nameQuestionCheck, boolean isCorrect) {
-        String questionPointStr = JavaApplicationTests.questionPointStr;
+        String questionPointStr = TestwebApplicationTests.questionPointStr;
         Double point = 0.0;
         if (questionPointStr != null && !questionPointStr.equals("")) {
             String[] questionArr = questionPointStr.split("-");
@@ -114,7 +114,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
                 String str = readFileAsString(resultPath);
                 int startIndex = str.indexOf(startString);
                 int endIndex = str.indexOf(endString);
-                if (startIndex > 0 && endIndex > 0) {
+                if (startIndex >= 0 && endIndex > 0) {
                     String toBeReplaced = str.substring(startIndex, endIndex + endString.length());
                     str = str.replace(toBeReplaced, "");
                 }

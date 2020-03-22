@@ -43,8 +43,8 @@ public class SubmissionUtils {
     @Bean("ThreadPoolTaskExecutor")
     public TaskExecutor getAsyncExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(20);
-        executor.setMaxPoolSize(1000);
+        executor.setCorePoolSize(30);
+        executor.setMaxPoolSize(100);
         executor.setWaitForTasksToCompleteOnShutdown(true);
         executor.setThreadNamePrefix("[THREAD-SUBMIT]-");
         return executor;
@@ -57,6 +57,7 @@ public class SubmissionUtils {
             Logger.getLogger(SubmissionUtils.class.getName())
                     .log(Level.INFO, "[SUBMISSION] - File from student: " + dto.getStudentCode());
             MultipartFile file = dto.getFile();
+
             if (file != null) {
                 PathDetails pathDetails = PathUtils.pathDetails;
                 String folPath = pathDetails.getPathSubmission();
@@ -64,7 +65,7 @@ public class SubmissionUtils {
                 Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
             }
 
-            if(pathDetails.getExamCode().equalsIgnoreCase(CommonConstant.CODE_PRACTICAL_JAVA_WEB)){
+            if(pathDetails.getPracticalExamCode().equalsIgnoreCase(CommonConstant.CODE_PRACTICAL_JAVA_WEB)){
                 MultipartFile webFile = dto.getWebFile();
                 if (webFile != null) {
                     String folPath = pathDetails.getPathSubmission();

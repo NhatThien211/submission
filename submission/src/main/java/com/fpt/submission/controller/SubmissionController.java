@@ -41,14 +41,14 @@ public class SubmissionController {
 
     @GetMapping("/test")
     public void test() throws IOException {
-        String sourceFile = "C:\\Users\\HP\\Desktop\\SQL_Update\\SE63155\\student";
-        FileOutputStream fos = new FileOutputStream("SE63155.zip");
-        ZipOutputStream zipOut = new ZipOutputStream(fos);
-        File fileToZip = new File(sourceFile);
-
-        zipFile(fileToZip, fileToZip.getName(), zipOut);
-        zipOut.close();
-        fos.close();
+//        String sourceFile = "C:\\Users\\HP\\Desktop\\SQL_Update\\SE63155\\student";
+//        FileOutputStream fos = new FileOutputStream("SE63155.zip");
+//        ZipOutputStream zipOut = new ZipOutputStream(fos);
+//        File fileToZip = new File(sourceFile);
+//
+//        zipFile(fileToZip, fileToZip.getName(), zipOut);
+//        zipOut.close();
+//        fos.close();
     }
     private static void zipFile(File fileToZip, String fileName, ZipOutputStream zipOut) throws IOException {
         if (fileToZip.isHidden()) {

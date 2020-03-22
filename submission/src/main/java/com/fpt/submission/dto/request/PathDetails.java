@@ -13,195 +13,224 @@ public class PathDetails implements Serializable {
     private String practicalExamCode;
     private String pathSubmission;
     private String pathServer;
-    private String pathLogFile;
-    private String pathJavaSubmit;
-    private String pathJavaSubmitDelete;
-    private String pathJavaTestFol;
+    private String pathServerLogFile;
+    private String pathResultFile;
+    private String pathTestScript;
+
+    // Java
+    private String pathJavaServerSubmit;
+    private String pathJavaServerSubmitDelete;
+    private String pathJavaServerTestFol;
     private String javaExecuteCmd;
+
+    // Java web
+    private String pathJavaWebServerSubmit;
+    private String pathJavaWebServerSubmitDelete;
+    private String pathJavaWebServerWebApp;
+    private String pathJavaWebServerWebAppDelete;
+    private String pathJavaWebServerTestFol;
+    private String javaWebExecuteCmd;
+
+    //C
+    private String pathCTestFol;
+    private String pathCXMLResultFile;
+    private String pathCServerSubmit;
+    private String pathCServerSubmitDelete;
+    private String cExecuteCmd;
+
+    // CSharp
+    private String pathCSharpTest;
+    private String pathCSharpServerSubmit;
+    private String pathCSharpServerSubmitDelete;
+    private String cSharpExecuteCmd;
+
 
     public PathDetails(PracticalInfo practicalInfo) {
         this.practicalInfo = practicalInfo;
         curPractical = PROJECT_DIR + File.separator
                 + "PracticalExams" + File.separator
                 + practicalInfo.getName();
+        this.pathServer = curPractical + File.separator + "Server";
+        this.pathSubmission = curPractical + File.separator + "Submissions";
+        this.practicalExamCode = practicalInfo.getExamCode();
+        this.pathResultFile = curPractical + File.separator + "Result.txt";
+        this.pathTestScript = curPractical + File.separator + "TestScripts";
+        this.pathServerLogFile = curPractical + File.separator + "Server" + File.separator + "servertest.log";
     }
 
-    public String getCurPracticalPath() {
-        return curPractical;
-    }
 
-    public String getExamCode() {
-        return practicalInfo.getExamCode();
+    public String getPracticalExamCode() {
+        return practicalExamCode;
     }
 
     public String getPathSubmission() {
-        return curPractical + File.separator + "Submissions";
+        return pathSubmission;
     }
 
     public String getPathServer() {
-        return curPractical + File.separator + "Server";
+        return pathServer;
     }
 
     public String getPathServerLogFile() {
-        return curPractical + File.separator + "Server" + File.separator + "servertest.log";
+
+        return pathServerLogFile;
     }
 
-    public String getResultTextFilePath() {
-        return curPractical + File.separator + "Result.txt";
+    public String getPathResultFile() {
+        return pathResultFile;
     }
 
-    public String getPathTestScripts() {
-        return curPractical + File.separator + "TestScripts";
+    public String getPathTestScript() {
+        return pathTestScript;
     }
 
-
-    // For Java
-    public String getPathJavaSubmit() {
-        return getPathServer() + File.separator
+    public String getPathJavaServerSubmit() {
+        this.pathJavaServerSubmit = pathServer + File.separator
                 + "src" + File.separator
                 + "main" + File.separator
                 + "java" + File.separator
                 + "com" + File.separator
                 + "practicalexam" + File.separator;
+        return pathJavaServerSubmit;
     }
 
-
-    public String getPathJavaSubmitDelete() {
-        return getPathServer() + File.separator
+    public String getPathJavaServerSubmitDelete() {
+        this.pathJavaServerSubmitDelete = pathServer + File.separator
                 + "src" + File.separator
                 + "main" + File.separator
                 + "java" + File.separator
                 + "com" + File.separator
                 + "practicalexam" + File.separator
                 + "student";
+        return pathJavaServerSubmitDelete;
     }
 
-    public String getPathTestJavaFol() {
-        return getPathServer()
+    public String getPathJavaServerTestFol() {
+        this.pathJavaServerTestFol = pathServer
                 + File.separator
                 + "src" + File.separator
                 + "test" + File.separator
                 + "java" + File.separator
                 + "com" + File.separator
                 + "practicalexam" + File.separator;
-    }
-
-    public String getPathJavaComFol() {
-        return getPathJavaSubmit() + File.separator + "com";
+        return pathJavaServerTestFol;
     }
 
     public String getJavaExecuteCmd() {
-        return "cd " + getPathServer() + "&mvn clean package -l servertest.log";
+        this.javaExecuteCmd = "cd " + pathServer + "&mvn clean package -l servertest.log";
+        return javaExecuteCmd;
     }
 
-
-    // For Java Web
-
-    public String getPathJavaWebSubmit() {
-        return getPathServer() + File.separator
+    public String getPathJavaWebServerSubmit() {
+        this.pathJavaWebServerSubmit = pathServer + File.separator
                 + "src" + File.separator
                 + "main" + File.separator
                 + "java" + File.separator
                 + "com" + File.separator
                 + "practicalexam" + File.separator;
+        return pathJavaWebServerSubmit;
     }
 
-    public String getPathJavaWebWebApp() {
-        return getPathServer() + File.separator
-                + "src" + File.separator
-                + "main" + File.separator;
-    }
-
-    public String getPathDeleteJavaWebWebApp() {
-        return getPathServer() + File.separator
-                + "src" + File.separator
-                + "main" + File.separator
-                + "webapp";
-    }
-
-    public String getPathJavaWebSubmitDelete() {
-        return getPathServer() + File.separator
+    public String getPathJavaWebServerSubmitDelete() {
+        this.pathJavaWebServerSubmitDelete = pathServer + File.separator
                 + "src" + File.separator
                 + "main" + File.separator
                 + "java" + File.separator
                 + "com" + File.separator
                 + "practicalexam" + File.separator
                 + "student";
+        return pathJavaWebServerSubmitDelete;
     }
 
-    public String getPathTestJavaWebFol() {
-        return getPathServer()
+    public String getPathJavaWebServerWebApp() {
+        this.pathJavaWebServerWebApp = pathServer + File.separator
+                + "src" + File.separator
+                + "main" + File.separator;
+        return pathJavaWebServerWebApp;
+    }
+
+    public String getPathJavaWebServerWebAppDelete() {
+        this.pathJavaWebServerWebAppDelete = pathServer + File.separator
+                + "src" + File.separator
+                + "main" + File.separator
+                + "webapp";
+        return pathJavaWebServerWebAppDelete;
+    }
+
+    public String getPathJavaWebServerTestFol() {
+        this.pathJavaWebServerTestFol = pathServer
                 + File.separator
                 + "src" + File.separator
                 + "test" + File.separator
                 + "java" + File.separator
                 + "server" + File.separator;
+        return pathJavaWebServerTestFol;
     }
 
-    public String getPathJavaWebComFol() {
-        return getPathJavaSubmit() + File.separator + "com";
+    public String getJavaWebExecuteCmd() {
+        this.javaWebExecuteCmd = "cd " + pathServer + "&mvn clean package -l servertest.log";
+        return javaWebExecuteCmd;
     }
 
-    public String getJavaWebStartServerCmd() {
-        return "cd " + getPathServer() + "&mvn clean package";
-    }
-
-
-    // For C
-
-    public String getPathTestCFol() {
-        return getPathServer()
+    public String getPathCTestFol() {
+        this.pathCTestFol = pathServer
                 + File.separator
                 + "src";
+        return pathCTestFol;
     }
 
     public String getPathCXMLResultFile() {
-        return getPathServer()
+        this.pathCXMLResultFile = pathServer
                 + File.separator
                 + "src" + File.separator +
                 "CUnitAutomated-Results.xml";
+        return pathCXMLResultFile;
     }
 
-    public String getPathCSubmit() {
-        return getPathTestCFol() + File.separator;
+    public String getPathCServerSubmit() {
+        this.pathCServerSubmit = pathCTestFol + File.separator;
+        return pathCServerSubmit;
     }
 
-    public String getPathCSubmitDelete() {
-        return getPathServer() + File.separator
+    public String getPathCServerSubmitDelete() {
+        this.pathCServerSubmitDelete = pathServer + File.separator
                 + "src" + File.separator;
+        return pathCServerSubmitDelete;
     }
 
     public String getCExecuteCmd(String scriptCode) {
-        return "cd " + getPathTestCFol() + "&" +
+        String s = "cd " + pathCTestFol + "&" +
                 "gcc " + scriptCode + ".c -lcunit -o app&app.exe";
+        this.cExecuteCmd = s;
+        return cExecuteCmd;
     }
 
-
-//     For CSharp
-
-    // Lưu đề thi
-    public String getPathTestCSharpFol() {
-        return getPathServer()
+    public String getPathCSharpTest() {
+        this.pathCSharpTest = pathServer
                 + File.separator
                 + "Tests" + File.separator
                 + "Controllers" + File.separator;
+        return pathCSharpTest;
     }
 
-    public String getPathCSharpSubmit() {
-        return getPathServer()
+    public String getPathCSharpServerSubmit() {
+        this.pathCSharpServerSubmit = pathServer
                 + File.separator
                 + "TemplateAutomatedTest" + File.separator;
+        return pathCSharpServerSubmit;
     }
 
-    public String getPathCSharpSubmitDelete() {
-        return getPathServer()
+    public String getPathCSharpServerSubmitDelete() {
+        this.pathCSharpServerSubmitDelete = pathServer
                 + File.separator
                 + "TemplateAutomatedTest"
                 + File.separator
                 + "Student";
+        return pathCSharpServerSubmitDelete;
     }
 
     public String getCSharpExecuteCmd() {
-        return "cd " + getPathServer() + "&dotnet clean&dotnet test";
+        this.cSharpExecuteCmd = "cd " + pathServer + "&dotnet clean&dotnet test";
+        return cSharpExecuteCmd;
     }
 }
