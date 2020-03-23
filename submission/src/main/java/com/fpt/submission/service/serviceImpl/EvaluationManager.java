@@ -374,29 +374,33 @@ public class EvaluationManager {
                             + dto.getStudentCode() + "_WEB.zip",
                     pathDetails.getPathJavaWebServerWebApp());
 
-            // Chạy CMD file test
-//            CmdExcution.execute(pathDetails.getJavaWebStartServerCmd());
-            // Check compile error
-//            String resultText = "";
-//            StudentPointDto result = new StudentPointDto();
-//            result.setStudentCode(dto.getStudentCode());
-//            if (checkCompileIsError(pathDetails.getPathServerLogFile())) {
-//                result.setErrorMsg("Compile Error");
-//                result.setTotalPoint("0");
-//                result.setEvaluateTime(TimeUtils.getCurTime());
-//                resultText = objectMapper.writeValueAsString(result);
-//            } else {
-//                resultText = getTextResult(result);
-//                if (resultText.equals(NOT_FOUND_STUDENT)) {
-//                    result.setErrorMsg("Submit required");
-//                    result.setTotalPoint("0");
-//                    resultText = objectMapper.writeValueAsString(result);
-//                }
-//            }
-//            sendTCPResult(resultText);
+            // Set up change extension html to jsp
+            FileUtils.convertHtmlFileToJspFileInWebApp(pathDetails.getPathJavaWebServerWebAppDelete());
+            FileUtils.changeExtensionHtmlToJspInCode(pathDetails.getPathJavaWebServerSubmitDelete());
+
+//             Chạy CMD file test
+            CmdExcution.execute(pathDetails.getJavaWebExecuteCmd());
+//             Check compile error
+            String resultText = "";
+            StudentPointDto result = new StudentPointDto();
+            result.setStudentCode(dto.getStudentCode());
+            if (checkCompileIsError(pathDetails.getPathServerLogFile())) {
+                result.setErrorMsg("Compile Error");
+                result.setTotalPoint("0");
+                result.setEvaluateTime(TimeUtils.getCurTime());
+                resultText = objectMapper.writeValueAsString(result);
+            } else {
+                resultText = getTextResult(result);
+                if (resultText.equals(NOT_FOUND_STUDENT)) {
+                    result.setErrorMsg("Submit required");
+                    result.setTotalPoint("0");
+                    resultText = objectMapper.writeValueAsString(result);
+                }
+            }
+            sendTCPResult(resultText);
 
             if (submissionQueue.size() > 0) {
-                deleteAllFile(dto.getStudentCode(), pathDetails.getPathJavaServerSubmitDelete());
+                deleteAllFile(dto.getStudentCode(), pathDetails.getPathJavaWebServerSubmitDelete());
                 evaluateSubmissionJavaWeb(submissionQueue.remove());
             } else {
                 isEvaluating = false;
@@ -439,6 +443,8 @@ public class EvaluationManager {
             }
             Files.copy(sourceScriptPath, serverTestScriptPath);
             ZipFile.unzip(pathDetails.getPathSubmission() + File.separator + dto.getStudentCode() + ".zip", pathDetails.getPathCSharpServerSubmit());
+
+
             // Chạy CMD file test
             CmdExcution.execute(pathDetails.getCSharpExecuteCmd());
 
@@ -461,6 +467,7 @@ public class EvaluationManager {
 
     private String getTextResult(StudentPointDto dto) {
         String path = pathDetails.getPathResultFile();
+
         String startString = "Start" + dto.getStudentCode();
         String endString = "End" + dto.getStudentCode();
         String str = readFileAsString(path, dto.getStudentCode());
@@ -526,7 +533,6 @@ public class EvaluationManager {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
         }
         return false;
     }
@@ -541,15 +547,5 @@ public class EvaluationManager {
         }
     }
 
-    private void convertHtmlToJsp(){
-        File[] files = finder(pathDetails.getPathJavaWebServerWebAppDelete());
-    }
-    public File[] finder(String dirName){
-        File dir = new File(dirName);
 
-        return dir.listFiles(new FilenameFilter() {
-            public boolean accept(File dir, String filename)
-            { return filename.endsWith(".html"); }
-        } );
-    }
 }
