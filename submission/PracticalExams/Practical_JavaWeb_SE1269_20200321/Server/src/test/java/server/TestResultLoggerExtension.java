@@ -3,12 +3,10 @@ package server;
 import org.junit.jupiter.api.extension.AfterAllCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestWatcher;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.io.PrintWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -17,12 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.io.BufferedWriter;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.Socket;
 import java.io.Serializable;
-import java.util.Map;
 
 public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback {
 
@@ -94,7 +87,6 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
     @Override
     public void afterAll(ExtensionContext context) {
         StudentPointDto studentPointDto = null;
-        File file = null;
         FileWriter writer = null;
         try {
             studentPointDto = appendStringToResultFile();
@@ -107,7 +99,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
             studentPointDto.setErrorMsg("System error!");
         } finally {
             try {
-                String resultPath = PROJECT_DIR.replace("\\Server", "") + File.separator + TXT_RESULT_NAME;
+                String resultPath = PROJECT_DIR + File.separator + TXT_RESULT_NAME;
                 String startString = "Start" + studentPointDto.getStudentCode();
                 String endString = "End" + studentPointDto.getStudentCode();
                 String str = readFileAsString(resultPath);
@@ -157,11 +149,14 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
             if (entry.getValue() > 0.0) {
                 totalPoint += entry.getValue();
                 correctQuestionCount++;
+                listQuestions.put(entry.getKey() + ":Success", entry.getValue() + "/" + entry.getValue());
+            } else {
+                listQuestions.put(entry.getKey() + ":Failed", "0/" + entry.getValue());
             }
         }
         // Send TCP messages to Lec-app after finish evaluate
         studentPointDto = new StudentPointDto();
-        studentPointDto.setStudentCode(getStudentCode());
+        studentPointDto.setStudentCode(studentCode);
         studentPointDto.setListQuestions(listQuestions);
         studentPointDto.setTotalPoint(String.valueOf(totalPoint));
         studentPointDto.setEvaluateTime(getCurTime());
@@ -190,6 +185,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
                 }
             }
         }
+//        return "SEDUMMY";
         return "";
     }
 

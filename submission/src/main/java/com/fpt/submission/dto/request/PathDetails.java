@@ -16,6 +16,8 @@ public class PathDetails implements Serializable {
     private String pathServerLogFile;
     private String pathResultFile;
     private String pathTestScript;
+    private String pathDataBaseUtils;
+
 
     // Java
     private String pathJavaServerSubmit;
@@ -30,6 +32,8 @@ public class PathDetails implements Serializable {
     private String pathJavaWebServerWebAppDelete;
     private String pathJavaWebServerTestFol;
     private String javaWebExecuteCmd;
+    private String pathJavaWebContextFile;
+    private String pathJavaWebDBUtilsFile;
 
     //C
     private String pathCTestFol;
@@ -54,8 +58,10 @@ public class PathDetails implements Serializable {
         this.pathSubmission = curPractical + File.separator + "Submissions";
         this.practicalExamCode = practicalInfo.getExamCode();
         this.pathResultFile = curPractical + File.separator + "Result.txt";
+        this.pathDataBaseUtils = curPractical + File.separator + practicalExamCode + ".java";
         this.pathTestScript = curPractical + File.separator + "TestScripts";
         this.pathServerLogFile = curPractical + File.separator + "Server" + File.separator + "servertest.log";
+
     }
 
 
@@ -65,6 +71,10 @@ public class PathDetails implements Serializable {
 
     public String getPathSubmission() {
         return pathSubmission;
+    }
+
+    public String getPathDataBaseUtils() {
+        return pathDataBaseUtils;
     }
 
     public String getPathServer() {
@@ -165,6 +175,29 @@ public class PathDetails implements Serializable {
                 + "java" + File.separator
                 + "server" + File.separator;
         return pathJavaWebServerTestFol;
+    }
+
+    public String getPathJavaWebDBUtilsFile() {
+        this.pathJavaWebDBUtilsFile = curPractical + File.separator + "Server" +
+                File.separator + "src"
+                + File.separator + "main"
+                + File.separator + "java"
+                + File.separator + "com"
+                + File.separator + "practicalexam"
+                + File.separator + "student"
+                + File.separator + "connection"
+                + File.separator  + "DBUtilities.java";
+        return this.pathJavaWebDBUtilsFile;
+    }
+
+    public String getPathJavaWebContextFile() {
+        this.pathJavaWebContextFile = curPractical + File.separator + "Server" +
+                File.separator + "src"
+                + File.separator + "main"
+                + File.separator + "webapp"
+                + File.separator + "META-INF"
+                + File.separator + "context.xml";
+        return this.pathJavaWebContextFile;
     }
 
     public String getJavaWebExecuteCmd() {

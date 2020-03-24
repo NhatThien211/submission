@@ -1,0 +1,185 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< eu.arima:springboot-with-webxml >-------------------
+[INFO] Building springboot-with-webxml 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ springboot-with-webxml ---
+[INFO] Deleting E:\CN9\FU_Submission_Webservice\submission\PracticalExams\Practical_JavaWeb_SE1269_20200321\Server\target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ springboot-with-webxml ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ springboot-with-webxml ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 9 source files to E:\CN9\FU_Submission_Webservice\submission\PracticalExams\Practical_JavaWeb_SE1269_20200321\Server\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ springboot-with-webxml ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory E:\CN9\FU_Submission_Webservice\submission\PracticalExams\Practical_JavaWeb_SE1269_20200321\Server\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ springboot-with-webxml ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to E:\CN9\FU_Submission_Webservice\submission\PracticalExams\Practical_JavaWeb_SE1269_20200321\Server\target\test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ springboot-with-webxml ---
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running server.TestwebApplicationTests
+10:20:33.570 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+10:20:33.610 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+10:20:33.704 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [server.TestwebApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+10:20:33.746 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [server.TestwebApplicationTests], using SpringBootContextLoader
+10:20:33.752 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [server.TestwebApplicationTests]: class path resource [server/TestwebApplicationTests-context.xml] does not exist
+10:20:33.753 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [server.TestwebApplicationTests]: class path resource [server/TestwebApplicationTestsContext.groovy] does not exist
+10:20:33.753 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [server.TestwebApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+10:20:34.169 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [server.TestwebApplicationTests]: using defaults.
+10:20:34.170 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+10:20:34.186 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource]
+10:20:34.188 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
+10:20:34.188 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5f77d0f9, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@463fd068, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@895e367, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1b266842, org.springframework.test.context.support.DirtiesContextTestExecutionListener@7a3793c7, org.springframework.test.context.event.EventPublishingTestExecutionListener@42b3b079, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@651aed93, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@4dd6fd0a, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@bb9e6dc, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5456afaa, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@6692b6c6]
+10:20:34.196 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@11d8ae8b testClass = TestwebApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@479cbee5 testClass = TestwebApplicationTests, locations = '{}', classes = '{class server.SpringbootWithWebxmlApplication, class server.SpringbootWithWebxmlApplication}', contextInitializerClasses = '[]', activeProfiles = '{test}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@22ef9844, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@3f6b0be5, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@52af26ee, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@53ce1329], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> false]], class annotated with @DirtiesContext [false] with mode [null].
+Starting ChromeDriver 71.0.3578.80 (2ac50e7249fbd55e6f517a28131605c9fb9fe897) on port 29127
+Only local connections are allowed.
+[1584933641.180][WARNING]: Timed out connecting to Chrome, retrying...
+Mar 23, 2020 10:20:43 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+10:20:43.451 [main] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@11d8ae8b testClass = TestwebApplicationTests, testInstance = server.TestwebApplicationTests@3c321bdb, testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@479cbee5 testClass = TestwebApplicationTests, locations = '{}', classes = '{class server.SpringbootWithWebxmlApplication, class server.SpringbootWithWebxmlApplication}', contextInitializerClasses = '[]', activeProfiles = '{test}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@22ef9844, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@3f6b0be5, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@52af26ee, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@53ce1329], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> false]]].
+10:20:43.552 [main] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.2.2.RELEASE)
+
+2020-03-23 10:20:44.847  INFO 5328 --- [           main] server.TestwebApplicationTests           : Starting TestwebApplicationTests on THUCNHSE63155 with PID 5328 (started by HP in E:\CN9\FU_Submission_Webservice\submission\PracticalExams\Practical_JavaWeb_SE1269_20200321\Server)
+2020-03-23 10:20:44.849  INFO 5328 --- [           main] server.TestwebApplicationTests           : The following profiles are active: test
+2020-03-23 10:20:48.765  INFO 5328 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-23 10:20:48.789  INFO 5328 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-23 10:20:48.790  INFO 5328 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-03-23 10:20:49.801  INFO 5328 --- [           main] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2020-03-23 10:20:49.818  INFO 5328 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-23 10:20:49.818  INFO 5328 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4871 ms
+2020-03-23 10:20:50.129  INFO 5328 --- [           main] server.WebXmlBridge                      : Registered servlet with name [LoginServlet] Class[com.practicalexam.student.controller.LoginServlet] Mappings[[/LoginServlet]]
+2020-03-23 10:20:50.132  INFO 5328 --- [           main] server.WebXmlBridge                      : Filters are not supported
+2020-03-23 10:20:50.777  INFO 5328 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-23 10:20:51.394  WARN 5328 --- [           main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2020-03-23 10:20:51.964  INFO 5328 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-23 10:20:51.971  INFO 5328 --- [           main] server.TestwebApplicationTests           : Started TestwebApplicationTests in 8.414 seconds (JVM running for 20.4)
+Create DAO account
+Test Aborted for test: createDAONewAccount()
+Delete DAO account
+Test Successful for test: checkLoginDAO()
+Update DAO account
+Test Aborted for test: updateDAOAccount()
+Test Aborted for test: searchLastnameDAO()
+Delete DAO account
+Test Aborted for test: deleteDAOAccount()
+2020-03-23 10:20:53.389  INFO 5328 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-23 10:20:53.390  INFO 5328 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-23 10:20:53.429  INFO 5328 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 38 ms
+Test Aborted for test: createUINewAccount()
+Test Successful for test: testLoginUI()
+Update UI account
+Test Aborted for test: updateUIAccount()
+Update UI account
+Test Aborted for test: searchUIAccount()
+Delete account
+Test Aborted for test: deleteUIAccount()
+E:\CN9\FU_Submission_Webservice\submission\PracticalExams\Practical_JavaWeb_SE1269_20200321\Server\src\test\java\server
+E:\CN9\FU_Submission_Webservice\submission\PracticalExams\Practical_JavaWeb_SE1269_20200321\Server\src\test\java\server
+Tests run: 10, Failures: 6, Errors: 2, Skipped: 0, Time elapsed: 116.299 sec <<< FAILURE! - in server.TestwebApplicationTests
+createDAONewAccount  Time elapsed: 0.839 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<true> but was:<false>
+	at server.TestwebApplicationTests.createDAONewAccount(EXAM_SE63146_Java_439576447.java:74)
+
+updateDAOAccount  Time elapsed: 0.062 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<true> but was:<false>
+	at server.TestwebApplicationTests.updateDAOAccount(EXAM_SE63146_Java_439576447.java:96)
+
+searchLastnameDAO  Time elapsed: 0.001 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<1> but was:<-1>
+	at server.TestwebApplicationTests.searchLastnameDAO(EXAM_SE63146_Java_439576447.java:107)
+
+deleteDAOAccount  Time elapsed: 0.086 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<true> but was:<false>
+	at server.TestwebApplicationTests.deleteDAOAccount(EXAM_SE63146_Java_439576447.java:120)
+
+createUINewAccount  Time elapsed: 31.026 sec  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"name","selector":"txtUsername"}
+  (Session info: chrome=80.0.3987.149)
+  (Driver info: chromedriver=71.0.3578.80 (2ac50e7249fbd55e6f517a28131605c9fb9fe897),platform=Windows NT 10.0.18362 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'THUCNHSE63155', ip: '26.184.92.230', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_231'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 71.0.3578.80 (2ac50e7249fbd..., userDataDir: C:\Users\HP\AppData\Local\T...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:51082}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 80.0.3987.149, webStorageEnabled: true}
+Session ID: f315e951249c722d74895e1e2af99393
+*** Element info: {Using=name, value=txtUsername}
+	at server.TestwebApplicationTests.createUINewAccount(EXAM_SE63146_Java_439576447.java:128)
+
+updateUIAccount  Time elapsed: 30.25 sec  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"name","selector":"txtPassword"}
+  (Session info: chrome=80.0.3987.149)
+  (Driver info: chromedriver=71.0.3578.80 (2ac50e7249fbd55e6f517a28131605c9fb9fe897),platform=Windows NT 10.0.18362 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'THUCNHSE63155', ip: '26.184.92.230', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_231'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 71.0.3578.80 (2ac50e7249fbd..., userDataDir: C:\Users\HP\AppData\Local\T...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:51082}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 80.0.3987.149, webStorageEnabled: true}
+Session ID: f315e951249c722d74895e1e2af99393
+*** Element info: {Using=name, value=txtPassword}
+	at server.TestwebApplicationTests.updateUIAccount(EXAM_SE63146_Java_439576447.java:181)
+
+searchUIAccount  Time elapsed: 30.383 sec  <<< FAILURE!
+java.lang.AssertionError
+	at server.TestwebApplicationTests.searchUIAccount(EXAM_SE63146_Java_439576447.java:213)
+
+deleteUIAccount  Time elapsed: 0.194 sec  <<< FAILURE!
+java.lang.AssertionError
+	at server.TestwebApplicationTests.deleteUIAccount(EXAM_SE63146_Java_439576447.java:239)
+
+2020-03-23 10:22:29.850  INFO 5328 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+
+Results :
+
+Failed tests: 
+  TestwebApplicationTests.createDAONewAccount:74 expected:<true> but was:<false>
+  TestwebApplicationTests.deleteDAOAccount:120 expected:<true> but was:<false>
+  TestwebApplicationTests.deleteUIAccount:239
+  TestwebApplicationTests.searchLastnameDAO:107 expected:<1> but was:<-1>
+  TestwebApplicationTests.searchUIAccount:213
+  TestwebApplicationTests.updateDAOAccount:96 expected:<true> but was:<false>
+Tests in error: 
+  TestwebApplicationTests.createUINewAccount:128 » NoSuchElement no such element...
+  TestwebApplicationTests.updateUIAccount:181 » NoSuchElement no such element: U...
+
+Tests run: 10, Failures: 6, Errors: 2, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  02:27 min
+[INFO] Finished at: 2020-03-23T10:22:30+07:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.19.1:test (default-test) on project springboot-with-webxml: There are test failures.
+[ERROR] 
+[ERROR] Please refer to E:\CN9\FU_Submission_Webservice\submission\PracticalExams\Practical_JavaWeb_SE1269_20200321\Server\target\surefire-reports for the individual test results.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

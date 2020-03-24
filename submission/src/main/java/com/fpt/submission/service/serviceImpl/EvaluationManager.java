@@ -31,6 +31,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.*;
 
 
@@ -378,24 +379,32 @@ public class EvaluationManager {
             FileUtils.convertHtmlFileToJspFileInWebApp(pathDetails.getPathJavaWebServerWebAppDelete());
             FileUtils.changeExtensionHtmlToJspInCode(pathDetails.getPathJavaWebServerSubmitDelete());
 
-//             Chạy CMD file test
-            CmdExcution.execute(pathDetails.getJavaWebExecuteCmd());
-//             Check compile error
             String resultText = "";
             StudentPointDto result = new StudentPointDto();
             result.setStudentCode(dto.getStudentCode());
-            if (checkCompileIsError(pathDetails.getPathServerLogFile())) {
-                result.setErrorMsg("Compile Error");
+            // Check make connection
+            if (checkMakeconnection(dto.getStudentCode())) {
+//             Chạy CMD file test
+                CmdExcution.execute(pathDetails.getJavaWebExecuteCmd());
+//             Check compile error
+                if (checkCompileIsError(pathDetails.getPathServerLogFile())) {
+                    result.setErrorMsg("Compile Error");
+                    result.setTotalPoint("0");
+                    result.setEvaluateTime(TimeUtils.getCurTime());
+                    resultText = objectMapper.writeValueAsString(result);
+                } else {
+                    resultText = getTextResult(result);
+                    if (resultText.equals(NOT_FOUND_STUDENT)) {
+                        result.setErrorMsg("Submit required");
+                        result.setTotalPoint("0");
+                        resultText = objectMapper.writeValueAsString(result);
+                    }
+                }
+            } else {
+                result.setErrorMsg("Make connection file invalid");
                 result.setTotalPoint("0");
                 result.setEvaluateTime(TimeUtils.getCurTime());
                 resultText = objectMapper.writeValueAsString(result);
-            } else {
-                resultText = getTextResult(result);
-                if (resultText.equals(NOT_FOUND_STUDENT)) {
-                    result.setErrorMsg("Submit required");
-                    result.setTotalPoint("0");
-                    resultText = objectMapper.writeValueAsString(result);
-                }
             }
             sendTCPResult(resultText);
 
@@ -405,7 +414,6 @@ public class EvaluationManager {
             } else {
                 isEvaluating = false;
             }
-
             // Trả status đã chấm xong về app lec winform (mssv)
             System.out.println("Trả response cho giảng viên");
 
@@ -465,31 +473,6 @@ public class EvaluationManager {
         }
     }
 
-    private String getTextResult(StudentPointDto dto) {
-        String path = pathDetails.getPathResultFile();
-
-        String startString = "Start" + dto.getStudentCode();
-        String endString = "End" + dto.getStudentCode();
-        String str = readFileAsString(path, dto.getStudentCode());
-        int startIndex = str.indexOf(startString);
-        int endIndex = str.indexOf(endString);
-        if (startIndex >= 0 && endIndex > 0) {
-            return str.substring(startIndex + startString.length(), endIndex);
-        }
-        return "Error";
-    }
-
-    private String readFileAsString(String fileName, String studentCode) {
-        String text = "";
-        try {
-            text = new String(Files.readAllBytes(Paths.get(fileName)));
-        } catch (IOException e) {
-            Logger.getLogger(EvaluationManager.class.getName())
-                    .log(Level.ERROR, "[EVALUATE - FILE ERROR] File : " + studentCode + "\n" + e.getMessage());
-            e.printStackTrace();
-        }
-        return text;
-    }
 
     private void deleteAllFile(String studentCode, String pathSubmit) {
 
@@ -537,6 +520,34 @@ public class EvaluationManager {
         return false;
     }
 
+    private boolean checkMakeconnection(String studentCode) {
+        boolean check = true;
+        String text = "";
+        text = readFileAsString(pathDetails.getPathJavaWebContextFile(), studentCode).trim();
+        if (!text.contains("com.microsoft.sqlserver.jdbc.SQLServerDriver")) {
+            check = false;
+        }
+        if (!text.contains("jdbc:sqlserver://localhost:")) {
+            check = false;
+        }
+        if (!text.contains("type=\"javax.sql.DataSource\"")) {
+            check = false;
+        }
+        if (check) {
+            try {
+                Path templatePathDatabaseUtils = Paths.get(pathDetails.getPathDataBaseUtils());
+                Path serverPathDatabaseUtils = Paths.get(pathDetails.getPathJavaWebDBUtilsFile());
+                if (templatePathDatabaseUtils != null && serverPathDatabaseUtils != null) {
+                    Files.copy(templatePathDatabaseUtils, serverPathDatabaseUtils, StandardCopyOption.REPLACE_EXISTING);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return check;
+    }
+
+
     public void sendTCPResult(String result) {
         try {
             SubmissionUtils.sendTCPMessage(result, CommonConstant.SOCKET_SERVER_LOCAL_HOST, CommonConstant.SOCKET_SERVER_LISTENING_PORT);
@@ -547,5 +558,30 @@ public class EvaluationManager {
         }
     }
 
+    private String getTextResult(StudentPointDto dto) {
+        String path = pathDetails.getPathResultFile();
+
+        String startString = "Start" + dto.getStudentCode();
+        String endString = "End" + dto.getStudentCode();
+        String str = readFileAsString(path, dto.getStudentCode());
+        int startIndex = str.indexOf(startString);
+        int endIndex = str.indexOf(endString);
+        if (startIndex >= 0 && endIndex > 0) {
+            return str.substring(startIndex + startString.length(), endIndex);
+        }
+        return "Error";
+    }
+
+    private String readFileAsString(String fileName, String studentCode) {
+        String text = "";
+        try {
+            text = new String(Files.readAllBytes(Paths.get(fileName)));
+        } catch (IOException e) {
+            Logger.getLogger(EvaluationManager.class.getName())
+                    .log(Level.ERROR, "[EVALUATE - FILE ERROR] File : " + studentCode + "\n" + e.getMessage());
+            e.printStackTrace();
+        }
+        return text;
+    }
 
 }

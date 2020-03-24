@@ -1077,3 +1077,16 @@ E:\CN9\FU_Submission_Webservice\submission\PracticalExams\Practical_JavaWeb_SE12
 2020-03-22 23:42:21 INFO  EvaluationManager:345 - [EVALUATE] Student code : SE63146
 2020-03-23 00:16:27 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE62847
 2020-03-23 00:16:27 INFO  EvaluationManager:345 - [EVALUATE] Student code : SE62847
+2020-03-23 10:11:34 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE62882
+2020-03-23 10:11:34 INFO  EvaluationManager:345 - [EVALUATE] Student code : SE62882
+2020-03-23 10:18:10 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE62847
+2020-03-23 10:18:10 INFO  EvaluationManager:345 - [EVALUATE] Student code : SE62847
+2020-03-23 10:18:56 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE63146
+2020-03-23 10:18:56 ERROR SubmissionUtils:112 - [EVALUATE] Waiting - : SE63146
+2020-03-23 10:19:59 INFO  EvaluationManager:345 - [EVALUATE] Student code : SE63146
+2020-03-23 10:22:30 WARN  SubmissionUtils:94 - [DELETE FOLDER] - : Directory does not exist
+2020-03-23 10:22:30 WARN  SubmissionUtils:94 - [DELETE FOLDER] - : Directory does not exist
+2020-03-24 15:50:40 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE63155
+2020-03-24 15:50:40 INFO  EvaluationManager:345 - [EVALUATE] Student code : SE63155
+2020-03-24 15:55:48 INFO  SubmissionUtils:58 - [SUBMISSION] - File from student: SE63155
+2020-03-24 15:55:48 INFO  EvaluationManager:345 - [EVALUATE] Student code : SE63155
