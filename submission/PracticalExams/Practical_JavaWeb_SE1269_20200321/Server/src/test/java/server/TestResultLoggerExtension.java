@@ -48,7 +48,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
                             if (isCorrect) {
                                 point = Double.parseDouble(arr[1]);
                             }
-                            testResultsStatus.put(questionName, point);
+                            testResultsStatus.put(questionName + "-" + arr[1] + ".0", point);
                             break;
                         }
                     }
@@ -96,10 +96,10 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
             }
             System.out.println("Error occured");
             studentPointDto.setStudentCode(getStudentCode());
-            studentPointDto.setErrorMsg("System error!");
+            studentPointDto.setErrorMsg(e.getMessage() + "");
         } finally {
             try {
-                String resultPath = PROJECT_DIR + File.separator + TXT_RESULT_NAME;
+                String resultPath = PROJECT_DIR.replace("\\Server", "") + File.separator + TXT_RESULT_NAME;
                 String startString = "Start" + studentPointDto.getStudentCode();
                 String endString = "End" + studentPointDto.getStudentCode();
                 String str = readFileAsString(resultPath);
@@ -145,14 +145,22 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
         double totalPoint = 0;
         Integer correctQuestionCount = 0;
         String studentCode = getStudentCode();
-        for (Map.Entry<String, Double> entry : testResultsStatus.entrySet()) {
-            if (entry.getValue() > 0.0) {
-                totalPoint += entry.getValue();
-                correctQuestionCount++;
-                listQuestions.put(entry.getKey() + ":Success", entry.getValue() + "/" + entry.getValue());
-            } else {
-                listQuestions.put(entry.getKey() + ":Failed", "0/" + entry.getValue());
+        try {
+            for (Map.Entry<String, Double> entry : testResultsStatus.entrySet()) {
+                String[] temp = entry.getKey().split("-");
+                String questionName = temp[0];
+                String point = temp[1];
+                Double pointCorrect = entry.getValue();
+                if (entry.getValue() > 0.0) {
+                    totalPoint += entry.getValue();
+                    correctQuestionCount++;
+                    listQuestions.put(questionName + ":Success", pointCorrect + "/" + point);
+                } else {
+                    listQuestions.put(questionName + ":Failed", "0/" + point);
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         // Send TCP messages to Lec-app after finish evaluate
         studentPointDto = new StudentPointDto();
@@ -162,7 +170,6 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
         studentPointDto.setEvaluateTime(getCurTime());
         studentPointDto.setResult(correctQuestionCount + "/" + testResultsStatus.size());
         return studentPointDto;
-
     }
 
     public String getCurTime() {

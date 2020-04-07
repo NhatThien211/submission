@@ -96,7 +96,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
             }
             System.out.println("Error occured");
             studentPointDto.setStudentCode(getStudentCode());
-            studentPointDto.setErrorMsg("System error!");
+            studentPointDto.setErrorMsg(e.getMessage() + "");
         } finally {
             try {
                 String resultPath = PROJECT_DIR.replace("\\Server", "") + File.separator + TXT_RESULT_NAME;

@@ -13,15 +13,19 @@ public class PathDetails implements Serializable {
     private String practicalExamCode;
     private String pathSubmission;
     private String pathServer;
+    private String pathServerEvaluatingLogFile;
     private String pathServerLogFile;
+
     private String pathResultFile;
     private String pathTestScript;
     private String pathDataBaseUtils;
+    private String pathDBTools;
+
 
 
     // Java
     private String pathJavaServerSubmit;
-    private String pathJavaServerSubmitDelete;
+    private String pathJavaServerStudent;
     private String pathJavaServerTestFol;
     private String javaExecuteCmd;
 
@@ -34,6 +38,7 @@ public class PathDetails implements Serializable {
     private String javaWebExecuteCmd;
     private String pathJavaWebContextFile;
     private String pathJavaWebDBUtilsFile;
+    private String pathJavaWebDBUtilsFileChecked;
 
     //C
     private String pathCTestFol;
@@ -55,14 +60,16 @@ public class PathDetails implements Serializable {
                 + "PracticalExams" + File.separator
                 + practicalInfo.getName();
         this.pathServer = curPractical + File.separator + "Server";
+        this.pathDBTools = curPractical + File.separator + "DBTools";
         this.pathSubmission = curPractical + File.separator + "Submissions";
         this.practicalExamCode = practicalInfo.getExamCode();
         this.pathResultFile = curPractical + File.separator + "Result.txt";
-        this.pathDataBaseUtils = curPractical + File.separator + practicalExamCode + ".java";
+        this.pathDataBaseUtils = curPractical + File.separator + practicalInfo.getName() + ".java";
         this.pathTestScript = curPractical + File.separator + "TestScripts";
+        this.pathServerEvaluatingLogFile = curPractical + File.separator + "Server" + File.separator + "evaluating.log";
         this.pathServerLogFile = curPractical + File.separator + "Server" + File.separator + "servertest.log";
-
     }
+
 
 
     public String getPracticalExamCode() {
@@ -81,8 +88,15 @@ public class PathDetails implements Serializable {
         return pathServer;
     }
 
-    public String getPathServerLogFile() {
+    public String getPathDBTools() {
+        return pathDBTools;
+    }
 
+    public String getPathServerEvaluatingLogFile() {
+        return pathServerEvaluatingLogFile;
+    }
+
+    public String getPathServerLogFile() {
         return pathServerLogFile;
     }
 
@@ -104,15 +118,15 @@ public class PathDetails implements Serializable {
         return pathJavaServerSubmit;
     }
 
-    public String getPathJavaServerSubmitDelete() {
-        this.pathJavaServerSubmitDelete = pathServer + File.separator
+    public String getPathJavaServerStudent() {
+        this.pathJavaServerStudent = pathServer + File.separator
                 + "src" + File.separator
                 + "main" + File.separator
                 + "java" + File.separator
                 + "com" + File.separator
                 + "practicalexam" + File.separator
                 + "student";
-        return pathJavaServerSubmitDelete;
+        return pathJavaServerStudent;
     }
 
     public String getPathJavaServerTestFol() {
@@ -127,7 +141,7 @@ public class PathDetails implements Serializable {
     }
 
     public String getJavaExecuteCmd() {
-        this.javaExecuteCmd = "cd " + pathServer + "&mvn clean package -l servertest.log";
+        this.javaExecuteCmd = "cd " + pathServer + "&mvn clean package -l evaluating.log";
         return javaExecuteCmd;
     }
 
@@ -190,6 +204,7 @@ public class PathDetails implements Serializable {
         return this.pathJavaWebDBUtilsFile;
     }
 
+
     public String getPathJavaWebContextFile() {
         this.pathJavaWebContextFile = curPractical + File.separator + "Server" +
                 File.separator + "src"
@@ -201,7 +216,7 @@ public class PathDetails implements Serializable {
     }
 
     public String getJavaWebExecuteCmd() {
-        this.javaWebExecuteCmd = "cd " + pathServer + "&mvn clean package -l servertest.log";
+        this.javaWebExecuteCmd = "cd " + pathServer + "&mvn clean package -l evaluating.log";
         return javaWebExecuteCmd;
     }
 

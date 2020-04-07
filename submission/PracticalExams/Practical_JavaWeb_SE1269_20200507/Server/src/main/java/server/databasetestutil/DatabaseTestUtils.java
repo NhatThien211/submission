@@ -1,6 +1,6 @@
 package server.databasetestutil;
 
-import com.practicalexam.student.connection.DBUtilities;
+import com.practicalexam.student.util.DBUtilities;
 import com.practicalexam.student.khanhkt.registration.RegistrationDTO;
 
 import javax.naming.NamingException;
