@@ -291,7 +291,7 @@ public class EvaluationManager {
                 if (dto.getScriptCode().contains(scriptCode.replace(EXTENSION_JAVA, ""))) {
                     scriptTextCode = scriptCode;
                     sourceScriptPath = Paths.get(pathDetails.getPathTestScript() + File.separator + scriptCode);
-                    serverTestScriptPath = Paths.get(pathDetails.getPathJavaServerTestFol() + PREFIX_EXAM_SCRIPT + dto.getStudentCode() + "_" + scriptCode);
+                    serverTestScriptPath = Paths.get(pathDetails.getPathJavaServerTestFol() + File.separator + PREFIX_EXAM_SCRIPT + dto.getStudentCode() + "_" + scriptCode);
                     break;
                 }
             }
@@ -302,17 +302,20 @@ public class EvaluationManager {
             }
             // Pre evaluating
             Files.copy(sourceScriptPath, serverTestScriptPath, StandardCopyOption.REPLACE_EXISTING);
-            ZipFile.unzip(pathDetails.getPathSubmission() + File.separator + dto.getStudentCode() + ".zip", pathDetails.getPathJavaServerSubmit());
+            ZipFile.unzip(pathDetails.getPathSubmission()
+                    + File.separator
+                    + dto.getStudentCode()
+                    + EXTENSION_ZIP, pathDetails.getPathJavaServerSubmit());
 
             // Copy all DB tools existed
-            FileUtils.copyAllDBToolsFile(pathDetails);
-            // Change Scanner value if exist
-            FileUtils.changeScannerToValue(pathDetails, scriptTextCode,".java");
+            FileUtils.copyAllFiles(pathDetails.getPathDBTools(), pathDetails.getPathJavaServerStudent(), EXTENSION_JAVA);
+            // Copy all config files existed
 
+            // Change Scanner value if exist
+            FileUtils.changeScannerToValue(pathDetails, scriptTextCode, EXTENSION_JAVA);
             // Chạy CMD file test
             CmdExcution.execute(pathDetails.getJavaExecuteCmd());
 
-            //
 
 //             Check compile error
             String resultText = "";
@@ -335,7 +338,7 @@ public class EvaluationManager {
                 }
             }
             System.out.println(resultText);
-//            sendTCPResult(resultText);
+            sendTCPResult(resultText);
 //
             if (submissionQueue.size() > 0) {
                 deleteAllFile(dto.getStudentCode(), pathDetails.getPathJavaServerStudent());
@@ -343,7 +346,6 @@ public class EvaluationManager {
             } else {
                 isEvaluating = false;
             }
-
             // Trả status đã chấm xong về app lec winform (mssv)
             System.out.println("Trả response cho giảng viên");
         } catch (Exception e) {
@@ -394,13 +396,25 @@ public class EvaluationManager {
             FileUtils.convertHtmlFileToJspFileInWebApp(pathDetails.getPathJavaWebServerWebAppDelete());
             FileUtils.changeExtensionHtmlToJspInCode(pathDetails.getPathJavaWebServerSubmitDelete());
 
+            // Duplicated DBUtils to DBUtilsChecked if exist
+            FileUtils.copyDBUtilsToDBChecked(pathDetails.getPathDBUtilities(), pathDetails.getPathDBUtilitiesChecked());
+
+            // Copy all DB tools existed
+            FileUtils.copyAllFiles(pathDetails.getPathDBTools(), pathDetails.getPathJavaWebConnectionFol(), EXTENSION_JAVA);
+
+            // Modify and copy all student config files to resources if existed
+            // Change Scanner value if exist
+            FileUtils.changeResourceBundle(pathDetails.getPathConfig(), EXTENSION_JAVA);
+            FileUtils.copyAllFiles(pathDetails.getPathConfig(), pathDetails.getPathResources(), EXTENSION_CONFIG);
+
+            //
             String resultText = "";
             StudentPointDto result = new StudentPointDto();
             result.setStudentCode(dto.getStudentCode());
             // Copy make connection file if existed
 //            copyConnectionFile();
 //             Chạy CMD file test
-            CmdExcution.execute(pathDetails.getJavaWebExecuteCmd());
+//            CmdExcution.execute(pathDetails.getJavaWebExecuteCmd());
 //             Check compile error
             if (checkCompileIsError(pathDetails.getPathServerEvaluatingLogFile())) {
                 result.setErrorMsg("Compile Error");
@@ -526,18 +540,6 @@ public class EvaluationManager {
         } catch (IOException e) {
         }
         return false;
-    }
-
-    private void copyConnectionFile() {
-        try {
-            Path templatePathDatabaseUtils = Paths.get(pathDetails.getPathDataBaseUtils());
-            Path serverPathDatabaseUtils = Paths.get(pathDetails.getPathJavaWebDBUtilsFile());
-            if (templatePathDatabaseUtils != null && serverPathDatabaseUtils != null) {
-                Files.copy(templatePathDatabaseUtils, serverPathDatabaseUtils, StandardCopyOption.REPLACE_EXISTING);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 

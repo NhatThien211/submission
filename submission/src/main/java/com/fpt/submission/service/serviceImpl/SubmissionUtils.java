@@ -63,7 +63,7 @@ public class SubmissionUtils {
             MultipartFile file = dto.getFile();
 //            dto.setSubjectCode("JAVA");
             // Send file to check duplicated code
-//            sendFile(dto);
+            sendFile(dto);
 
             if (file != null) {
                 PathDetails pathDetails = PathUtils.pathDetails;
@@ -91,7 +91,7 @@ public class SubmissionUtils {
                 = new LinkedMultiValueMap<>();
         body.add("studentCode", dto.getStudentCode());
         body.add("file", new FileSystemResource(convert(dto.getFile())));
-        body.add("subjectCode", pathDetails.getPracticalExamCode());
+        body.add("examCode", pathDetails.getPracticalExamName());
 
         HttpEntity<MultiValueMap<String, Object>> requestEntity
                 = new HttpEntity<>(body);

@@ -282,3 +282,181 @@
 2020-04-07 17:28:07 ERROR EvaluationManager:351 - [EVALUATE-ERROR] Student code : SE63155
 2020-04-07 17:31:19 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE63155
 2020-04-07 17:31:19 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE63155
+2020-04-07 18:09:28 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE63155
+2020-04-07 18:09:28 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE63155
+2020-04-10 20:28:24 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE63156
+2020-04-10 20:28:24 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE63156
+2020-04-10 20:32:18 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE63156
+2020-04-10 20:32:18 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE63156
+2020-04-10 20:36:07 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE63156
+2020-04-10 20:36:07 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE63156
+2020-04-10 20:46:33 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE63156
+2020-04-10 20:46:33 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE63156
+2020-04-10 20:52:57 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE1140043
+2020-04-10 20:52:57 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE1140043
+2020-04-10 20:56:15 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE1140043
+2020-04-10 20:56:15 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE1140043
+2020-04-10 20:59:04 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE1140043
+2020-04-10 20:59:04 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE1140043
+2020-04-10 21:02:28 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE1140043
+2020-04-10 21:02:28 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE1140043
+2020-04-10 21:08:54 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE1140043
+2020-04-10 21:08:54 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE1140043
+2020-04-10 21:16:09 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140302
+2020-04-10 21:16:09 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140302
+2020-04-10 21:27:25 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140302
+2020-04-10 21:27:25 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140302
+2020-04-10 21:32:42 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140326
+2020-04-10 21:32:42 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140326
+2020-04-10 21:36:50 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE12345
+2020-04-10 21:36:50 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE12345
+2020-04-10 21:38:29 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE12345
+2020-04-10 21:38:29 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE12345
+2020-04-10 21:40:46 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE12345
+2020-04-10 21:40:46 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE12345
+2020-04-10 21:50:45 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140458
+2020-04-10 21:50:45 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140458
+2020-04-10 21:54:21 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140458
+2020-04-10 21:54:21 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140458
+2020-04-10 21:56:01 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140458
+2020-04-10 21:56:01 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140458
+2020-04-10 21:56:25 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140458
+2020-04-10 21:56:25 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140458
+2020-04-10 21:58:10 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140458
+2020-04-10 21:58:10 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140458
+2020-04-10 21:59:21 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140458
+2020-04-10 21:59:21 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140458
+2020-04-10 22:03:09 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140458
+2020-04-10 22:03:09 ERROR SubmissionUtils:114 - [EVALUATE] Waiting - : SE140458
+2020-04-10 22:03:38 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140458
+2020-04-10 22:03:38 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140458
+2020-04-10 22:05:58 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140458
+2020-04-10 22:05:59 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140458
+2020-04-10 22:09:04 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140458
+2020-04-10 22:09:04 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140458
+2020-04-10 22:13:24 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140458
+2020-04-10 22:13:24 ERROR SubmissionUtils:85 - [SUBMISSION-ERROR] - File from student : E:\CN9\FU_Submission_Webservice\submission\PracticalExams\Practical_Java_SE1402_20200407\Submissions
+2020-04-10 22:13:30 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140458
+2020-04-10 22:13:30 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140458
+2020-04-10 22:15:49 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140458
+2020-04-10 22:15:49 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140458
+2020-04-12 14:28:16 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE63156
+2020-04-12 14:28:16 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE63156
+2020-04-12 14:29:33 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE63156
+2020-04-12 14:29:33 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE63156
+2020-04-12 14:38:06 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE63156
+2020-04-12 14:38:06 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE63156
+2020-04-12 14:56:20 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE130308
+2020-04-12 14:56:20 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE130308
+2020-04-12 14:56:20 ERROR EvaluationManager:354 - [EVALUATE-ERROR] Student code : SE130308
+2020-04-12 14:56:20 WARN  SubmissionUtils:132 - [DELETE FOLDER] - : Directory does not exist
+2020-04-12 15:01:04 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE130308
+2020-04-12 15:07:11 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE130308
+2020-04-12 15:07:11 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE130308
+2020-04-12 15:09:31 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE130308
+2020-04-12 15:09:31 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE130308
+2020-04-12 15:11:46 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE130308
+2020-04-12 15:11:46 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE130308
+2020-04-12 15:15:09 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE130308
+2020-04-12 15:15:10 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE130308
+2020-04-12 15:21:56 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140043
+2020-04-12 15:21:56 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140043
+2020-04-12 15:23:37 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140043
+2020-04-12 15:23:38 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140043
+2020-04-12 15:27:14 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140326
+2020-04-12 15:27:15 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140326
+2020-04-12 15:29:44 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140351
+2020-04-12 15:29:44 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140351
+2020-04-12 15:30:41 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140443
+2020-04-12 15:30:41 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140443
+2020-04-12 15:31:53 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140459
+2020-04-12 15:31:53 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140459
+2020-04-12 15:33:49 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140522
+2020-04-12 15:33:49 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140522
+2020-04-12 15:34:43 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140588
+2020-04-12 15:34:43 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140588
+2020-04-12 15:36:31 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140522
+2020-04-12 15:36:31 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140522
+2020-04-12 15:40:57 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140626
+2020-04-12 15:40:57 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140626
+2020-04-12 15:44:40 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140626
+2020-04-12 15:44:40 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140626
+2020-04-12 15:46:26 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140671
+2020-04-12 15:46:27 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140671
+2020-04-12 15:47:40 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140786
+2020-04-12 15:47:40 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140786
+2020-04-12 15:48:37 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140948
+2020-04-12 15:48:38 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140948
+2020-04-12 15:51:17 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140948
+2020-04-12 15:51:18 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140948
+2020-04-12 15:55:15 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE130308
+2020-04-12 15:55:15 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE130308
+2020-04-12 15:55:55 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140043
+2020-04-12 15:55:55 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140043
+2020-04-12 15:58:03 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140043
+2020-04-12 15:58:03 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140043
+2020-04-12 16:02:14 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140043
+2020-04-12 16:02:14 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140043
+2020-04-12 16:03:53 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140043
+2020-04-12 16:03:53 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140043
+2020-04-12 16:07:14 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140043
+2020-04-12 16:07:14 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140043
+2020-04-12 16:09:46 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140043
+2020-04-12 16:09:47 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140043
+2020-04-12 16:13:11 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140043
+2020-04-12 16:13:12 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140043
+2020-04-12 16:19:10 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140043
+2020-04-12 16:19:10 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140043
+2020-04-12 16:20:31 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140043
+2020-04-12 16:20:31 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140043
+2020-04-12 16:22:35 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140043
+2020-04-12 16:22:35 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140043
+2020-04-12 16:26:54 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140043
+2020-04-12 16:26:54 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140043
+2020-04-12 16:33:00 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140043
+2020-04-12 16:33:00 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140043
+2020-04-12 16:38:33 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140043
+2020-04-12 16:38:34 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140043
+2020-04-12 16:43:09 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140043
+2020-04-12 16:43:09 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140043
+2020-04-12 16:46:43 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140043
+2020-04-12 16:46:44 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140043
+2020-04-12 16:49:28 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140043
+2020-04-12 16:49:28 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140043
+2020-04-12 16:58:04 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140025
+2020-04-12 16:58:04 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140025
+2020-04-12 16:59:37 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140052
+2020-04-12 16:59:38 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140052
+2020-04-12 17:03:53 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140025
+2020-04-12 17:03:53 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140025
+2020-04-12 17:06:22 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140025
+2020-04-12 17:06:22 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140025
+2020-04-12 17:08:19 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140025
+2020-04-12 17:08:20 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140025
+2020-04-12 17:12:46 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140025
+2020-04-12 17:12:46 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140025
+2020-04-12 17:19:18 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140025
+2020-04-12 17:19:19 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140025
+2020-04-12 17:20:44 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140052
+2020-04-12 17:20:44 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140052
+2020-04-12 17:20:45 ERROR EvaluationManager:354 - [EVALUATE-ERROR] Student code : SE140052
+2020-04-12 17:22:08 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140052
+2020-04-12 17:22:09 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140052
+2020-04-12 17:25:47 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140077
+2020-04-12 17:25:47 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140077
+2020-04-12 17:28:49 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140077
+2020-04-12 17:28:49 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140077
+2020-04-12 17:31:32 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140077
+2020-04-12 17:31:32 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140077
+2020-04-12 17:32:21 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140107
+2020-04-12 17:32:22 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140107
+2020-04-12 17:35:06 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140107
+2020-04-12 17:35:06 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140107
+2020-04-12 19:09:30 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140331
+2020-04-12 19:09:31 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140331
+2020-04-12 19:11:28 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140341
+2020-04-12 19:11:28 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140341
+2020-04-12 19:12:37 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140353
+2020-04-12 19:12:37 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140353
+2020-04-12 19:16:44 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140353
+2020-04-12 19:16:44 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140353
