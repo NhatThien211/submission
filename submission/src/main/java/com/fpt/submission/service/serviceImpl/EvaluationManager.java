@@ -26,12 +26,8 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
-import java.io.FilenameFilter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+import java.nio.file.*;
 import java.util.*;
 
 
@@ -50,7 +46,6 @@ public class EvaluationManager {
     private static final String END_POINT_ARR = "END_POINT_ARR";
     private static final String COMPILE_ERROR = "COMPILATION ERROR";
     private static final String NOT_FOUND_STUDENT = "NOT_FOUND_STUDENT";
-    private boolean isNew = true;
     private ObjectMapper objectMapper = new ObjectMapper();
 
     @Autowired
@@ -92,6 +87,12 @@ public class EvaluationManager {
         if (!isEvaluating && submissionQueue.size() > 0) {
             isEvaluating = true;
             System.out.println(submissionEvent.getStudentCode() + "-" + pathDetails.getPracticalExamCode());
+
+            // Generate result
+            StudentPointDto generatedResult = new StudentPointDto();
+            generatedResult.setStudentCode(submissionEvent.getStudentCode());
+            FileUtils.writeString(pathDetails.getPathResultFile(), generatedResult);
+
             switch (pathDetails.getPracticalExamCode()) {
                 case CODE_PRACTICAL_C:
                     evaluateSubmissionC(submissionQueue.remove());
@@ -137,7 +138,7 @@ public class EvaluationManager {
                 return;
             }
             ZipFile.unzip(pathDetails.getPathSubmission() + File.separator + dto.getStudentCode() + EXTENSION_ZIP, pathDetails.getPathCServerSubmit());
-            Files.copy(sourceScriptPath, serverTestScriptPath);
+            Files.copy(sourceScriptPath, serverTestScriptPath, StandardCopyOption.REPLACE_EXISTING);
 
             // Chạy CMD file test
             CmdExcution.execute(pathDetails.getCExecuteCmd(PREFIX_EXAM_SCRIPT + dto.getStudentCode() + "_" + dto.getScriptCode()));
@@ -270,7 +271,7 @@ public class EvaluationManager {
                 }
             }
         } catch (IOException e) {
-            studentPointDto.setErrorMsg("[EVALUATE-ERROR] - " + studentCode + ": System error");
+            studentPointDto.setErrorMsg(e.getMessage() + "");
             Logger.getLogger(EvaluationManager.class.getName())
                     .log(Level.INFO, "[EVALUATE] Student code : " + studentCode);
             e.printStackTrace();
@@ -281,14 +282,16 @@ public class EvaluationManager {
         try {
             Logger.getLogger(EvaluationManager.class.getName())
                     .log(Level.INFO, "[EVALUATE] Student code : " + dto.getStudentCode());
+            String scriptTextCode = "";
             sourceScriptPath = null;
             serverTestScriptPath = null;
             if (examScriptsList.size() == 0)
                 throw new CustomException(HttpStatus.NOT_FOUND, "No exam codes");
             for (String scriptCode : examScriptsList) {
                 if (dto.getScriptCode().contains(scriptCode.replace(EXTENSION_JAVA, ""))) {
+                    scriptTextCode = scriptCode;
                     sourceScriptPath = Paths.get(pathDetails.getPathTestScript() + File.separator + scriptCode);
-                    serverTestScriptPath = Paths.get(pathDetails.getPathJavaServerTestFol() + PREFIX_EXAM_SCRIPT + dto.getStudentCode() + "_" + scriptCode);
+                    serverTestScriptPath = Paths.get(pathDetails.getPathJavaServerTestFol() + File.separator + PREFIX_EXAM_SCRIPT + dto.getStudentCode() + "_" + scriptCode);
                     break;
                 }
             }
@@ -297,37 +300,52 @@ public class EvaluationManager {
                 System.out.println("[PATH-SCRIPT-ERROR]" + dto.getStudentCode() + "-" + dto.getScriptCode());
                 return;
             }
-            Files.copy(sourceScriptPath, serverTestScriptPath);
-            ZipFile.unzip(pathDetails.getPathSubmission() + File.separator + dto.getStudentCode() + ".zip", pathDetails.getPathJavaServerSubmit());
+            // Pre evaluating
+            Files.copy(sourceScriptPath, serverTestScriptPath, StandardCopyOption.REPLACE_EXISTING);
+            ZipFile.unzip(pathDetails.getPathSubmission()
+                    + File.separator
+                    + dto.getStudentCode()
+                    + EXTENSION_ZIP, pathDetails.getPathJavaServerSubmit());
 
+            // Copy all DB tools existed
+            FileUtils.copyAllFiles(pathDetails.getPathDBTools(), pathDetails.getPathJavaServerStudent(), EXTENSION_JAVA);
+            // Copy all config files existed
+
+            // Change Scanner value if exist
+            FileUtils.changeScannerToValue(pathDetails, scriptTextCode, EXTENSION_JAVA);
             // Chạy CMD file test
             CmdExcution.execute(pathDetails.getJavaExecuteCmd());
-            // Check compile error
+
+
+//             Check compile error
             String resultText = "";
             StudentPointDto result = new StudentPointDto();
             result.setStudentCode(dto.getStudentCode());
-            if (checkCompileIsError(pathDetails.getPathServerLogFile())) {
+            if (checkCompileIsError(pathDetails.getPathServerEvaluatingLogFile())) {
                 result.setErrorMsg("Compile Error");
                 result.setTotalPoint("0");
                 result.setEvaluateTime(TimeUtils.getCurTime());
                 resultText = objectMapper.writeValueAsString(result);
             } else {
                 resultText = getTextResult(result);
+                if (resultText.equals("Error")) {
+                    result.setErrorMsg("Error");
+                }
                 if (resultText.equals(NOT_FOUND_STUDENT)) {
                     result.setErrorMsg("Submit required");
                     result.setTotalPoint("0");
                     resultText = objectMapper.writeValueAsString(result);
                 }
             }
+            System.out.println(resultText);
             sendTCPResult(resultText);
-
+//
             if (submissionQueue.size() > 0) {
-                deleteAllFile(dto.getStudentCode(), pathDetails.getPathJavaServerSubmitDelete());
+                deleteAllFile(dto.getStudentCode(), pathDetails.getPathJavaServerStudent());
                 evaluateSubmissionJava(submissionQueue.remove());
             } else {
                 isEvaluating = false;
             }
-
             // Trả status đã chấm xong về app lec winform (mssv)
             System.out.println("Trả response cho giảng viên");
         } catch (Exception e) {
@@ -335,7 +353,7 @@ public class EvaluationManager {
                     .log(Level.ERROR, "[EVALUATE-ERROR] Student code : " + dto.getStudentCode());
             e.printStackTrace();
         } finally {
-            deleteAllFile(dto.getStudentCode(), pathDetails.getPathJavaServerSubmitDelete());
+            deleteAllFile(dto.getStudentCode(), pathDetails.getPathJavaServerStudent());
             isEvaluating = false;
         }
     }
@@ -360,9 +378,8 @@ public class EvaluationManager {
                 System.out.println("[PATH-SCRIPT-ERROR]" + dto.getStudentCode() + "-" + dto.getScriptCode());
                 return;
             }
-            Files.copy(sourceScriptPath, serverTestScriptPath);
-            String a = pathDetails.getPathSubmission() + File.separator + dto.getStudentCode() + ".zip";
-            String b = pathDetails.getPathJavaWebServerSubmit();
+            Files.copy(sourceScriptPath, serverTestScriptPath, StandardCopyOption.REPLACE_EXISTING);
+
             // Unzip submission code
             ZipFile.unzip(pathDetails.getPathSubmission()
                             + File.separator
@@ -379,35 +396,40 @@ public class EvaluationManager {
             FileUtils.convertHtmlFileToJspFileInWebApp(pathDetails.getPathJavaWebServerWebAppDelete());
             FileUtils.changeExtensionHtmlToJspInCode(pathDetails.getPathJavaWebServerSubmitDelete());
 
+            // Duplicated DBUtils to DBUtilsChecked if exist
+            FileUtils.copyDBUtilsToDBChecked(pathDetails.getPathDBUtilities(), pathDetails.getPathDBUtilitiesChecked());
+
+            // Copy all DB tools existed
+            FileUtils.copyAllFiles(pathDetails.getPathDBTools(), pathDetails.getPathJavaWebConnectionFol(), EXTENSION_JAVA);
+
+            // Modify and copy all student config files to resources if existed
+            // Change Scanner value if exist
+            FileUtils.changeResourceBundle(pathDetails.getPathConfig(), EXTENSION_JAVA);
+            FileUtils.copyAllFiles(pathDetails.getPathConfig(), pathDetails.getPathResources(), EXTENSION_CONFIG);
+
+            //
             String resultText = "";
             StudentPointDto result = new StudentPointDto();
             result.setStudentCode(dto.getStudentCode());
-            // Check make connection
-            if (checkMakeconnection(dto.getStudentCode())) {
+            // Copy make connection file if existed
+//            copyConnectionFile();
 //             Chạy CMD file test
-                CmdExcution.execute(pathDetails.getJavaWebExecuteCmd());
+//            CmdExcution.execute(pathDetails.getJavaWebExecuteCmd());
 //             Check compile error
-                if (checkCompileIsError(pathDetails.getPathServerLogFile())) {
-                    result.setErrorMsg("Compile Error");
-                    result.setTotalPoint("0");
-                    result.setEvaluateTime(TimeUtils.getCurTime());
-                    resultText = objectMapper.writeValueAsString(result);
-                } else {
-                    resultText = getTextResult(result);
-                    if (resultText.equals(NOT_FOUND_STUDENT)) {
-                        result.setErrorMsg("Submit required");
-                        result.setTotalPoint("0");
-                        resultText = objectMapper.writeValueAsString(result);
-                    }
-                }
-            } else {
-                result.setErrorMsg("Make connection file invalid");
+            if (checkCompileIsError(pathDetails.getPathServerEvaluatingLogFile())) {
+                result.setErrorMsg("Compile Error");
                 result.setTotalPoint("0");
                 result.setEvaluateTime(TimeUtils.getCurTime());
                 resultText = objectMapper.writeValueAsString(result);
+            } else {
+                resultText = getTextResult(result);
+                if (resultText.equals(NOT_FOUND_STUDENT)) {
+                    result.setErrorMsg("Submit required");
+                    result.setTotalPoint("0");
+                    resultText = objectMapper.writeValueAsString(result);
+                }
             }
             sendTCPResult(resultText);
-
             if (submissionQueue.size() > 0) {
                 deleteAllFile(dto.getStudentCode(), pathDetails.getPathJavaWebServerSubmitDelete());
                 evaluateSubmissionJavaWeb(submissionQueue.remove());
@@ -418,11 +440,12 @@ public class EvaluationManager {
             System.out.println("Trả response cho giảng viên");
 
         } catch (Exception e) {
+
             Logger.getLogger(EvaluationManager.class.getName())
                     .log(Level.ERROR, "[EVALUATE-ERROR] Student code : " + dto.getStudentCode());
             e.printStackTrace();
         } finally {
-            deleteAllFile(dto.getStudentCode(), pathDetails.getPathJavaServerSubmitDelete());
+            deleteAllFile(dto.getStudentCode(), pathDetails.getPathJavaServerStudent());
             isEvaluating = false;
         }
     }
@@ -449,9 +472,8 @@ public class EvaluationManager {
                 System.out.println("[PATH-SCRIPT-ERROR]" + dto.getStudentCode() + "-" + dto.getScriptCode());
                 return;
             }
-            Files.copy(sourceScriptPath, serverTestScriptPath);
+            Files.copy(sourceScriptPath, serverTestScriptPath, StandardCopyOption.REPLACE_EXISTING);
             ZipFile.unzip(pathDetails.getPathSubmission() + File.separator + dto.getStudentCode() + ".zip", pathDetails.getPathCSharpServerSubmit());
-
 
             // Chạy CMD file test
             CmdExcution.execute(pathDetails.getCSharpExecuteCmd());
@@ -475,7 +497,7 @@ public class EvaluationManager {
 
 
     private void deleteAllFile(String studentCode, String pathSubmit) {
-
+        appendLogServerTest(studentCode);
         File file = new File(pathSubmit);
         if (file != null && SubmissionUtils.deleteFolder(file)) {
             System.out.println("[DELETE SUBMISSION - SERVER] - " + studentCode);
@@ -495,7 +517,7 @@ public class EvaluationManager {
         }
     }
 
-    @Bean
+    @Bean("TaskExecutor")
     TaskExecutor taskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(30);
@@ -520,33 +542,6 @@ public class EvaluationManager {
         return false;
     }
 
-    private boolean checkMakeconnection(String studentCode) {
-        boolean check = true;
-        String text = "";
-        text = readFileAsString(pathDetails.getPathJavaWebContextFile(), studentCode).trim();
-        if (!text.contains("com.microsoft.sqlserver.jdbc.SQLServerDriver")) {
-            check = false;
-        }
-        if (!text.contains("jdbc:sqlserver://localhost:")) {
-            check = false;
-        }
-        if (!text.contains("type=\"javax.sql.DataSource\"")) {
-            check = false;
-        }
-        if (check) {
-            try {
-                Path templatePathDatabaseUtils = Paths.get(pathDetails.getPathDataBaseUtils());
-                Path serverPathDatabaseUtils = Paths.get(pathDetails.getPathJavaWebDBUtilsFile());
-                if (templatePathDatabaseUtils != null && serverPathDatabaseUtils != null) {
-                    Files.copy(templatePathDatabaseUtils, serverPathDatabaseUtils, StandardCopyOption.REPLACE_EXISTING);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return check;
-    }
-
 
     public void sendTCPResult(String result) {
         try {
@@ -555,12 +550,12 @@ public class EvaluationManager {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+            sendTCPResult(result);
         }
     }
 
     private String getTextResult(StudentPointDto dto) {
         String path = pathDetails.getPathResultFile();
-
         String startString = "Start" + dto.getStudentCode();
         String endString = "End" + dto.getStudentCode();
         String str = readFileAsString(path, dto.getStudentCode());
@@ -584,4 +579,16 @@ public class EvaluationManager {
         return text;
     }
 
+    private void appendLogServerTest(String studentCode) {
+        String s = "--------------------------------------------------------";
+        s += "\n" + studentCode + "\n";
+        s += "--------------------------------------------------------\n";
+        s += readFileAsString(pathDetails.getPathServerEvaluatingLogFile(), studentCode);
+        String logFile = pathDetails.getPathServerLogFile();
+        try {
+            Files.write(Paths.get(logFile), s.getBytes(), StandardOpenOption.APPEND);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

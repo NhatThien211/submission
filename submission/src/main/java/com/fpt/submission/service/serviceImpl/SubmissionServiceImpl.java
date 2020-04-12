@@ -4,12 +4,10 @@ import com.fpt.submission.constants.CommonConstant;
 import com.fpt.submission.dto.request.StudentSubmitDetail;
 import com.fpt.submission.dto.request.UploadFileDto;
 import com.fpt.submission.service.SubmissionService;
-import com.fpt.submission.utils.SubmissionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -19,6 +17,7 @@ public class SubmissionServiceImpl implements SubmissionService {
     private SubmissionUtils submissionUtils;
     private Queue<String> submitTimeQueue;
     private boolean isSendingTCP = false;
+
     @Autowired
     ApplicationEventPublisher applicationEventPublisher;
 

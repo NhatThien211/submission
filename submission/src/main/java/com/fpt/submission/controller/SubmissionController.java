@@ -1,30 +1,16 @@
 package com.fpt.submission.controller;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.fpt.submission.utils.JsonUtils;
-import com.fpt.submission.utils.PathUtils;
-import com.fpt.submission.dto.request.PracticalInfo;
 import com.fpt.submission.dto.request.UploadFileDto;
 import com.fpt.submission.service.SubmissionService;
-import com.fpt.submission.utils.SubmissionUtils;
+import com.fpt.submission.service.serviceImpl.SubmissionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
-
-import static com.fasterxml.jackson.databind.MapperFeature.USE_WRAPPER_NAME_AS_PROPERTY_NAME;
 
 @RestController
 @RequestMapping("/api")

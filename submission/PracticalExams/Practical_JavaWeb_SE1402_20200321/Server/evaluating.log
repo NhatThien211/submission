@@ -1,0 +1,40 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< eu.arima:springboot-with-webxml >-------------------
+[INFO] Building springboot-with-webxml 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ springboot-with-webxml ---
+[INFO] Deleting E:\CN9\FU_Submission_Webservice\submission\PracticalExams\Practical_JavaWeb_SE1402_20200321\Server\target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ springboot-with-webxml ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ springboot-with-webxml ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 14 source files to E:\CN9\FU_Submission_Webservice\submission\PracticalExams\Practical_JavaWeb_SE1402_20200321\Server\target\classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /E:/CN9/FU_Submission_Webservice/submission/PracticalExams/Practical_JavaWeb_SE1402_20200321/Server/src/main/java/com/practicalexam/student/user/UserDAO.java:[58,11] exception javax.naming.NamingException is never thrown in body of corresponding try statement
+[ERROR] /E:/CN9/FU_Submission_Webservice/submission/PracticalExams/Practical_JavaWeb_SE1402_20200321/Server/src/main/java/com/practicalexam/student/user/UserDAO.java:[60,11] exception java.lang.ClassNotFoundException is never thrown in body of corresponding try statement
+[INFO] 2 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.320 s
+[INFO] Finished at: 2020-03-27T02:32:57+07:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.8.1:compile (default-compile) on project springboot-with-webxml: Compilation failure: Compilation failure: 
+[ERROR] /E:/CN9/FU_Submission_Webservice/submission/PracticalExams/Practical_JavaWeb_SE1402_20200321/Server/src/main/java/com/practicalexam/student/user/UserDAO.java:[58,11] exception javax.naming.NamingException is never thrown in body of corresponding try statement
+[ERROR] /E:/CN9/FU_Submission_Webservice/submission/PracticalExams/Practical_JavaWeb_SE1402_20200321/Server/src/main/java/com/practicalexam/student/user/UserDAO.java:[60,11] exception java.lang.ClassNotFoundException is never thrown in body of corresponding try statement
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

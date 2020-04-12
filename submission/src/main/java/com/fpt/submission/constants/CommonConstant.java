@@ -14,5 +14,6 @@ public class CommonConstant {
     public static final String EXTENSION_JAVA =".java";
     public static final String EXTENSION_CSHARP =".cs";
     public static final String EXTENSION_C =".c";
+    public static final String EXTENSION_CONFIG =".properties";
 
 }

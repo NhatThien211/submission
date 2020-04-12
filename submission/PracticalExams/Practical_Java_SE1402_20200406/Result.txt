@@ -1,0 +1,2 @@
+StartSE63156{"studentCode":"SE63156","listQuestions":{},"totalPoint":"10.0","submitTime":null,"evaluateTime":"2020-03-17 14:25:06","codingConvention":null,"result":"4/4","errorMsg":null}
+EndSE63156StartSE63155{"studentCode":"SE63155","listQuestions":{},"totalPoint":"10.0","submitTime":null,"evaluateTime":"2020-03-18 17:43:30","codingConvention":null,"result":"4/4","errorMsg":null}EndSE63155

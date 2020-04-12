@@ -11,17 +11,25 @@ public class PathDetails implements Serializable {
     private PracticalInfo practicalInfo;
     private String curPractical;
     private String practicalExamCode;
+    private String practicalExamName;
     private String pathSubmission;
     private String pathServer;
+    private String pathServerEvaluatingLogFile;
     private String pathServerLogFile;
+
     private String pathResultFile;
     private String pathTestScript;
     private String pathDataBaseUtils;
+    private String pathDBTools;
+    private String pathConfig;
+    private String pathResources;
 
 
+    private String pathDBUtilities;
+    private String pathDBUtilitiesChecked;
     // Java
     private String pathJavaServerSubmit;
-    private String pathJavaServerSubmitDelete;
+    private String pathJavaServerStudent;
     private String pathJavaServerTestFol;
     private String javaExecuteCmd;
 
@@ -33,7 +41,8 @@ public class PathDetails implements Serializable {
     private String pathJavaWebServerTestFol;
     private String javaWebExecuteCmd;
     private String pathJavaWebContextFile;
-    private String pathJavaWebDBUtilsFile;
+    private String pathJavaWebConnectionFol;
+
 
     //C
     private String pathCTestFol;
@@ -54,17 +63,22 @@ public class PathDetails implements Serializable {
         curPractical = PROJECT_DIR + File.separator
                 + "PracticalExams" + File.separator
                 + practicalInfo.getName();
+        this.practicalExamName = practicalInfo.getName();
         this.pathServer = curPractical + File.separator + "Server";
+        this.pathDBTools = curPractical + File.separator + "DBTools";
         this.pathSubmission = curPractical + File.separator + "Submissions";
         this.practicalExamCode = practicalInfo.getExamCode();
         this.pathResultFile = curPractical + File.separator + "Result.txt";
-        this.pathDataBaseUtils = curPractical + File.separator + practicalExamCode + ".java";
+        this.pathDataBaseUtils = curPractical + File.separator + practicalInfo.getName() + ".java";
         this.pathTestScript = curPractical + File.separator + "TestScripts";
+        this.pathServerEvaluatingLogFile = curPractical + File.separator + "Server" + File.separator + "evaluating.log";
         this.pathServerLogFile = curPractical + File.separator + "Server" + File.separator + "servertest.log";
 
     }
 
-
+    public String getPracticalExamName() {
+        return practicalExamName;
+    }
     public String getPracticalExamCode() {
         return practicalExamCode;
     }
@@ -81,8 +95,15 @@ public class PathDetails implements Serializable {
         return pathServer;
     }
 
-    public String getPathServerLogFile() {
+    public String getPathDBTools() {
+        return pathDBTools;
+    }
 
+    public String getPathServerEvaluatingLogFile() {
+        return pathServerEvaluatingLogFile;
+    }
+
+    public String getPathServerLogFile() {
         return pathServerLogFile;
     }
 
@@ -94,6 +115,24 @@ public class PathDetails implements Serializable {
         return pathTestScript;
     }
 
+    public String getPathConfig() {
+        this.pathConfig = pathServer + File.separator
+                + "src" + File.separator
+                + "main" + File.separator
+                + "java" + File.separator
+                + "com" + File.separator
+                + "practicalexam" + File.separator
+                + "student" + File.separator
+                + "config";
+        return pathConfig;
+    }
+    public String getPathResources() {
+        this.pathResources = pathServer + File.separator
+                + "src" + File.separator
+                + "main" + File.separator
+                + "resources";
+        return pathResources;
+    }
     public String getPathJavaServerSubmit() {
         this.pathJavaServerSubmit = pathServer + File.separator
                 + "src" + File.separator
@@ -104,16 +143,17 @@ public class PathDetails implements Serializable {
         return pathJavaServerSubmit;
     }
 
-    public String getPathJavaServerSubmitDelete() {
-        this.pathJavaServerSubmitDelete = pathServer + File.separator
+    public String getPathJavaServerStudent() {
+        this.pathJavaServerStudent = pathServer + File.separator
                 + "src" + File.separator
                 + "main" + File.separator
                 + "java" + File.separator
                 + "com" + File.separator
                 + "practicalexam" + File.separator
                 + "student";
-        return pathJavaServerSubmitDelete;
+        return pathJavaServerStudent;
     }
+
 
     public String getPathJavaServerTestFol() {
         this.pathJavaServerTestFol = pathServer
@@ -122,12 +162,12 @@ public class PathDetails implements Serializable {
                 + "test" + File.separator
                 + "java" + File.separator
                 + "com" + File.separator
-                + "practicalexam" + File.separator;
+                + "practicalexam";
         return pathJavaServerTestFol;
     }
 
     public String getJavaExecuteCmd() {
-        this.javaExecuteCmd = "cd " + pathServer + "&mvn clean package -l servertest.log";
+        this.javaExecuteCmd = "cd " + pathServer + "&mvn clean package -l evaluating.log";
         return javaExecuteCmd;
     }
 
@@ -177,18 +217,18 @@ public class PathDetails implements Serializable {
         return pathJavaWebServerTestFol;
     }
 
-    public String getPathJavaWebDBUtilsFile() {
-        this.pathJavaWebDBUtilsFile = curPractical + File.separator + "Server" +
+    public String getPathJavaWebConnectionFol() {
+        this.pathJavaWebConnectionFol = curPractical + File.separator + "Server" +
                 File.separator + "src"
                 + File.separator + "main"
                 + File.separator + "java"
                 + File.separator + "com"
                 + File.separator + "practicalexam"
                 + File.separator + "student"
-                + File.separator + "connection"
-                + File.separator  + "DBUtilities.java";
-        return this.pathJavaWebDBUtilsFile;
+                + File.separator + "connection";
+        return this.pathJavaWebConnectionFol;
     }
+
 
     public String getPathJavaWebContextFile() {
         this.pathJavaWebContextFile = curPractical + File.separator + "Server" +
@@ -200,8 +240,32 @@ public class PathDetails implements Serializable {
         return this.pathJavaWebContextFile;
     }
 
+    public String getPathDBUtilities() {
+        this.pathDBUtilities = curPractical + File.separator + "src"
+                + File.separator + "main"
+                + File.separator + "java"
+                + File.separator + "com"
+                + File.separator + "practicalexam"
+                + File.separator + "student"
+                + File.separator + "connection"
+                + File.separator + "DBUtilities.java";
+        return pathDBUtilities;
+    }
+
+    public String getPathDBUtilitiesChecked() {
+        this.pathDBUtilitiesChecked = curPractical + File.separator + "src"
+                + File.separator + "main"
+                + File.separator + "java"
+                + File.separator + "com"
+                + File.separator + "practicalexam"
+                + File.separator + "student"
+                + File.separator + "connection"
+                + File.separator + "DBUtilitiesChecked.java";
+        return pathDBUtilitiesChecked;
+    }
+
     public String getJavaWebExecuteCmd() {
-        this.javaWebExecuteCmd = "cd " + pathServer + "&mvn clean package -l servertest.log";
+        this.javaWebExecuteCmd = "cd " + pathServer + "&mvn clean package -l evaluating.log";
         return javaWebExecuteCmd;
     }
 
@@ -266,4 +330,5 @@ public class PathDetails implements Serializable {
         this.cSharpExecuteCmd = "cd " + pathServer + "&dotnet clean&dotnet test";
         return cSharpExecuteCmd;
     }
+
 }

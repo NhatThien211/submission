@@ -1,25 +1,30 @@
-package com.fpt.submission.utils;
+package com.fpt.submission.service.serviceImpl;
 
 import com.fpt.submission.constants.CommonConstant;
 import com.fpt.submission.dto.request.PathDetails;
 import com.fpt.submission.dto.request.UploadFileDto;
 import com.fpt.submission.exception.CustomException;
-import com.fpt.submission.service.serviceImpl.EvaluationManager;
+import com.fpt.submission.utils.PathUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.task.TaskExecutor;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.util.StringUtils;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -52,11 +57,13 @@ public class SubmissionUtils {
 
     @Async("ThreadPoolTaskExecutor")
     public void submitSubmission(UploadFileDto dto) {
-        boolean check = false;
         try {
             Logger.getLogger(SubmissionUtils.class.getName())
                     .log(Level.INFO, "[SUBMISSION] - File from student: " + dto.getStudentCode());
             MultipartFile file = dto.getFile();
+//            dto.setSubjectCode("JAVA");
+            // Send file to check duplicated code
+            sendFile(dto);
 
             if (file != null) {
                 PathDetails pathDetails = PathUtils.pathDetails;
@@ -79,7 +86,38 @@ public class SubmissionUtils {
             throw new CustomException(HttpStatus.CONFLICT, ex.getMessage());
         }
     }
+    private void sendFile(UploadFileDto dto){
+        MultiValueMap<String, Object> body
+                = new LinkedMultiValueMap<>();
+        body.add("studentCode", dto.getStudentCode());
+        body.add("file", new FileSystemResource(convert(dto.getFile())));
+        body.add("examCode", pathDetails.getPracticalExamName());
 
+        HttpEntity<MultiValueMap<String, Object>> requestEntity
+                = new HttpEntity<>(body);
+
+        String serverUrl = "http://localhost:2021/api/practical-exam/submission";
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response = restTemplate
+                .postForEntity(serverUrl, requestEntity, String.class);
+        System.out.println(response);
+    }
+    private  File convert(MultipartFile file)
+    {
+        File convFile = new File(file.getOriginalFilename());
+        try {
+            convFile.createNewFile();
+            FileOutputStream fos = new FileOutputStream(convFile);
+            fos.write(file.getBytes());
+            fos.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return convFile;
+    }
     public static boolean deleteFolder(File directory) {
         //make sure directory exists
         if (directory.exists()) {
