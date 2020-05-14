@@ -43,7 +43,7 @@ public class SubmissionUtils {
     public SubmissionUtils() {
         evaluationManager = new EvaluationManager();
         pathDetails = PathUtils.pathDetails;
-    }
+    } 
 
     @Bean("ThreadPoolTaskExecutor")
     public TaskExecutor getAsyncExecutor() {
@@ -63,7 +63,7 @@ public class SubmissionUtils {
             MultipartFile file = dto.getFile();
 //            dto.setSubjectCode("JAVA");
             // Send file to check duplicated code
-            sendFile(dto);
+            //sendFile(dto);
 
             if (file != null) {
                 PathDetails pathDetails = PathUtils.pathDetails;

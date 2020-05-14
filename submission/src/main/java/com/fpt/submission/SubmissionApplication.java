@@ -15,7 +15,7 @@ public class SubmissionApplication {
 
     public static void main(String[] args) {
         getPracticalInfo();
-        SpringApplication.run(SubmissionApplication.class, args);
+        SpringApplication.run(SubmissionApplication.class, args);   
     }
 
     private static void getPracticalInfo() {
