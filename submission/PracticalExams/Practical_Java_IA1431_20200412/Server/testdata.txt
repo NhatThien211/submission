@@ -1,1 +1,1 @@
-id:1004:String-name:modelRemove:String-size:14:int-price:1004:double-
+price:1000-name:nameTest1001-id:1001-manufacturer:manufacturerTest-

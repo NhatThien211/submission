@@ -66,7 +66,7 @@ public class SubmissionController {
     }
     @PostMapping("/submission")
     public String uploadFile(@ModelAttribute UploadFileDto file) throws IOException {
-        return submissionService.submit(file);
+        return "submissionService.submit(file)";
     }
 
 }

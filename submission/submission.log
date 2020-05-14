@@ -460,3 +460,40 @@
 2020-04-12 19:12:37 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140353
 2020-04-12 19:16:44 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE140353
 2020-04-12 19:16:44 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE140353
+2020-04-23 21:15:07 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE63146
+2020-04-23 21:15:07 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE63146
+2020-04-23 21:15:07 ERROR EvaluationManager:353 - [EVALUATE-ERROR] Student code : SE63146
+2020-04-23 21:51:52 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE63146
+2020-04-23 21:51:52 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE63146
+2020-04-23 21:51:52 ERROR EvaluationManager:353 - [EVALUATE-ERROR] Student code : SE63146
+2020-04-23 22:35:23 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE62847
+2020-04-23 22:35:23 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE62847
+2020-04-23 22:35:23 ERROR EvaluationManager:353 - [EVALUATE-ERROR] Student code : SE62847
+2020-04-23 22:40:09 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE63155
+2020-04-23 22:40:09 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE63155
+2020-04-23 22:40:09 ERROR EvaluationManager:353 - [EVALUATE-ERROR] Student code : SE63155
+2020-04-23 23:19:58 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE62847
+2020-04-23 23:19:58 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE62847
+2020-04-23 23:19:58 ERROR EvaluationManager:353 - [EVALUATE-ERROR] Student code : SE62847
+2020-04-23 23:21:10 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE63155
+2020-04-23 23:21:10 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE63155
+2020-04-23 23:21:10 ERROR EvaluationManager:353 - [EVALUATE-ERROR] Student code : SE63155
+2020-04-24 00:53:40 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE63146
+2020-04-24 00:53:40 ERROR SubmissionUtils:85 - [SUBMISSION-ERROR] - File from student : D:\Offline_api\submission\PracticalExams\Practical_Java_IA1431_20200412\Submissions\SE63146.zip: The process cannot access the file because it is being used by another process.
+
+2020-04-24 00:55:50 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE63146
+2020-04-24 00:55:50 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE63146
+2020-04-24 00:55:50 ERROR EvaluationManager:353 - [EVALUATE-ERROR] Student code : SE63146
+2020-04-24 00:57:33 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE62847
+2020-04-24 00:57:33 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE62847
+2020-04-24 00:57:33 ERROR EvaluationManager:353 - [EVALUATE-ERROR] Student code : SE62847
+2020-04-24 01:00:12 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE63146
+2020-04-24 01:00:12 ERROR SubmissionUtils:85 - [SUBMISSION-ERROR] - File from student : D:\Offline_api\submission\PracticalExams\Practical_Java_IA1431_20200412\Submissions\SE63146.zip: The process cannot access the file because it is being used by another process.
+
+2020-04-24 15:30:14 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE62847
+2020-04-24 15:30:14 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: null
+2020-04-24 15:30:14 ERROR SubmissionUtils:85 - [SUBMISSION-ERROR] - File from student : null
+2020-04-24 15:30:14 INFO  SubmissionUtils:62 - [SUBMISSION] - File from student: SE62847
+2020-04-24 15:30:14 ERROR SubmissionUtils:114 - [EVALUATE] Waiting - : SE62847
+2020-04-24 15:30:14 INFO  EvaluationManager:284 - [EVALUATE] Student code : SE62847
+2020-04-24 15:30:14 ERROR EvaluationManager:353 - [EVALUATE-ERROR] Student code : SE62847
