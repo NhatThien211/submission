@@ -12,4 +12,5 @@ import java.io.Serializable;
 public class PracticalInfo implements Serializable {
     private String name;
     private String examCode;
+    private String subjectCode;
 }

@@ -1,0 +1,160 @@
+2020-05-19 20:15:42.297  INFO 1556 --- [main] c.fpt.submission.SubmissionApplication   : Starting SubmissionApplication on THUCNHSE63155 with PID 1556 (E:\CN9\PE2A_WF_Lecturer\PE2A_WF_LECTURER\Lecturer\submission\target\classes started by HP in E:\CN9\PE2A_WF_Lecturer\PE2A_WF_LECTURER\Lecturer\submission)
+2020-05-19 20:15:42.309  INFO 1556 --- [main] c.fpt.submission.SubmissionApplication   : No active profile set, falling back to default profiles: default
+2020-05-19 20:15:44.673  INFO 1556 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 2020 (http)
+2020-05-19 20:15:44.687  INFO 1556 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-05-19 20:15:44.688  INFO 1556 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-05-19 20:15:44.791  INFO 1556 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-05-19 20:15:44.791  INFO 1556 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2374 ms
+2020-05-19 20:15:45.556  INFO 1556 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 15 endpoint(s) beneath base path '/actuator'
+2020-05-19 20:15:45.649  INFO 1556 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-05-19 20:15:45.670  INFO 1556 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'TaskExecutor'
+2020-05-19 20:15:45.672  INFO 1556 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'TaskExecutor'
+2020-05-19 20:15:45.679  INFO 1556 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'ThreadPoolTaskExecutor'
+2020-05-19 20:15:46.094  INFO 1556 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-05-19 20:15:46.119  INFO 1556 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-05-19 20:15:46.171  INFO 1556 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-05-19 20:15:46.343  INFO 1556 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_1
+2020-05-19 20:15:46.350  INFO 1556 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_2
+2020-05-19 20:15:46.353  INFO 1556 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingDELETE_1
+2020-05-19 20:15:46.355  INFO 1556 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_3
+2020-05-19 20:15:46.357  INFO 1556 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_4
+2020-05-19 20:15:46.359  INFO 1556 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_5
+2020-05-19 20:15:46.361  INFO 1556 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_6
+2020-05-19 20:15:46.363  INFO 1556 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_7
+2020-05-19 20:15:46.366  INFO 1556 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_8
+2020-05-19 20:15:46.369  INFO 1556 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_9
+2020-05-19 20:15:46.372  INFO 1556 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_10
+2020-05-19 20:15:46.373  INFO 1556 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_11
+2020-05-19 20:15:46.378  INFO 1556 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_12
+2020-05-19 20:15:46.380  INFO 1556 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_13
+2020-05-19 20:15:46.383  INFO 1556 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_14
+2020-05-19 20:15:46.384  INFO 1556 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_15
+2020-05-19 20:15:46.386  INFO 1556 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_16
+2020-05-19 20:15:46.388  INFO 1556 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_17
+2020-05-19 20:15:46.390  INFO 1556 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingPOST_1
+2020-05-19 20:15:46.392  INFO 1556 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_18
+2020-05-19 20:15:46.475  INFO 1556 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 2020 (http) with context path ''
+2020-05-19 20:15:46.481  INFO 1556 --- [main] c.fpt.submission.SubmissionApplication   : Started SubmissionApplication in 4.853 seconds (JVM running for 8.712)
+2020-05-19 20:15:46.685  INFO 1556 --- [RMI TCP Connection(1)-26.184.92.230] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-05-19 20:15:46.686  INFO 1556 --- [RMI TCP Connection(1)-26.184.92.230] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-05-19 20:15:46.699  INFO 1556 --- [RMI TCP Connection(1)-26.184.92.230] o.s.web.servlet.DispatcherServlet        : Completed initialization in 13 ms
+2020-05-19 20:16:14.302  INFO 1556 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'ThreadPoolTaskExecutor'
+2020-05-19 20:16:14.302  INFO 1556 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'TaskExecutor'
+2020-05-19 20:16:32.382  INFO 4748 --- [main] c.fpt.submission.SubmissionApplication   : Starting SubmissionApplication on THUCNHSE63155 with PID 4748 (E:\CN9\PE2A_WF_Lecturer\PE2A_WF_LECTURER\Lecturer\submission\target\classes started by HP in E:\CN9\PE2A_WF_Lecturer\PE2A_WF_LECTURER\Lecturer\submission)
+2020-05-19 20:16:32.397  INFO 4748 --- [main] c.fpt.submission.SubmissionApplication   : No active profile set, falling back to default profiles: default
+2020-05-19 20:16:34.682  INFO 4748 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 2020 (http)
+2020-05-19 20:16:34.698  INFO 4748 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-05-19 20:16:34.699  INFO 4748 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-05-19 20:16:34.965  INFO 4748 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-05-19 20:16:34.966  INFO 4748 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2493 ms
+2020-05-19 20:16:35.947  INFO 4748 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 15 endpoint(s) beneath base path '/actuator'
+2020-05-19 20:16:36.043  INFO 4748 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-05-19 20:16:36.064  INFO 4748 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'TaskExecutor'
+2020-05-19 20:16:36.065  INFO 4748 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'TaskExecutor'
+2020-05-19 20:16:36.073  INFO 4748 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'ThreadPoolTaskExecutor'
+2020-05-19 20:16:36.669  INFO 4748 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-05-19 20:16:36.688  INFO 4748 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-05-19 20:16:36.741  INFO 4748 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-05-19 20:16:36.891  INFO 4748 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_1
+2020-05-19 20:16:36.895  INFO 4748 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_2
+2020-05-19 20:16:36.898  INFO 4748 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingDELETE_1
+2020-05-19 20:16:36.900  INFO 4748 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_3
+2020-05-19 20:16:36.903  INFO 4748 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_4
+2020-05-19 20:16:36.904  INFO 4748 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_5
+2020-05-19 20:16:36.907  INFO 4748 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_6
+2020-05-19 20:16:36.909  INFO 4748 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_7
+2020-05-19 20:16:36.910  INFO 4748 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_8
+2020-05-19 20:16:36.913  INFO 4748 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_9
+2020-05-19 20:16:36.915  INFO 4748 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_10
+2020-05-19 20:16:36.917  INFO 4748 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_11
+2020-05-19 20:16:36.920  INFO 4748 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_12
+2020-05-19 20:16:36.922  INFO 4748 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_13
+2020-05-19 20:16:36.924  INFO 4748 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_14
+2020-05-19 20:16:36.925  INFO 4748 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_15
+2020-05-19 20:16:36.927  INFO 4748 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_16
+2020-05-19 20:16:36.929  INFO 4748 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_17
+2020-05-19 20:16:36.931  INFO 4748 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingPOST_1
+2020-05-19 20:16:36.932  INFO 4748 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_18
+2020-05-19 20:16:37.012  INFO 4748 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 2020 (http) with context path ''
+2020-05-19 20:16:37.017  INFO 4748 --- [main] c.fpt.submission.SubmissionApplication   : Started SubmissionApplication in 5.369 seconds (JVM running for 9.674)
+2020-05-19 20:16:37.972  INFO 4748 --- [RMI TCP Connection(4)-26.184.92.230] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-05-19 20:16:37.974  INFO 4748 --- [RMI TCP Connection(4)-26.184.92.230] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-05-19 20:16:37.987  INFO 4748 --- [RMI TCP Connection(4)-26.184.92.230] o.s.web.servlet.DispatcherServlet        : Completed initialization in 13 ms
+2020-05-19 20:19:08.210  INFO 4748 --- [http-nio-2020-exec-1] c.f.s.s.serviceImpl.SubmissionUtils      : [SUBMISSION] - File from student: SE62847
+2020-05-19 20:19:08.331  INFO 4748 --- [[THREAD-EVALUATE]-1] c.f.s.s.serviceImpl.EvaluationManager    : [EVALUATE] Student code : SE62847
+2020-05-19 20:19:10.265  INFO 4748 --- [http-nio-2020-exec-1] c.f.s.s.s.SubmissionServiceImpl          : [RE-SEND TCP SUBMIT TIME]:1
+2020-05-19 20:19:12.268  INFO 4748 --- [http-nio-2020-exec-1] c.f.s.s.s.SubmissionServiceImpl          : [RE-SEND TCP SUBMIT TIME]:2
+2020-05-19 20:19:14.272  INFO 4748 --- [http-nio-2020-exec-1] c.f.s.s.s.SubmissionServiceImpl          : [RE-SEND TCP SUBMIT TIME]:3
+2020-05-19 20:19:16.279  INFO 4748 --- [http-nio-2020-exec-1] c.f.s.s.s.SubmissionServiceImpl          : [RE-SEND TCP SUBMIT TIME]:4
+2020-05-19 20:19:18.289  INFO 4748 --- [http-nio-2020-exec-1] c.f.s.s.s.SubmissionServiceImpl          : [RE-SEND TCP SUBMIT TIME]:5
+2020-05-19 20:19:20.294  INFO 4748 --- [http-nio-2020-exec-1] c.f.s.s.s.SubmissionServiceImpl          : [RE-SEND TCP SUBMIT TIME]:6
+2020-05-19 20:19:22.301  INFO 4748 --- [http-nio-2020-exec-1] c.f.s.s.s.SubmissionServiceImpl          : [RE-SEND TCP SUBMIT TIME]:7
+2020-05-19 20:19:24.539  INFO 4748 --- [http-nio-2020-exec-1] c.f.s.s.s.SubmissionServiceImpl          : [RE-SEND TCP SUBMIT TIME]:8
+2020-05-19 20:19:26.902  INFO 4748 --- [http-nio-2020-exec-1] c.f.s.s.s.SubmissionServiceImpl          : [RE-SEND TCP SUBMIT TIME]:9
+2020-05-19 20:19:29.106  INFO 4748 --- [http-nio-2020-exec-1] c.f.s.s.s.SubmissionServiceImpl          : [RE-SEND TCP SUBMIT TIME]:10
+2020-05-19 20:19:29.107  INFO 4748 --- [http-nio-2020-exec-1] c.f.s.s.s.SubmissionServiceImpl          : [REFUSE-SEND TCP SUBMIT TIME]
+2020-05-19 20:20:29.945  INFO 4748 --- [[THREAD-EVALUATE]-1] c.f.s.s.serviceImpl.EvaluationManager    : [EVALUATE-ERROR] Student code : SE62847
+2020-05-19 20:20:29.957 ERROR 4748 --- [[THREAD-EVALUATE]-1] c.f.s.s.serviceImpl.EvaluationManager    : Not found servertest.log
+2020-05-19 20:20:29.974  INFO 4748 --- [[THREAD-EVALUATE]-1] c.f.s.s.serviceImpl.EvaluationManager    : [DELETE SUBMISSION - SERVER] - SE62847
+2020-05-19 20:20:29.975  INFO 4748 --- [[THREAD-EVALUATE]-1] c.f.s.s.serviceImpl.EvaluationManager    : [DELETE SCRIPT - SERVER] - SE62847
+2020-05-19 20:20:29.981  INFO 4748 --- [[THREAD-EVALUATE]-1] c.f.s.s.serviceImpl.EvaluationManager    : [DELETE SCRIPT - SERVER] - SE62847
+2020-05-19 21:00:18.788  INFO 4748 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'ThreadPoolTaskExecutor'
+2020-05-19 21:00:18.790  INFO 4748 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'TaskExecutor'
+2020-05-19 21:00:28.955  INFO 11736 --- [main] c.fpt.submission.SubmissionApplication   : Starting SubmissionApplication on THUCNHSE63155 with PID 11736 (E:\CN9\PE2A_WF_Lecturer\PE2A_WF_LECTURER\Lecturer\submission\target\classes started by HP in E:\CN9\PE2A_WF_Lecturer\PE2A_WF_LECTURER\Lecturer\submission)
+2020-05-19 21:00:28.961  INFO 11736 --- [main] c.fpt.submission.SubmissionApplication   : No active profile set, falling back to default profiles: default
+2020-05-19 21:00:33.877  INFO 11736 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 2020 (http)
+2020-05-19 21:00:33.891  INFO 11736 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-05-19 21:00:33.892  INFO 11736 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-05-19 21:00:34.011  INFO 11736 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-05-19 21:00:34.011  INFO 11736 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4953 ms
+2020-05-19 21:00:34.858  INFO 11736 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 15 endpoint(s) beneath base path '/actuator'
+2020-05-19 21:00:35.158  INFO 11736 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-05-19 21:00:35.229  INFO 11736 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'TaskExecutor'
+2020-05-19 21:00:35.236  INFO 11736 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'TaskExecutor'
+2020-05-19 21:00:35.257  INFO 11736 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'ThreadPoolTaskExecutor'
+2020-05-19 21:00:35.908  INFO 11736 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-05-19 21:00:35.938  INFO 11736 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-05-19 21:00:36.109  INFO 11736 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-05-19 21:00:36.729  INFO 11736 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_1
+2020-05-19 21:00:36.778  INFO 11736 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingDELETE_1
+2020-05-19 21:00:36.807  INFO 11736 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_2
+2020-05-19 21:00:36.822  INFO 11736 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_3
+2020-05-19 21:00:36.846  INFO 11736 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_4
+2020-05-19 21:00:36.863  INFO 11736 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_5
+2020-05-19 21:00:36.876  INFO 11736 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_6
+2020-05-19 21:00:36.886  INFO 11736 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_7
+2020-05-19 21:00:36.895  INFO 11736 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_8
+2020-05-19 21:00:36.906  INFO 11736 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_9
+2020-05-19 21:00:36.911  INFO 11736 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_10
+2020-05-19 21:00:36.922  INFO 11736 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_11
+2020-05-19 21:00:36.941  INFO 11736 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_12
+2020-05-19 21:00:36.945  INFO 11736 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_13
+2020-05-19 21:00:36.952  INFO 11736 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_14
+2020-05-19 21:00:36.964  INFO 11736 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_15
+2020-05-19 21:00:36.979  INFO 11736 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_16
+2020-05-19 21:00:36.989  INFO 11736 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_17
+2020-05-19 21:00:36.997  INFO 11736 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingPOST_1
+2020-05-19 21:00:37.013  INFO 11736 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_18
+2020-05-19 21:00:37.243  INFO 11736 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 2020 (http) with context path ''
+2020-05-19 21:00:37.301  INFO 11736 --- [main] c.fpt.submission.SubmissionApplication   : Started SubmissionApplication in 9.362 seconds (JVM running for 11.593)
+2020-05-19 21:00:38.188  INFO 11736 --- [RMI TCP Connection(2)-26.184.92.230] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-05-19 21:00:38.189  INFO 11736 --- [RMI TCP Connection(2)-26.184.92.230] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-05-19 21:00:38.205  INFO 11736 --- [RMI TCP Connection(2)-26.184.92.230] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
+2020-05-19 21:02:50.743  INFO 11736 --- [http-nio-2020-exec-1] c.f.s.s.serviceImpl.SubmissionUtils      : [SUBMISSION] - File from student: SE62847
+2020-05-19 21:02:50.771  INFO 11736 --- [[THREAD-EVALUATE]-1] c.f.s.s.serviceImpl.EvaluationManager    : [EVALUATE] Student code : SE62847
+2020-05-19 21:02:52.782  INFO 11736 --- [http-nio-2020-exec-1] c.f.s.s.s.SubmissionServiceImpl          : [RE-SEND TCP SUBMIT TIME]:1
+2020-05-19 21:02:54.787  INFO 11736 --- [http-nio-2020-exec-1] c.f.s.s.s.SubmissionServiceImpl          : [RE-SEND TCP SUBMIT TIME]:2
+2020-05-19 21:02:56.965  INFO 11736 --- [http-nio-2020-exec-1] c.f.s.s.s.SubmissionServiceImpl          : [RE-SEND TCP SUBMIT TIME]:3
+2020-05-19 21:02:59.082  INFO 11736 --- [http-nio-2020-exec-1] c.f.s.s.s.SubmissionServiceImpl          : [RE-SEND TCP SUBMIT TIME]:4
+2020-05-19 21:03:01.186  INFO 11736 --- [http-nio-2020-exec-1] c.f.s.s.s.SubmissionServiceImpl          : [RE-SEND TCP SUBMIT TIME]:5
+2020-05-19 21:03:03.487  INFO 11736 --- [http-nio-2020-exec-1] c.f.s.s.s.SubmissionServiceImpl          : [RE-SEND TCP SUBMIT TIME]:6
+2020-05-19 21:03:05.679  INFO 11736 --- [http-nio-2020-exec-1] c.f.s.s.s.SubmissionServiceImpl          : [RE-SEND TCP SUBMIT TIME]:7
+2020-05-19 21:03:07.978  INFO 11736 --- [http-nio-2020-exec-1] c.f.s.s.s.SubmissionServiceImpl          : [RE-SEND TCP SUBMIT TIME]:8
+2020-05-19 21:03:10.066  INFO 11736 --- [http-nio-2020-exec-1] c.f.s.s.s.SubmissionServiceImpl          : [RE-SEND TCP SUBMIT TIME]:9
+2020-05-19 21:03:12.186  INFO 11736 --- [http-nio-2020-exec-1] c.f.s.s.s.SubmissionServiceImpl          : [RE-SEND TCP SUBMIT TIME]:10
+2020-05-19 21:03:12.186  INFO 11736 --- [http-nio-2020-exec-1] c.f.s.s.s.SubmissionServiceImpl          : [REFUSE-SEND TCP SUBMIT TIME]
+2020-05-19 21:03:42.619  INFO 11736 --- [[THREAD-EVALUATE]-1] c.f.s.s.serviceImpl.EvaluationManager    : [EVALUATE-ERROR] Student code : SE62847
+2020-05-19 21:03:42.625 ERROR 11736 --- [[THREAD-EVALUATE]-1] c.f.s.s.serviceImpl.EvaluationManager    : Not found servertest.log
+2020-05-19 21:03:42.631  INFO 11736 --- [[THREAD-EVALUATE]-1] c.f.s.s.serviceImpl.EvaluationManager    : [DELETE SUBMISSION - SERVER] - SE62847
+2020-05-19 21:03:42.632  INFO 11736 --- [[THREAD-EVALUATE]-1] c.f.s.s.serviceImpl.EvaluationManager    : [DELETE SCRIPT - SERVER] - SE62847
+2020-05-19 21:03:42.635  INFO 11736 --- [[THREAD-EVALUATE]-1] c.f.s.s.serviceImpl.EvaluationManager    : [DELETE SCRIPT - SERVER] - SE62847

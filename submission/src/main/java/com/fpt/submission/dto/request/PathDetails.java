@@ -17,6 +17,11 @@ public class PathDetails implements Serializable {
     private String pathServerEvaluatingLogFile;
     private String pathServerLogFile;
 
+
+    private String pathCIgnorePrefix;
+    private String pathJavaIgnorePrefix;
+    private String pathCSharpIgnorePrefix;
+
     private String pathResultFile;
     private String pathTestScript;
     private String pathDataBaseUtils;
@@ -32,6 +37,7 @@ public class PathDetails implements Serializable {
     private String pathJavaServerStudent;
     private String pathJavaServerTestFol;
     private String javaExecuteCmd;
+    private String pathFileData;
 
     // Java web
     private String pathJavaWebServerSubmit;
@@ -56,6 +62,7 @@ public class PathDetails implements Serializable {
     private String pathCSharpServerSubmit;
     private String pathCSharpServerSubmitDelete;
     private String cSharpExecuteCmd;
+    private String pathCSharpDBUtil;
 
 
     public PathDetails(PracticalInfo practicalInfo) {
@@ -76,9 +83,29 @@ public class PathDetails implements Serializable {
 
     }
 
+    public String getCurPractical() {
+        return curPractical;
+    }
+
+    public String getPathCIgnorePrefix() {
+        this.pathCIgnorePrefix = PROJECT_DIR + File.separator + "FormatConstant" + File.separator + "C.txt";
+        return pathCIgnorePrefix;
+    }
+
+    public String getPathJavaIgnorePrefix() {
+        this.pathJavaIgnorePrefix = PROJECT_DIR + File.separator + "FormatConstant" + File.separator + "Java.txt";
+        return pathJavaIgnorePrefix;
+    }
+
+    public String getPathCSharpIgnorePrefix() {
+        this.pathCSharpIgnorePrefix = PROJECT_DIR + File.separator + "FormatConstant" + File.separator + "CSharp.txt";
+        return pathCSharpIgnorePrefix;
+    }
+
     public String getPracticalExamName() {
         return practicalExamName;
     }
+
     public String getPracticalExamCode() {
         return practicalExamCode;
     }
@@ -126,6 +153,7 @@ public class PathDetails implements Serializable {
                 + "config";
         return pathConfig;
     }
+
     public String getPathResources() {
         this.pathResources = pathServer + File.separator
                 + "src" + File.separator
@@ -133,6 +161,7 @@ public class PathDetails implements Serializable {
                 + "resources";
         return pathResources;
     }
+
     public String getPathJavaServerSubmit() {
         this.pathJavaServerSubmit = pathServer + File.separator
                 + "src" + File.separator
@@ -141,6 +170,13 @@ public class PathDetails implements Serializable {
                 + "com" + File.separator
                 + "practicalexam" + File.separator;
         return pathJavaServerSubmit;
+    }
+
+    public String getPathFileData() {
+        this.pathFileData = pathServer + File.separator
+                + "src" + File.separator
+                + "file" + File.separator + "data.txt";
+        return pathFileData;
     }
 
     public String getPathJavaServerStudent() {
@@ -265,7 +301,7 @@ public class PathDetails implements Serializable {
     }
 
     public String getJavaWebExecuteCmd() {
-        this.javaWebExecuteCmd = "cd " + pathServer + "&mvn clean package -l evaluating.log";
+        this.javaWebExecuteCmd = "cd " + pathServer + "&mvn clean package -l evaluating.log &mvn clean";
         return javaWebExecuteCmd;
     }
 
@@ -313,8 +349,18 @@ public class PathDetails implements Serializable {
     public String getPathCSharpServerSubmit() {
         this.pathCSharpServerSubmit = pathServer
                 + File.separator
-                + "TemplateAutomatedTest" + File.separator;
+                + "TemplateAutomatedTest" + File.separator + "Student";
         return pathCSharpServerSubmit;
+    }
+
+    public String getPathCSharpDBUtil() {
+        this.pathCSharpDBUtil = pathServer
+                + File.separator
+                + "TemplateAutomatedTest" + File.separator
+                + "Student" + File.separator
+                + "Student" + File.separator
+                + "DBUtil" + File.separator + "Connection.cs";
+        return pathCSharpDBUtil;
     }
 
     public String getPathCSharpServerSubmitDelete() {
@@ -322,12 +368,15 @@ public class PathDetails implements Serializable {
                 + File.separator
                 + "TemplateAutomatedTest"
                 + File.separator
-                + "Student";
+                + "Student" + File.separator
+                + "student";
         return pathCSharpServerSubmitDelete;
     }
 
+
     public String getCSharpExecuteCmd() {
         this.cSharpExecuteCmd = "cd " + pathServer + "&dotnet clean&dotnet test";
+//        this.cSharpExecuteCmd = "cd " + pathServer + "&dotnet build /flp:v=diag";
         return cSharpExecuteCmd;
     }
 

@@ -1,1 +1,0 @@
-price:1000-name:nameTest1001-id:1001-manufacturer:manufacturerTest-

@@ -1,0 +1,6 @@
+add:code=codeAdd;model=modelAdd;size=10;price=1000
+add2:code=codeAdd2;model=modelAdd;size=10;price=1000
+update:code=codeAdd2;model=modelUpdate;size=11;price=1001
+search:code=codeAdd
+remove:code=codeRemove;model=modelRemove;size=13;price=1003
+sort:code=codeSort;model=zmodelSort;size=14;price=1004

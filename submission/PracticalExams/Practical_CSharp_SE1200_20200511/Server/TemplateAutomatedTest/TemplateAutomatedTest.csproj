@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <StyleCopTreatErrorsAsWarnings>True</StyleCopTreatErrorsAsWarnings>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+  <!--<Import Project="packages\StyleCop.MSBuild.6.1.0\build\StyleCop.MSBuild.targets" />-->
+  <ItemGroup>
+ 
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Controllers\WeatherForecastController.cs">
+      <ExcludeFromSourceAnalysis>True</ExcludeFromSourceAnalysis>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    
+    <Compile Update="Program.cs">
+      <ExcludeFromSourceAnalysis>True</ExcludeFromSourceAnalysis>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Update="Startup.cs">
+      <ExcludeFromSourceAnalysis>True</ExcludeFromSourceAnalysis>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    
+    <Compile Update="Ultilities\TestResult.cs">
+      <ExcludeFromSourceAnalysis>True</ExcludeFromSourceAnalysis>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Update="WeatherForecast.cs">
+      <ExcludeFromSourceAnalysis>True</ExcludeFromSourceAnalysis>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="StyleCop">
+      <HintPath>packages\StyleCop.MSBuild.6.1.0\tools\StyleCop.dll</HintPath>
+    </Reference>
+    <Reference Include="StyleCop.CSharp">
+      <HintPath>packages\StyleCop.MSBuild.6.1.0\tools\StyleCop.CSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,159 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< eu.arima:springboot-with-webxml >-------------------
+[INFO] Building springboot-with-webxml 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ springboot-with-webxml ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ springboot-with-webxml ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ springboot-with-webxml ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 13 source files to E:\CN9\Capsone_Docs\Final\Final_Presentation\PE2A-Lecturer\Lecturer\submission\PracticalExams\Practical_JavaWeb_SE1200_20200514\Server\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ springboot-with-webxml ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory E:\CN9\Capsone_Docs\Final\Final_Presentation\PE2A-Lecturer\Lecturer\submission\PracticalExams\Practical_JavaWeb_SE1200_20200514\Server\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ springboot-with-webxml ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 3 source files to E:\CN9\Capsone_Docs\Final\Final_Presentation\PE2A-Lecturer\Lecturer\submission\PracticalExams\Practical_JavaWeb_SE1200_20200514\Server\target\test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ springboot-with-webxml ---
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running server.TestwebApplicationTests
+15:19:20.815 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+15:19:20.850 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+15:19:20.923 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [server.TestwebApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+15:19:20.955 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [server.TestwebApplicationTests], using SpringBootContextLoader
+15:19:20.965 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [server.TestwebApplicationTests]: class path resource [server/TestwebApplicationTests-context.xml] does not exist
+15:19:20.966 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [server.TestwebApplicationTests]: class path resource [server/TestwebApplicationTestsContext.groovy] does not exist
+15:19:20.966 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [server.TestwebApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+15:19:21.372 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [server.TestwebApplicationTests]: using defaults.
+15:19:21.373 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+15:19:21.395 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource]
+15:19:21.398 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
+15:19:21.399 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@47dbb1e2, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@74cadd41, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2e54db99, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@55e8ec2f, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4f2613d1, org.springframework.test.context.event.EventPublishingTestExecutionListener@6d24ffa1, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@65a4798f, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@773f7880, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@878452d, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@426b6a74, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@4c51bb7]
+15:19:21.410 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@3e8f7922 testClass = TestwebApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@63192798 testClass = TestwebApplicationTests, locations = '{}', classes = '{class server.SpringbootWithWebxmlApplication, class server.SpringbootWithWebxmlApplication}', contextInitializerClasses = '[]', activeProfiles = '{test}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@2c1156a7, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@691939c9, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@2445445a, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@4df5bcb4], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> false]], class annotated with @DirtiesContext [false] with mode [null].
+Starting ChromeDriver 71.0.3578.80 (2ac50e7249fbd55e6f517a28131605c9fb9fe897) on port 8361
+Only local connections are allowed.
+[1589357966.026][WARNING]: Timed out connecting to Chrome, retrying...
+May 13, 2020 3:19:28 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+15:19:28.216 [main] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@3e8f7922 testClass = TestwebApplicationTests, testInstance = server.TestwebApplicationTests@7bbbb6a8, testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@63192798 testClass = TestwebApplicationTests, locations = '{}', classes = '{class server.SpringbootWithWebxmlApplication, class server.SpringbootWithWebxmlApplication}', contextInitializerClasses = '[]', activeProfiles = '{test}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@2c1156a7, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@691939c9, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@2445445a, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@4df5bcb4], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> false]]].
+15:19:28.286 [main] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.2.2.RELEASE)
+
+2020-05-13 15:19:29.518  INFO 11192 --- [           main] server.TestwebApplicationTests           : Starting TestwebApplicationTests on THUCNHSE63155 with PID 11192 (started by HP in E:\CN9\Capsone_Docs\Final\Final_Presentation\PE2A-Lecturer\Lecturer\submission\PracticalExams\Practical_JavaWeb_SE1200_20200514\Server)
+2020-05-13 15:19:29.521  INFO 11192 --- [           main] server.TestwebApplicationTests           : The following profiles are active: test
+2020-05-13 15:19:32.821  INFO 11192 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-05-13 15:19:32.859  INFO 11192 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-05-13 15:19:32.860  INFO 11192 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-05-13 15:19:34.118  INFO 11192 --- [           main] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2020-05-13 15:19:34.164  INFO 11192 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-05-13 15:19:34.164  INFO 11192 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4562 ms
+Servlet/DeleteServlet
+2020-05-13 15:19:34.512  INFO 11192 --- [           main] server.WebXmlBridge                      : Registered servlet with name [DeleteServlet] Class[com.practicalexam.student.controller.DeleteServlet] Mappings[[/DeleteServlet]]
+Servlet/LoadDataServlet
+2020-05-13 15:19:34.519  INFO 11192 --- [           main] server.WebXmlBridge                      : Registered servlet with name [LoadDataServlet] Class[com.practicalexam.student.controller.LoadDataServlet] Mappings[[/LoadDataServlet]]
+Servlet/LoginServlet
+2020-05-13 15:19:34.526  INFO 11192 --- [           main] server.WebXmlBridge                      : Registered servlet with name [LoginServlet] Class[com.practicalexam.student.controller.LoginServlet] Mappings[[/LoginServlet]]
+FilterFilterDispatcher
+2020-05-13 15:19:34.528  INFO 11192 --- [           main] server.WebXmlBridge                      : Registered Filter with name [FilterDispatcher] Class[FilterDispatcher] Mappings[[FilterDispatcher]]
+2020-05-13 15:19:34.534  INFO 11192 --- [           main] server.WebXmlBridge                      : Registered listener class [com.practicalexam.student.config.ContextListener]
+2020-05-13 15:19:34.679  INFO 11192 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : FilterDispatcher:Initializing filter
+2020-05-13 15:19:35.290  INFO 11192 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-13 15:19:35.889  WARN 11192 --- [           main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2020-05-13 15:19:36.358  INFO 11192 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-05-13 15:19:36.373  INFO 11192 --- [           main] server.TestwebApplicationTests           : Started TestwebApplicationTests in 8.078 seconds (JVM running for 17.655)
+ConnectionID:1 ClientConnectionId: 13cafc24-79bc-45b0-b29b-3ff99e684f6c
+executeUpdate : ConnectionID:1 ClientConnectionId: 13cafc24-79bc-45b0-b29b-3ff99e684f6c
+Test Successful for test: checkConnection()
+ConnectionID:2 ClientConnectionId: 81ecc9d7-ea96-4e03-9127-367715e1fbca
+ConnectionID:3 ClientConnectionId: 600f2c4e-c10d-411b-8033-8997b1d3a783
+ConnectionID:4 ClientConnectionId: 29dd4087-c9de-4285-b76d-5258e0bbee43
+ConnectionID:5 ClientConnectionId: cdbe7f0e-e2f3-44e2-b521-a3e1a46ecac7
+ConnectionID:6 ClientConnectionId: 0cafe22a-8989-4ffe-a18c-c3446c471ae0
+Test Successful for test: checkLoginDAOWithBoss()
+ConnectionID:7 ClientConnectionId: f9382ac9-c7f0-41f9-a472-f53a96518bf4
+Test Successful for test: showAllDAO()
+ConnectionID:8 ClientConnectionId: 50342475-03f1-4a00-be70-57301bce80d0
+executeQuery : ConnectionID:8 ClientConnectionId: 50342475-03f1-4a00-be70-57301bce80d0
+Test Aborted for test: deleteDAO()
+2020-05-13 15:19:39.489  INFO 11192 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-05-13 15:19:39.493  INFO 11192 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-05-13 15:19:39.549  INFO 11192 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 55 ms
+2020-05-13 15:19:40.403  WARN 11192 --- [nio-8080-exec-2] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [303] milliseconds.
+ConnectionID:9 ClientConnectionId: bfa05ca2-93ad-4fde-9005-824a17528986
+ConnectionID:10 ClientConnectionId: bd981d20-92b6-4ede-bf6b-986a9a9fb25c
+ConnectionID:11 ClientConnectionId: 12beee84-3ecc-448c-99df-6cec6abf67c1
+ConnectionID:12 ClientConnectionId: 98eb3922-df69-4f66-85da-5d96a7af0178
+Test Successful for test: testLoginUI()
+ConnectionID:13 ClientConnectionId: 35faa560-004b-4cf0-800b-8312e2dd4901
+ConnectionID:14 ClientConnectionId: 0d08dfa4-331d-40aa-8eaf-ffc2b63352ff
+ConnectionID:15 ClientConnectionId: bf053964-498c-4cac-aee5-10420a33a4e1
+ConnectionID:16 ClientConnectionId: 183457b4-1b8b-4629-9cc0-50453897dc19
+Test Successful for test: checkWelcomeWithName()
+ConnectionID:17 ClientConnectionId: 3fc906e7-f729-4723-9585-527d8a30404d
+ConnectionID:18 ClientConnectionId: 617698b3-fb7f-49b4-9969-cf6fbf3c11bd
+ConnectionID:19 ClientConnectionId: 47ade69a-4342-494c-8066-f96129da011c
+ConnectionID:20 ClientConnectionId: 3b5836b4-c739-454e-94b2-e498b991dbf4
+Test Successful for test: showAllUI()
+ConnectionID:21 ClientConnectionId: 024e3376-766c-4f9a-9ca8-537b062108c9
+executeQuery : ConnectionID:21 ClientConnectionId: 024e3376-766c-4f9a-9ca8-537b062108c9
+Test Aborted for test: deleteUI()
+ConnectionID:22 ClientConnectionId: 0a22a25e-6d47-4b3e-98b0-86831767b0d6
+executeUpdate : ConnectionID:22 ClientConnectionId: 0a22a25e-6d47-4b3e-98b0-86831767b0d6
+Test Successful for test: testLogOut()
+E:\CN9\Capsone_Docs\Final\Final_Presentation\PE2A-Lecturer\Lecturer\submission\PracticalExams\Practical_JavaWeb_SE1200_20200514\Server\src\test\java\server
+StartSE63146{"studentCode":"SE63146","listQuestions":null,"totalPoint":"0","submitTime":null,"evaluateTime":null,"codingConvention":null,"result":null,"errorMsg":null}EndSE63146StartSE62847{"studentCode":"SE62847","listQuestions":{"checkLoginDAOWithBoss():Success":"1.0/1.0","checkWelcomeWithName():Success":"0.5/0.5.0","showAllDAO():Success":"1.5/1.5.0","showAllUI():Success":"1.5/1.5.0","deleteUI():Success":"1.0/1.0","testLogOut():Success":"0.5/0.5.0","deleteDAO():Success":"1.0/1.0","testLoginUI():Success":"1.0/1.0","checkConnection():Success":"2.0/2.0"},"totalPoint":"10.0","submitTime":null,"evaluateTime":"2020-05-13 15:14:35","codingConvention":null,"result":"9/9","errorMsg":null}EndSE62847StartSE62882{"studentCode":"SE62882","listQuestions":{"checkLoginDAOWithBoss():Success":"1.0/1.0","checkWelcomeWithName():Success":"0.5/0.5.0","showAllDAO():Success":"1.5/1.5.0","showAllUI():Success":"1.5/1.5.0","deleteUI():Success":"1.0/1.0","testLogOut():Success":"0.5/0.5.0","deleteDAO():Success":"1.0/1.0","testLoginUI():Success":"1.0/1.0","checkConnection():Success":"2.0/2.0"},"totalPoint":"10.0","submitTime":null,"evaluateTime":"2020-05-13 15:17:29","codingConvention":null,"result":"9/9","errorMsg":null}EndSE62882
+E:\CN9\Capsone_Docs\Final\Final_Presentation\PE2A-Lecturer\Lecturer\submission\PracticalExams\Practical_JavaWeb_SE1200_20200514\Server\src\test\java\server
+Tests run: 9, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 24.407 sec <<< FAILURE! - in server.TestwebApplicationTests
+deleteDAO  Time elapsed: 0.095 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at server.TestwebApplicationTests.deleteDAO(EXAM_SE63146_JavaWeb_671353223.java:104)
+
+deleteUI  Time elapsed: 0.274 sec  <<< FAILURE!
+java.lang.AssertionError
+	at server.TestwebApplicationTests.deleteUI(EXAM_SE63146_JavaWeb_671353223.java:205)
+
+2020-05-13 15:19:45.121  INFO 11192 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+
+Results :
+
+Failed tests: 
+  TestwebApplicationTests.deleteDAO:104 expected: <true> but was: <false>
+  TestwebApplicationTests.deleteUI:205
+
+Tests run: 9, Failures: 2, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  43.202 s
+[INFO] Finished at: 2020-05-13T15:19:45+07:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.19.1:test (default-test) on project springboot-with-webxml: There are test failures.
+[ERROR] 
+[ERROR] Please refer to E:\CN9\Capsone_Docs\Final\Final_Presentation\PE2A-Lecturer\Lecturer\submission\PracticalExams\Practical_JavaWeb_SE1200_20200514\Server\target\surefire-reports for the individual test results.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

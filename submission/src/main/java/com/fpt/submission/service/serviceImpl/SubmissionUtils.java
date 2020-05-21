@@ -7,6 +7,7 @@ import com.fpt.submission.exception.CustomException;
 import com.fpt.submission.utils.PathUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.task.TaskExecutor;
@@ -32,12 +33,14 @@ import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+
 @EnableAsync
 @Service
 public class SubmissionUtils {
 
     private EvaluationManager evaluationManager;
     private PathDetails pathDetails;
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(SubmissionUtils.class);
 
 
     public SubmissionUtils() {
@@ -45,9 +48,10 @@ public class SubmissionUtils {
         pathDetails = PathUtils.pathDetails;
     }
 
-    @Bean("ThreadPoolTaskExecutor")
+    @Bean(name = "ThreadPoolTaskExecutor")
     public TaskExecutor getAsyncExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setBeanName("ThreadPoolTaskExecutor");
         executor.setCorePoolSize(30);
         executor.setMaxPoolSize(100);
         executor.setWaitForTasksToCompleteOnShutdown(true);
@@ -58,12 +62,12 @@ public class SubmissionUtils {
     @Async("ThreadPoolTaskExecutor")
     public void submitSubmission(UploadFileDto dto) {
         try {
-            Logger.getLogger(SubmissionUtils.class.getName())
-                    .log(Level.INFO, "[SUBMISSION] - File from student: " + dto.getStudentCode());
+            LOGGER.info("[SUBMISSION] - File from student: " + dto.getStudentCode());
             MultipartFile file = dto.getFile();
+
 //            dto.setSubjectCode("JAVA");
             // Send file to check duplicated code
-            sendFile(dto);
+//            sendFile(dto);
 
             if (file != null) {
                 PathDetails pathDetails = PathUtils.pathDetails;
@@ -72,7 +76,7 @@ public class SubmissionUtils {
                 Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
             }
 
-            if(pathDetails.getPracticalExamCode().equalsIgnoreCase(CommonConstant.CODE_PRACTICAL_JAVA_WEB)){
+            if (pathDetails.getPracticalExamCode().contains(CommonConstant.CODE_PRACTICAL_JAVA_WEB)) {
                 MultipartFile webFile = dto.getWebFile();
                 if (webFile != null) {
                     String folPath = pathDetails.getPathSubmission();
@@ -80,31 +84,35 @@ public class SubmissionUtils {
                     Files.copy(webFile.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
                 }
             }
+
         } catch (Exception ex) {
-            Logger.getLogger(SubmissionUtils.class.getName())
-                    .log(Level.ERROR, "[SUBMISSION-ERROR] - File from student : " + ex.getMessage());
+            LOGGER.error("[SUBMISSION-ERROR] - File from student : " + ex.getMessage());
             throw new CustomException(HttpStatus.CONFLICT, ex.getMessage());
         }
     }
-    private void sendFile(UploadFileDto dto){
-        MultiValueMap<String, Object> body
-                = new LinkedMultiValueMap<>();
-        body.add("studentCode", dto.getStudentCode());
-        body.add("file", new FileSystemResource(convert(dto.getFile())));
-        body.add("examCode", pathDetails.getPracticalExamName());
 
-        HttpEntity<MultiValueMap<String, Object>> requestEntity
-                = new HttpEntity<>(body);
+//    private void sendFile(UploadFileDto dto) {
+//        MultiValueMap<String, Object> body
+//                = new LinkedMultiValueMap<>();
+//        body.add("studentCode", dto.getStudentCode());
+//        body.add("file", new FileSystemResource(convert(dto.getFile())));
+//        body.add("examCode", pathDetails.getPracticalExamName());
+//
+//        RestTemplate restTemplate = new RestTemplate();
+//        int count = 0;
+//        if(response!=null){
+//            response.getStatusCode()
+//            System.out.println(response);
+//        }
+//    }
+//
+//    private void resendRequest(RestTemplate restTemplate,){
+//        String serverUrl = URL_WEBSERVICE_SERVER;
+//        ResponseEntity<String> response = restTemplate
+//                .postForEntity(serverUrl, requestEntity, String.class);
+//    }
 
-        String serverUrl = "http://localhost:2021/api/practical-exam/submission";
-
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> response = restTemplate
-                .postForEntity(serverUrl, requestEntity, String.class);
-        System.out.println(response);
-    }
-    private  File convert(MultipartFile file)
-    {
+    private File convert(MultipartFile file) {
         File convFile = new File(file.getOriginalFilename());
         try {
             convFile.createNewFile();
@@ -112,12 +120,12 @@ public class SubmissionUtils {
             fos.write(file.getBytes());
             fos.close();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+
         }
 
         return convFile;
     }
+
     public static boolean deleteFolder(File directory) {
         //make sure directory exists
         if (directory.exists()) {
@@ -127,14 +135,11 @@ public class SubmissionUtils {
                     deleteFolder(file);
                 }
             }
-        } else {
-            Logger.getLogger(SubmissionUtils.class.getName())
-                    .log(Level.WARN, "[DELETE FOLDER] - : Directory does not exist");
         }
         return directory.delete();
     }
 
-    public static void sendTCPMessage(String message, String serverHost, int serverPort) throws InterruptedException, IOException {
+    public static void sendTCPMessage(String message, String serverHost, int serverPort) throws IOException {
         Socket clientSocket = null;
         BufferedWriter bw = null;
         OutputStream os = null;
@@ -168,13 +173,14 @@ public class SubmissionUtils {
             }
         }
     }
+
     public static String getCurTime() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         return dtf.format(now);
     }
 
-    public static boolean saveResultCSubmission(String result, String filePath){
+    public static boolean saveResultCSubmission(String result, String filePath) {
         // TODO: For re-submit
         File file = null;
         PrintWriter writer = null;

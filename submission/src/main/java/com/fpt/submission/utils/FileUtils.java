@@ -20,12 +20,20 @@ public class FileUtils {
     public static void copyAllFiles(String from, String to, String extension) {
         List<File> files = new ArrayList<>();
         getAllFiles(from, files, extension);
-        for (File file : files) {
-            try {
-                Files.copy(Paths.get(file.getAbsolutePath()),
-                        Paths.get(to + File.separator + file.getName()), StandardCopyOption.REPLACE_EXISTING);
-            } catch (IOException e) {
-                e.printStackTrace();
+        if (files != null && files.size() > 0) {
+            for (File file : files) {
+                try {
+                    if (file.getName().contains("DBUtilities")) {
+                        Files.copy(Paths.get(file.getAbsolutePath()),
+                                Paths.get(to + File.separator + "DBUtilities" + extension), StandardCopyOption.REPLACE_EXISTING);
+                    } else {
+                        Files.copy(Paths.get(file.getAbsolutePath()),
+                                Paths.get(to + File.separator + file.getName()), StandardCopyOption.REPLACE_EXISTING);
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -52,24 +60,27 @@ public class FileUtils {
         getAllFiles(configPath, configFiles, extension);
         if (configFiles.size() > 0) {
             for (File file : configFiles) {
-                try {
-                    String result = "";
-                    Path path = Paths.get(file.getAbsolutePath());
-                    List<String> content = null;
+                if (file.exists()) {
                     try {
-                        content = Files.readAllLines(path);
-                        for (int i = 0; i < content.size(); i++) {
-                            String line = content.get(i);
-                            if (line.contains("ResourceBundle") && line.contains("getBundle")) {
-                                line = "ResourceBundle bundle = ResourceBundle.getBundle(\"config\");";
+                        String result = "";
+                        Path path = Paths.get(file.getAbsolutePath());
+                        List<String> content = null;
+                        try {
+                            content = Files.readAllLines(path);
+                            for (int i = 0; i < content.size(); i++) {
+                                String line = content.get(i);
+                                if (line.contains("ResourceBundle") && line.contains("getBundle")) {
+                                    line = "ResourceBundle bundle = ResourceBundle.getBundle(\"config\");";
+                                }
+                                result += line + "\n";
                             }
-                            result += line + "\n";
+                        } catch (IOException e) {
                         }
-                    } catch (IOException e) {
+                        Files.write(path, result.getBytes(StandardCharsets.UTF_8));
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                    Files.write(path, result.getBytes(StandardCharsets.UTF_8));
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
             }
         }
@@ -260,6 +271,10 @@ public class FileUtils {
 
         FileWriter writer = null;
         try {
+            File file = new File(resultPath);
+            if (!file.exists()) {
+                file.createNewFile();
+            }
             ObjectMapper objectMapper = new ObjectMapper();
             String startString = "Start" + dto.getStudentCode();
             String endString = "End" + dto.getStudentCode();
